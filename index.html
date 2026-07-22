@@ -171,7 +171,7 @@ summary:hover {
 
   border-color: #999;
 
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 
 }
 
@@ -199,7 +199,7 @@ summary:hover {
 
 
 
-/* Status Badges */
+/* 3D Status Badges */
 
 
 .status {
@@ -208,51 +208,102 @@ summary:hover {
 
   margin-top: 10px;
 
-  padding: 5px 12px;
+  padding: 6px 14px;
 
   border-radius: 20px;
 
   font-size: .75rem;
 
-  font-weight: 600;
+  font-weight: 700;
+
+  letter-spacing: .3px;
+
+  text-shadow: 0 1px rgba(255,255,255,.45);
+
+  box-shadow:
+    0 4px 8px rgba(0,0,0,.18),
+    inset 0 2px rgba(255,255,255,.45),
+    inset 0 -3px rgba(0,0,0,.12);
+
+  transition:
+    transform .15s,
+    box-shadow .15s;
 
 }
 
 
+.status:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 7px 12px rgba(0,0,0,.2),
+    inset 0 2px rgba(255,255,255,.5),
+    inset 0 -3px rgba(0,0,0,.12);
+
+}
+
+
+
+/* Live */
 
 .status.live {
 
-  background: #dcfce7;
+  background: linear-gradient(
+    145deg,
+    #86efac,
+    #22c55e
+  );
 
-  color: #166534;
+  color: #14532d;
 
 }
-  
+
+
+
+/* Ready */
 
 .status.ready {
 
-  background: #dbeafe;
+  background: linear-gradient(
+    145deg,
+    #93c5fd,
+    #3b82f6
+  );
 
-  color: #1e40af;
-  
+  color: #1e3a8a;
+
 }
-  
+
+
+
+/* Review */
 
 .status.review {
 
-  background: #fef3c7;
+  background: linear-gradient(
+    145deg,
+    #fde68a,
+    #f59e0b
+  );
 
-  color: #92400e;
+  color: #78350f;
 
 }
 
 
 
+/* Draft */
+
 .status.draft {
 
-  background: #fee2e2;
+  background: linear-gradient(
+    145deg,
+    #fca5a5,
+    #ef4444
+  );
 
-  color: #991b1b;
+  color: #7f1d1d;
 
 }
 
