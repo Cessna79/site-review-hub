@@ -2,7 +2,9 @@ fetch("projects.json")
 .then(response => response.json())
 .then(data => {
 
-    function loadProjects(projects, container) {
+    function loadProjects(projects, containerId) {
+
+        const container = document.getElementById(containerId);
 
         projects.forEach(project => {
 
@@ -14,19 +16,29 @@ fetch("projects.json")
             `;
 
         });
-
     }
 
 
     loadProjects(
         data.own,
-        document.getElementById("ownProjects")
+        "ownProjects"
     );
 
 
     loadProjects(
         data.client,
-        document.getElementById("clientProjects")
+        "clientProjects"
     );
+
+
+    // Automatic project counts
+
+    document.getElementById("ownCount").textContent =
+        data.own.length;
+
+
+    document.getElementById("clientCount").textContent =
+        data.client.length;
+
 
 });
