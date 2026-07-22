@@ -1,37 +1,26 @@
+let allProjects = [];
+
+
 fetch("projects.json")
 .then(response => response.json())
 .then(data => {
 
-    function loadProjects(projects, containerId) {
 
-        const container = document.getElementById(containerId);
+    allProjects = [
+        ...data.own.map(project => ({
+            ...project,
+            category: "own"
+        })),
 
-        projects.forEach(project => {
-
-            container.innerHTML += `
-                <a class="card" href="${project.url}">
-                    <b>${project.title}</b>
-                    <span>${project.subtitle}</span>
-                </a>
-            `;
-
-        });
-    }
+        ...data.client.map(project => ({
+            ...project,
+            category: "client"
+        }))
+    ];
 
 
-    loadProjects(
-        data.own,
-        "ownProjects"
-    );
+    renderProjects(allProjects);
 
-
-    loadProjects(
-        data.client,
-        "clientProjects"
-    );
-
-
-    // Automatic project counts
 
     document.getElementById("ownCount").textContent =
         data.own.length;
@@ -39,6 +28,84 @@ fetch("projects.json")
 
     document.getElementById("clientCount").textContent =
         data.client.length;
+
+
+});
+
+
+
+function renderProjects(projects) {
+
+    const ownContainer =
+        document.getElementById("ownProjects");
+
+    const clientContainer =
+        document.getElementById("clientProjects");
+
+
+    ownContainer.innerHTML = "";
+    clientContainer.innerHTML = "";
+
+
+    projects.forEach(project => {
+
+
+        const card = `
+        <a class="card" href="${project.url}">
+            <b>${project.title}</b>
+            <span>${project.subtitle}</span>
+        </a>
+        `;
+
+
+        if(project.category === "own") {
+
+            ownContainer.innerHTML += card;
+
+        } else {
+
+            clientContainer.innerHTML += card;
+
+        }
+
+    });
+
+}
+
+
+
+
+document
+.getElementById("searchBox")
+.addEventListener("input", function(){
+
+
+    const search =
+    this.value.toLowerCase();
+
+
+    const filtered =
+    allProjects.filter(project => {
+
+
+        return (
+
+            project.title
+            .toLowerCase()
+            .includes(search)
+
+            ||
+
+            project.subtitle
+            .toLowerCase()
+            .includes(search)
+
+        );
+
+    });
+
+
+    renderProjects(filtered);
 
 
 });
