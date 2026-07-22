@@ -5,7 +5,6 @@ fetch("projects.json")
 .then(response => response.json())
 .then(data => {
 
-
     allProjects = [
         ...data.own.map(project => ({
             ...project,
@@ -24,7 +23,6 @@ fetch("projects.json")
 
     document.getElementById("ownCount").textContent =
         data.own.length;
-
 
     document.getElementById("clientCount").textContent =
         data.client.length;
@@ -47,8 +45,11 @@ function renderProjects(projects) {
     clientContainer.innerHTML = "";
 
 
-    projects.forEach(project => {
+    let ownFound = false;
+    let clientFound = false;
 
+
+    projects.forEach(project => {
 
         const card = `
         <a class="card" href="${project.url}">
@@ -61,14 +62,28 @@ function renderProjects(projects) {
         if(project.category === "own") {
 
             ownContainer.innerHTML += card;
+            ownFound = true;
 
         } else {
 
             clientContainer.innerHTML += card;
+            clientFound = true;
 
         }
 
     });
+
+
+    if(!ownFound) {
+        ownContainer.innerHTML =
+        `<div class="empty">No projects found</div>`;
+    }
+
+
+    if(!clientFound) {
+        clientContainer.innerHTML =
+        `<div class="empty">No projects found</div>`;
+    }
 
 }
 
@@ -81,7 +96,7 @@ document
 
 
     const search =
-    this.value.toLowerCase();
+    this.value.toLowerCase().trim();
 
 
     const filtered =
@@ -89,7 +104,6 @@ document
 
 
         return (
-
             project.title
             .toLowerCase()
             .includes(search)
@@ -99,13 +113,31 @@ document
             project.subtitle
             .toLowerCase()
             .includes(search)
-
         );
 
     });
 
 
     renderProjects(filtered);
+
+
+
+    const groups =
+    document.querySelectorAll(".group");
+
+
+    if(search.length > 0) {
+
+        groups.forEach(group => {
+            group.open = true;
+        });
+
+    } else {
+
+        groups[0].open = true;
+        groups[1].open = false;
+
+    }
 
 
 });
