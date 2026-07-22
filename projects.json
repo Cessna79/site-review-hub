@@ -4,49 +4,49 @@
       "title": "The Fishnet",
       "subtitle": "Traditional Fish & Chips — Bulkington",
       "url": "/fishnet-bulkington-final.html",
-      "status": "Live"
+      "status": "Ready"
     },
     {
       "title": "Tony's Burgers",
       "subtitle": "Best In Town",
       "url": "/tonys-burgers.html",
-      "status": "Live"
+      "status": "Ready"
     },
     {
       "title": "Crumble Cakes",
       "subtitle": "Cake For Every Occasion",
       "url": "/cake.html",
-      "status": "Live"
+      "status": "Ready"
     },
     {
       "title": "Get Fit With Runa",
       "subtitle": "Take Control Of Your Health",
       "url": "/runa.html",
-      "status": "Live"
+      "status": "Ready"
     },
     {
       "title": "Inta Dental Care",
       "subtitle": "Smile With Confidence",
       "url": "/intadental.html",
-      "status": "Live"
+      "status": "Ready"
     },
     {
       "title": "Rose Skin Studio",
       "subtitle": "Elevate Your Skin",
       "url": "/skinstudio.html",
-      "status": "Live"
+      "status": "Ready"
     },
     {
       "title": "6AM",
       "subtitle": "Pump Your Ride",
       "url": "/6ixam.html",
-      "status": "Live"
+      "status": "Ready"
     },
     {
       "title": "Red Moon Bakery",
       "subtitle": "Bake The Cake",
       "url": "/redmoon.html",
-      "status": "Live"
+      "status": "Ready"
     }
   ],
 
@@ -55,7 +55,7 @@
       "title": "Build Website",
       "subtitle": "I Web Your Site",
       "url": "/web-a-site.html",
-      "status": "Review"
+      "status": "Draft"
     },
     {
       "title": "Around The Globe Immigration",
@@ -67,25 +67,25 @@
       "title": "Immigraze",
       "subtitle": "Pathway To Canada",
       "url": "/immigraze.html",
-      "status": "Live"
+      "status": "Draft"
     },
     {
       "title": "Red Buck",
       "subtitle": "Your Freight My Wheels",
       "url": "/Redbuck.html",
-      "status": "Review"
+      "status": "Live"
     },
     {
       "title": "Manpreet Tiwana",
       "subtitle": "Your Trusted Advisor",
       "url": "/Manpreet.html",
-      "status": "Review"
+      "status": "Draft"
     },
     {
       "title": "Rolling Freight",
       "subtitle": "Get Your Freight Rolling",
       "url": "/rolling-freight.html",
-      "status": "Live"
+      "status": "Draft"
     },
     {
       "title": "SKR Transport",
@@ -97,19 +97,19 @@
       "title": "Big Rig Carriers",
       "subtitle": "Big Rig Carriers",
       "url": "/bigrig-carriers-redesign.html",
-      "status": "Review"
+      "status": "Ready"
     },
     {
       "title": "Rigid Performance & Powdercoating",
       "subtitle": "Keeseville, NY",
       "url": "/rigid-performance.html",
-      "status": "Review"
+      "status": "Ready"
     },
     {
       "title": "Tiwana Law Chambers",
       "subtitle": "Law Firm — Brampton, ON",
       "url": "/tiwana-law-chambers.html",
-      "status": "Review"
+      "status": "Ready"
     }
   ]
 }
