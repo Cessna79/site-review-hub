@@ -31,7 +31,25 @@ h1 {
 
 .sub {
   color: #666;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+}
+
+
+/* Search */
+
+#searchBox {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 25px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: white;
+}
+
+#searchBox:focus {
+  outline: none;
+  border-color: #999;
 }
 
 
@@ -73,6 +91,11 @@ details[open] summary::after {
 }
 
 
+summary:hover {
+  background: #eef1f4;
+}
+
+
 /* Project Cards */
 
 .card {
@@ -84,11 +107,13 @@ details[open] summary::after {
   border-radius: 12px;
   text-decoration: none;
   color: inherit;
+  transition: border-color .15s, transform .15s;
 }
 
 
 .card:hover {
   border-color: #999;
+  transform: translateY(-1px);
 }
 
 
@@ -103,6 +128,15 @@ details[open] summary::after {
   font-size: .9rem;
 }
 
+
+/* Empty search result */
+
+.empty {
+  padding: 18px;
+  color: #777;
+  text-align: center;
+}
+
 </style>
 
 </head>
@@ -112,11 +146,19 @@ details[open] summary::after {
 
 <div class="wrap">
 
+
 <h1>Site Reviews</h1>
 
 <p class="sub">
 Projects ready for review — click any website to open.
 </p>
+
+
+<input 
+  type="text" 
+  id="searchBox" 
+  placeholder="Search projects..."
+>
 
 
 <!-- OWN PROJECTS -->
