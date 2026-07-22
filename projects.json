@@ -1,102 +1,115 @@
 {
   "own": [
-   {
-     "title": "New Website",
-     "subtitle": "New Client",
-     "url": "/new-site.html"
-    },
     {
       "title": "The Fishnet",
-      "subtitle": "Traditional fish & chips — Bulkington",
-      "url": "/fishnet-bulkington-final.html"
+      "subtitle": "Traditional Fish & Chips — Bulkington",
+      "url": "/fishnet-bulkington-final.html",
+      "status": "Live"
     },
     {
       "title": "Tony's Burgers",
       "subtitle": "Best In Town",
-      "url": "/tonys-burgers.html"
+      "url": "/tonys-burgers.html",
+      "status": "Live"
     },
     {
       "title": "Crumble Cakes",
       "subtitle": "Cake For Every Occasion",
-      "url": "/cake.html"
+      "url": "/cake.html",
+      "status": "Live"
     },
     {
       "title": "Get Fit With Runa",
       "subtitle": "Take Control Of Your Health",
-      "url": "/runa.html"
+      "url": "/runa.html",
+      "status": "Live"
     },
     {
       "title": "Inta Dental Care",
       "subtitle": "Smile With Confidence",
-      "url": "/intadental.html"
+      "url": "/intadental.html",
+      "status": "Live"
     },
     {
       "title": "Rose Skin Studio",
       "subtitle": "Elevate Your Skin",
-      "url": "/skinstudio.html"
+      "url": "/skinstudio.html",
+      "status": "Live"
     },
     {
       "title": "6AM",
       "subtitle": "Pump Your Ride",
-      "url": "/6ixam.html"
+      "url": "/6ixam.html",
+      "status": "Live"
     },
     {
       "title": "Red Moon Bakery",
       "subtitle": "Bake The Cake",
-      "url": "/redmoon.html"
+      "url": "/redmoon.html",
+      "status": "Live"
     }
   ],
 
   "client": [
     {
       "title": "Build Website",
-      "subtitle": "I web Your Site",
-      "url": "/web-a-site.html"
+      "subtitle": "I Web Your Site",
+      "url": "/web-a-site.html",
+      "status": "Review"
     },
     {
       "title": "Around The Globe Immigration",
       "subtitle": "Pathway To Canada",
-      "url": "/atg.html"
+      "url": "/atg.html",
+      "status": "Live"
     },
     {
       "title": "Immigraze",
       "subtitle": "Pathway To Canada",
-      "url": "/immigraze.html"
+      "url": "/immigraze.html",
+      "status": "Live"
     },
     {
       "title": "Red Buck",
       "subtitle": "Your Freight My Wheels",
-      "url": "/Redbuck.html"
+      "url": "/Redbuck.html",
+      "status": "Review"
     },
     {
       "title": "Manpreet Tiwana",
       "subtitle": "Your Trusted Advisor",
-      "url": "/Manpreet.html"
+      "url": "/Manpreet.html",
+      "status": "Review"
     },
     {
       "title": "Rolling Freight",
       "subtitle": "Get Your Freight Rolling",
-      "url": "/rolling-freight.html"
+      "url": "/rolling-freight.html",
+      "status": "Live"
     },
     {
       "title": "SKR Transport",
       "subtitle": "SHIP Worry Free",
-      "url": "/skr/skr.html"
+      "url": "/skr/skr.html",
+      "status": "Live"
     },
     {
       "title": "Big Rig Carriers",
       "subtitle": "Big Rig Carriers",
-      "url": "/bigrig-carriers-redesign.html"
+      "url": "/bigrig-carriers-redesign.html",
+      "status": "Review"
     },
     {
       "title": "Rigid Performance & Powdercoating",
       "subtitle": "Keeseville, NY",
-      "url": "/rigid-performance.html"
+      "url": "/rigid-performance.html",
+      "status": "Review"
     },
     {
       "title": "Tiwana Law Chambers",
-      "subtitle": "Law firm — Brampton, ON",
-      "url": "/tiwana-law-chambers.html"
+      "subtitle": "Law Firm — Brampton, ON",
+      "url": "/tiwana-law-chambers.html",
+      "status": "Review"
     }
   ]
 }
