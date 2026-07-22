@@ -28,7 +28,7 @@ fetch("projects.json")
     renderProjects(allProjects);
 
 
-    // Project counts
+    // Update counts
 
     document.getElementById("ownCount").textContent =
         data.own.length;
@@ -44,7 +44,7 @@ fetch("projects.json")
 
 
 
-// Display project cards
+// Create project cards
 
 function renderProjects(projects) {
 
@@ -55,6 +55,7 @@ function renderProjects(projects) {
 
     const clientContainer =
         document.getElementById("clientProjects");
+
 
 
     ownContainer.innerHTML = "";
@@ -69,7 +70,15 @@ function renderProjects(projects) {
 
 
 
+
     projects.forEach(project => {
+
+
+
+        const statusClass =
+        project.status
+        ? project.status.toLowerCase()
+        : "";
 
 
 
@@ -80,6 +89,18 @@ function renderProjects(projects) {
             <b>${project.title}</b>
 
             <span>${project.subtitle}</span>
+
+
+            ${
+                project.status
+                ?
+                `<div class="status ${statusClass}">
+                    ${project.status}
+                </div>`
+                :
+                ""
+            }
+
 
         </a>
 
@@ -173,6 +194,13 @@ document
             .toLowerCase()
             .includes(search)
 
+
+            ||
+
+            project.status
+            ?.toLowerCase()
+            .includes(search)
+
         );
 
 
@@ -219,8 +247,6 @@ document
     } else {
 
 
-
-        // Collapse everything when search is cleared
 
         groups.forEach(group => {
 
