@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Fishnet | Traditional Fish & Chips – Bulkington</title>
+  <meta name="description" content="The Fishnet Bulkington – Traditional fish & chips. Collection & delivery. 27-29 Rugby Rd, Bulkington CV12 9JF. Order online.">
+  <link rel="canonical" href="https://thefishnetbulkington.co.uk/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy:  #0f2340;
+      --gold:  #d4a62a;
+      --cream: #fdf8ef;
+      --red:   #c0392b;
+      --paper: #f5efe0;
+      --ink:   #1a1a1a;
+      --muted: #6b6452;
+      --white: #ffffff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: var(--navy); display: flex; align-items: center;
+      justify-content: space-between; padding: 0 5%; height: 64px;
+      border-bottom: 3px solid var(--gold);
+    }
+    .nav-logo { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.4rem; color: var(--white); }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta { background: var(--gold); color: var(--navy) !important; padding: 0.45rem 1.2rem; border-radius: 2px; font-weight: 600 !important; }
+
+    /* ── DELIVERY NOTICE ── */
+    .delivery-notice {
+      background: var(--red); color: var(--white); text-align: center;
+      padding: 0.55rem 5%; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.03em;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 100px 5% 60px;
+      position: relative;
+      overflow: hidden;
+      gap: 40px;
+    }
+    .hero-bg-img {
+      position: absolute; inset: 0; z-index: 0;
+      background: url('https://images.unsplash.com/photo-1576107232684-1279f81cd8e5?w=1600&q=80') center/cover no-repeat;
+      filter: brightness(0.18) saturate(0.6);
+    }
+    .hero-dots {
+      position: absolute; inset: 0; z-index: 1;
+      background-image: radial-gradient(circle, rgba(212,166,42,0.07) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    .hero-left { position: relative; z-index: 2; }
+    .hero-eyebrow {
+      font-family: 'Oswald', sans-serif; font-size: 0.78rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); opacity: 0.5; }
+    .hero h1 {
+      font-family: 'Playfair Display', serif; font-weight: 900;
+      font-size: clamp(2.8rem, 5.5vw, 5rem); color: var(--white); line-height: 1.0; margin-bottom: 0.5rem;
+    }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero-sub {
+      font-family: 'Oswald', sans-serif; font-size: 1.1rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 1.8rem;
+    }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2rem; }
+    .badge {
+      border: 1px solid rgba(212,166,42,0.35); color: rgba(255,255,255,0.75);
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.06em;
+      padding: 0.35rem 0.8rem; border-radius: 20px; text-transform: uppercase;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold); color: var(--navy);
+      font-family: 'Oswald', sans-serif; font-size: 1rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.9rem 2.2rem; border: none; border-radius: 2px;
+      cursor: pointer; text-decoration: none; display: inline-block;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212,166,42,0.4); }
+    .btn-outline {
+      background: transparent; color: var(--white);
+      font-family: 'Oswald', sans-serif; font-size: 1rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.9rem 2.2rem; border: 1px solid rgba(255,255,255,0.3); border-radius: 2px;
+      cursor: pointer; text-decoration: none; display: inline-block;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* Hero right: photo mosaic */
+    .hero-right {
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px; gap: 10px;
+    }
+    .hero-photo {
+      border-radius: 4px; overflow: hidden; position: relative;
+    }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-photo:first-child { grid-row: span 2; }
+    .hero-photo-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(15,35,64,0.85));
+      color: var(--gold); font-family: 'Oswald', sans-serif;
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; padding: 0.75rem 0.75rem 0.6rem;
+    }
+
+    /* ── RATING STRIP ── */
+    .rating-strip {
+      background: var(--gold); padding: 0.85rem 5%;
+      display: flex; align-items: center; justify-content: center; gap: 3rem; flex-wrap: wrap;
+    }
+    .rating-item {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-family: 'Oswald', sans-serif; font-weight: 700;
+      font-size: 0.82rem; letter-spacing: 0.05em; color: var(--navy); text-transform: uppercase;
+    }
+
+    /* ── SECTION BASE ── */
+    section { padding: 80px 5%; }
+    .section-eyebrow {
+      font-family: 'Oswald', sans-serif; font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif; font-weight: 900;
+      font-size: clamp(2rem, 4vw, 3rem); color: var(--navy); line-height: 1.1; margin-bottom: 1rem;
+    }
+    .section-body { font-size: 1rem; line-height: 1.75; color: var(--muted); max-width: 580px; }
+
+    /* ── ABOUT ── */
+    .about { background: var(--white); display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .about-photo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .about-photo { border-radius: 4px; overflow: hidden; }
+    .about-photo img { width: 100%; height: 180px; object-fit: cover; display: block; transition: transform 0.4s; }
+    .about-photo img:hover { transform: scale(1.04); }
+    .about-photo.tall img { height: 370px; }
+    .about-highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+    .highlight-card {
+      background: var(--cream); border-radius: 4px;
+      padding: 1rem 1.25rem; border-left: 3px solid var(--gold);
+    }
+    .highlight-card .hc-icon { font-size: 1.3rem; margin-bottom: 0.3rem; }
+    .highlight-card .hc-title { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy); margin-bottom: 0.2rem; }
+    .highlight-card .hc-body { font-size: 0.8rem; color: var(--muted); line-height: 1.4; }
+
+    /* ── FOOD GALLERY ── */
+    .gallery-section { background: var(--navy); padding: 60px 0; overflow: hidden; }
+    .gallery-header { padding: 0 5% 2rem; }
+    .gallery-header .section-eyebrow { color: var(--gold); }
+    .gallery-header .section-title { color: var(--white); }
+    .gallery-scroll {
+      display: flex; gap: 16px; padding: 0 5%;
+      overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none;
+    }
+    .gallery-scroll::-webkit-scrollbar { display: none; }
+    .gallery-item {
+      flex-shrink: 0; width: 280px; border-radius: 6px; overflow: hidden;
+      position: relative; cursor: pointer;
+    }
+    .gallery-item img { width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.4s; }
+    .gallery-item:hover img { transform: scale(1.06); }
+    .gallery-item-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(15,35,64,0.9));
+      padding: 2rem 1rem 0.8rem;
+      font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 0.9rem;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--white);
+    }
+    .gallery-item-label span { color: var(--gold); display: block; font-size: 0.7rem; font-weight: 500; margin-top: 0.1rem; }
+
+    /* ── SPECIALS ── */
+    .specials { background: var(--paper); }
+    .specials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    .special-card {
+      background: var(--white); border-radius: 6px; overflow: hidden;
+      box-shadow: 0 2px 12px rgba(15,35,64,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .special-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(15,35,64,0.14); }
+    .special-card-img { position: relative; height: 200px; overflow: hidden; }
+    .special-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .special-card-ribbon {
+      position: absolute; top: 12px; right: -8px;
+      background: var(--gold); color: var(--navy);
+      font-family: 'Oswald', sans-serif; font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.3rem 1rem 0.3rem 0.8rem;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 8px 50%);
+    }
+    .special-card-body { padding: 1.25rem 1.5rem 1.5rem; }
+    .special-card-body h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--navy); margin-bottom: 0.4rem; }
+    .special-card-body p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin-bottom: 1rem; }
+    .special-card-footer { display: flex; align-items: center; justify-content: space-between; }
+    .special-price { font-family: 'Oswald', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--navy); }
+    .special-tag { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.25rem 0.6rem; border-radius: 2px; }
+    .tag-popular { background: #fff3e0; color: #e65100; }
+    .tag-gf { background: #e3f2fd; color: #1565c0; }
+    .tag-v { background: #e8f5e9; color: #2e7d32; }
+    .tag-new { background: #fce4ec; color: #c62828; }
+
+    /* ── MENU ── */
+    .menu-section { background: var(--cream); }
+    .menu-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+    .menu-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .tab-btn {
+      font-family: 'Oswald', sans-serif; font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase; padding: 0.5rem 1.1rem;
+      border: 1px solid rgba(15,35,64,0.2); border-radius: 2px;
+      background: transparent; color: var(--navy); cursor: pointer; transition: all 0.2s;
+    }
+    .tab-btn.active, .tab-btn:hover { background: var(--navy); color: var(--gold); border-color: var(--navy); }
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr)); gap: 1.1rem; }
+    .menu-card {
+      background: var(--white); border-radius: 4px; overflow: hidden;
+      display: flex; flex-direction: column;
+      border-bottom: 3px solid transparent; transition: border-color 0.2s, transform 0.15s;
+    }
+    .menu-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+    .menu-card-img { height: 140px; overflow: hidden; position: relative; }
+    .menu-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+    .menu-card:hover .menu-card-img img { transform: scale(1.05); }
+    .menu-card-no-img { height: 0; }
+    .menu-card-body { padding: 1rem 1.25rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 0.8rem; flex: 1; }
+    .menu-card-info { flex: 1; }
+    .menu-card-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 0.98rem; color: var(--navy); margin-bottom: 0.2rem; }
+    .menu-card-desc { font-size: 0.76rem; color: var(--muted); line-height: 1.4; }
+    .menu-card-tags { display: flex; gap: 0.3rem; flex-wrap: wrap; margin-top: 0.4rem; }
+    .menu-card-price { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 1.05rem; color: var(--navy); white-space: nowrap; flex-shrink: 0; }
+    .menu-panel { display: none; }
+    .menu-panel.active { display: block; }
+
+    /* ── GF BANNER ── */
+    .gf-banner {
+      background: var(--navy); color: var(--white); border-radius: 6px;
+      padding: 0; display: grid; grid-template-columns: 280px 1fr;
+      overflow: hidden; margin-top: 2.5rem;
+    }
+    .gf-banner-img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.75); }
+    .gf-banner-text { padding: 2rem 2.5rem; display: flex; flex-direction: column; justify-content: center; }
+    .gf-banner-text h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 0.6rem; }
+    .gf-banner-text p { font-size: 0.88rem; color: rgba(255,255,255,0.75); line-height: 1.65; }
+
+    /* ── ALLERGEN ── */
+    .allergen { background: #fff8e1; border-left: 4px solid #f9a825; padding: 1rem 1.5rem; margin-top: 1.5rem; border-radius: 0 4px 4px 0; }
+    .allergen p { font-size: 0.82rem; color: #5d4037; line-height: 1.6; }
+    .allergen strong { color: #333; }
+
+    /* ── INFO STRIP ── */
+    .info-strip { background: var(--paper); display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); padding: 0; }
+    .info-block { padding: 2.5rem 2rem; border-right: 1px solid rgba(15,35,64,0.1); text-align: center; }
+    .info-block:last-child { border-right: none; }
+    .info-block .ib-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+    .info-block .ib-label { font-family: 'Oswald', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
+    .info-block .ib-value { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.05rem; color: var(--navy); line-height: 1.4; }
+
+    /* ── HOURS ── */
+    .hours-section { background: var(--white); display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .hours-table { width: 100%; border-collapse: collapse; }
+    .hours-table tr { border-bottom: 1px solid rgba(15,35,64,0.06); }
+    .hours-table td { padding: 0.9rem 0; font-size: 0.95rem; }
+    .hours-table td:first-child { font-weight: 600; color: var(--navy); width: 130px; }
+    .hours-table td:last-child { color: var(--muted); }
+    .hours-closed { color: var(--red) !important; font-weight: 500 !important; }
+    .hours-session { display: inline-block; background: var(--cream); border-radius: 2px; padding: 0.2rem 0.6rem; font-size: 0.82rem; margin: 0.1rem 0.2rem 0.1rem 0; }
+    .map-embed { border-radius: 6px; overflow: hidden; aspect-ratio: 4/3; }
+    .map-embed iframe { width: 100%; height: 100%; border: none; }
+
+    /* ── REVIEWS ── */
+    .reviews-section { background: var(--cream); }
+    .reviews-header { text-align: center; margin-bottom: 3rem; }
+    .reviews-score { display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin-top: 1.5rem; flex-wrap: wrap; }
+    .score-big { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 5rem; color: var(--navy); line-height: 1; }
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr)); gap: 1.25rem; }
+    .review-card { background: var(--white); border-radius: 4px; padding: 1.5rem; border-top: 3px solid var(--gold); }
+    .review-stars { font-size: 0.9rem; margin-bottom: 0.75rem; color: #f4b942; }
+    .review-text { font-size: 0.9rem; line-height: 1.65; color: var(--ink); margin-bottom: 1rem; font-style: italic; }
+    .review-author { font-family: 'Oswald', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+    /* ── PHOTO BREAK ── */
+    .photo-break {
+      height: 380px; position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .photo-break img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.45); }
+    .photo-break-overlay {
+      position: absolute; inset: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center; padding: 2rem;
+    }
+    .photo-break-overlay h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem,5vw,3.5rem); color: var(--white); font-weight: 900; margin-bottom: 0.5rem; }
+    .photo-break-overlay p { font-family: 'Oswald', sans-serif; font-size: 1rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); }
+
+    /* ── ORDER CTA ── */
+    .order-cta { background: var(--navy); text-align: center; padding: 80px 5%; position: relative; overflow: hidden; }
+    .order-cta-bg { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1600891964092-4316c288032e?w=1400&q=80') center/cover no-repeat; opacity: 0.08; }
+    .order-cta .section-eyebrow { color: var(--gold); position: relative; }
+    .order-cta .section-title { color: var(--white); max-width: 600px; margin: 0 auto 1rem; position: relative; }
+    .order-cta p { color: rgba(255,255,255,0.6); max-width: 480px; margin: 0 auto 2.5rem; font-size: 0.95rem; line-height: 1.7; position: relative; }
+    .order-cta .hero-btns { justify-content: center; position: relative; }
+
+    /* ── FOOTER ── */
+    footer { background: #07162a; color: rgba(255,255,255,0.55); padding: 2.5rem 5%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; border-top: 3px solid var(--gold); }
+    .footer-logo { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.2rem; color: var(--white); }
+    .footer-logo span { color: var(--gold); }
+    footer p { font-size: 0.8rem; line-height: 1.6; }
+    .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.78rem; color: rgba(255,255,255,0.45); text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 500; }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ── SVG DIVIDERS ── */
+    .wave-divider { display: block; width: 100%; overflow: hidden; line-height: 0; }
+    .wave-divider svg { display: block; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; padding-top: 90px; }
+      .hero-right { display: none; }
+      .about { grid-template-columns: 1fr; gap: 2rem; }
+      .specials-grid { grid-template-columns: 1fr 1fr; }
+      .hours-section { grid-template-columns: 1fr; gap: 2rem; }
+      .nav-links { display: none; }
+      .gf-banner { grid-template-columns: 1fr; }
+      .gf-banner-img { height: 180px; }
+    }
+    @media (max-width: 600px) {
+      .specials-grid { grid-template-columns: 1fr; }
+      .about-highlights { grid-template-columns: 1fr; }
+      .info-strip { grid-template-columns: 1fr 1fr; }
+      .info-block { border-right: none; border-bottom: 1px solid rgba(15,35,64,0.1); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Delivery Notice -->
+<div class="delivery-notice">⚠️ Deliveries may be 30 mins either side of your requested time during busy periods</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">The <span>Fishnet</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#hours">Hours</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><button class="glf-button nav-cta" data-glf-cuid="b7bb6114-549f-4612-8432-8b7664c8e650" data-glf-ruid="f2bc6a64-e900-4ff4-83dc-77207fe0cb51">Order Now</button></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-img"></div>
+  <div class="hero-dots"></div>
+  <div class="hero-left">
+    <div class="hero-eyebrow">Bulkington, Warwickshire · Since Day One</div>
+    <h1>Traditional<br><em>Fish &amp; Chips</em></h1>
+    <p class="hero-sub">Cooked Fresh · Served with a Smile</p>
+    <div class="hero-badges">
+      <span class="badge">⭐ 3.9 · 345 Reviews</span>
+      <span class="badge">🥡 Collection &amp; Delivery</span>
+      <span class="badge">🌾 Gluten Free Tuesdays</span>
+      <span class="badge">🏅 Hygiene Rating: 5</span>
+    </div>
+    <div class="hero-btns">
+      <button class="glf-button btn-primary" data-glf-cuid="b7bb6114-549f-4612-8432-8b7664c8e650" data-glf-ruid="f2bc6a64-e900-4ff4-83dc-77207fe0cb51">Order Online</button>
+      <a href="#menu" class="btn-outline">View Menu</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-photo">
+      <img src="https://images.unsplash.com/photo-1576107232684-1279f81cd8e5?w=600&q=80" alt="Golden battered fish and chips" loading="lazy">
+      <div class="hero-photo-label">Freshly Battered<span>Cooked to Order</span></div>
+    </div>
+    <div class="hero-photo">
+      <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&q=80" alt="Crispy chips" loading="lazy">
+      <div class="hero-photo-label">Golden Chips</div>
+    </div>
+    <div class="hero-photo">
+      <img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=400&q=80" alt="Takeaway food" loading="lazy">
+      <div class="hero-photo-label">Meal Deals</div>
+    </div>
+  </div>
+</section>
+
+<!-- RATING STRIP -->
+<div class="rating-strip">
+  <div class="rating-item">⭐⭐⭐⭐ 3.9 on Google (345 reviews)</div>
+  <div class="rating-item">🏅 Food Hygiene Rating: 5</div>
+  <div class="rating-item">📦 Min. Order £12 · Delivery £3</div>
+  <div class="rating-item">💳 Cards &amp; Contactless</div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div>
+    <div class="section-eyebrow">A Brief Introduction</div>
+    <h2 class="section-title">A Proper British Chippy Done Right</h2>
+    <p class="section-body">We at Fishnet Bulkington are dedicated to providing the best food and service to our customers.</p>
+    <p class="section-body" style="margin-top:1rem;">We have a full and varied menu with something to suit everyone, with traditional chip shop favourites for the whole family!</p>
+    <p class="section-body" style="margin-top:1rem;">We go the extra mile to deliver consistent quality food using the best ingredients cooked by experienced chefs. We pride ourselves on service with a smile, we aim to make every experience with us a good one.</p>
+    <p class="section-body" style="margin-top:1rem;">Our online order system allows you to order in advance &amp; your food will be cooked fresh, ready &amp; waiting for you — or delivered fresh to your door.</p>
+    <div class="about-highlights">
+      <div class="highlight-card"><div class="hc-icon">🛒</div><div class="hc-title">Easy Online Ordering</div><div class="hc-body">Order in advance, food cooked fresh ready for you</div></div>
+      <div class="highlight-card"><div class="hc-icon">🔒</div><div class="hc-title">Secure Payments</div><div class="hc-body">Cards, contactless &amp; NFC mobile payments</div></div>
+      <div class="highlight-card"><div class="hc-icon">🌾</div><div class="hc-title">Gluten Free Tuesdays</div><div class="hc-body">Dedicated GF pan · wheat, dairy &amp; soya free batter</div></div>
+      <div class="highlight-card"><div class="hc-icon">🚗</div><div class="hc-title">Free Parking</div><div class="hc-body">Parking lot &amp; street parking available</div></div>
+    </div>
+  </div>
+  <div class="about-photo-grid">
+    <div class="about-photo tall">
+      <img src="https://images.unsplash.com/photo-1576107232684-1279f81cd8e5?w=500&q=80" alt="Traditional fish and chips" loading="lazy">
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div class="about-photo">
+        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=80" alt="Freshly made burger" loading="lazy">
+      </div>
+      <div class="about-photo">
+        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&q=80" alt="Stone baked pizza" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOD GALLERY -->
+<section class="gallery-section">
+  <div class="gallery-header">
+    <div class="section-eyebrow">Fresh Every Day</div>
+    <h2 class="section-title" style="color:var(--white);">From Our Kitchen</h2>
+  </div>
+  <div class="gallery-scroll">
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1576107232684-1279f81cd8e5?w=600&q=80" alt="Battered fish and chips" loading="lazy">
+      <div class="gallery-item-label">Fish &amp; Chips<span>From £9.95</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&q=80" alt="Stone baked pizza" loading="lazy">
+      <div class="gallery-item-label">Stone Baked Pizzas<span>From £9.99</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=600&q=80" alt="Doner kebab" loading="lazy">
+      <div class="gallery-item-label">Kebabs<span>From £9.50</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=80" alt="Burgers" loading="lazy">
+      <div class="gallery-item-label">Burgers<span>From £6.95</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80" alt="Golden chips" loading="lazy">
+      <div class="gallery-item-label">Golden Chips<span>From £3.95</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=600&q=80" alt="Chicken" loading="lazy">
+      <div class="gallery-item-label">Chicken<span>From £4.99</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1585703900468-13b6a5a3cd4c?w=600&q=80" alt="Jacket potatoes" loading="lazy">
+      <div class="gallery-item-label">Jacket Potatoes<span>From £4.99</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIALS -->
+<section class="specials" id="specials">
+  <div class="section-eyebrow">Customer Favourites</div>
+  <h2 class="section-title">Most Popular Dishes</h2>
+  <div class="specials-grid">
+    <div class="special-card">
+      <div class="special-card-img">
+        <img src="https://images.unsplash.com/photo-1576107232684-1279f81cd8e5?w=600&q=80" alt="Large Cod & Chips" loading="lazy">
+        <div class="special-card-ribbon">⭐ Most Ordered</div>
+      </div>
+      <div class="special-card-body">
+        <h3>Large Cod Meal</h3>
+        <p>Our signature golden battered large cod served with crispy chips and your choice of sauce, all in a box.</p>
+        <div class="special-card-footer">
+          <div class="special-price">£12.95</div>
+          <span class="special-tag tag-popular">Popular</span>
+        </div>
+      </div>
+    </div>
+    <div class="special-card">
+      <div class="special-card-img">
+        <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=600&q=80" alt="Mixed Kebab" loading="lazy">
+      </div>
+      <div class="special-card-body">
+        <h3>Mixed Kebab</h3>
+        <p>Lamb doner and chicken tikka combined, served with fresh salad and your choice of sauces.</p>
+        <div class="special-card-footer">
+          <div class="special-price">from £9.50</div>
+          <span class="special-tag tag-new">Fan Fave</span>
+        </div>
+      </div>
+    </div>
+    <div class="special-card">
+      <div class="special-card-img">
+        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&q=80" alt="Stone Baked Pizza" loading="lazy">
+      </div>
+      <div class="special-card-body">
+        <h3>Stone Baked Pizza</h3>
+        <p>Crispy stone baked base with Neapolitan sauce and our special 80/20 mozzarella blend. 10 varieties available.</p>
+        <div class="special-card-footer">
+          <div class="special-price">from £9.99</div>
+          <span class="special-tag tag-v">Veggie Options</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO BREAK -->
+<div class="photo-break">
+  <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&q=80" alt="Restaurant atmosphere" loading="lazy">
+  <div class="photo-break-overlay">
+    <h2>"Freshly Cooked, Every Single Time"</h2>
+    <p>Bulkington's Favourite Chippy · 27–29 Rugby Rd CV12 9JF</p>
+  </div>
+</div>
+
+<!-- INFO STRIP -->
+<div class="info-strip">
+  <div class="info-block"><div class="ib-icon">📍</div><div class="ib-label">Address</div><div class="ib-value">27–29 Rugby Rd<br>Bulkington CV12 9JF</div></div>
+  <div class="info-block"><div class="ib-icon">📞</div><div class="ib-label">Phone</div><div class="ib-value"><a href="tel:+442476731300" style="color:inherit;text-decoration:none;">024 7673 1300</a></div></div>
+  <div class="info-block"><div class="ib-icon">🕔</div><div class="ib-label">Open Today</div><div class="ib-value">12–2 PM &amp; 5–9 PM</div></div>
+  <div class="info-block"><div class="ib-icon">🛵</div><div class="ib-label">Delivery</div><div class="ib-value">£3.00 · Min £12</div></div>
+</div>
+
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <div class="menu-header">
+    <div><div class="section-eyebrow">What We Serve</div><h2 class="section-title">Our Full Menu</h2></div>
+  </div>
+  <div class="menu-tabs">
+    <button class="tab-btn active" onclick="showTab('fish',this)">🐟 Fish</button>
+    <button class="tab-btn" onclick="showTab('chips',this)">🍟 Chips</button>
+    <button class="tab-btn" onclick="showTab('meals',this)">🥡 Meal Deals</button>
+    <button class="tab-btn" onclick="showTab('kebabs',this)">🌯 Kebabs</button>
+    <button class="tab-btn" onclick="showTab('pies',this)">🥧 Pies</button>
+    <button class="tab-btn" onclick="showTab('chicken',this)">🍗 Chicken</button>
+    <button class="tab-btn" onclick="showTab('burgers',this)">🍔 Burgers</button>
+    <button class="tab-btn" onclick="showTab('pizza',this)">🍕 Pizzas</button>
+    <button class="tab-btn" onclick="showTab('kids',this)">👦 Kids</button>
+    <button class="tab-btn" onclick="showTab('jackets',this)">🥔 Jackets</button>
+    <button class="tab-btn" onclick="showTab('extras',this)">➕ Extras</button>
+    <button class="tab-btn" onclick="showTab('drinks',this)">🥤 Drinks</button>
+  </div>
+
+  <!-- FISH -->
+  <div class="menu-panel active" id="tab-fish">
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-card-img"><img src="https://images.unsplash.com/photo-1576107232684-1279f81cd8e5?w=500&q=80" alt="Large Cod" loading="lazy"></div><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Large Cod</div><div class="menu-card-desc">May contain small traces of bones</div><div class="menu-card-tags"><span class="special-tag tag-popular">Popular</span></div></div><div class="menu-card-price">£9.95</div></div></div>
+      <div class="menu-card"><div class="menu-card-img"><img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=500&q=80" alt="Large Haddock" loading="lazy"></div><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Large Haddock</div><div class="menu-card-desc">May contain small traces of bones</div></div><div class="menu-card-price">£9.95</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Plaice</div><div class="menu-card-desc">May contain small traces of bones</div></div><div class="menu-card-price">£9.95</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Mini Cod</div><div class="menu-card-desc">May contain small traces of bones</div></div><div class="menu-card-price">£6.50</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Cod Fishcake</div></div><div class="menu-card-price">£3.95</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Cod Bites</div><div class="menu-card-desc">4 delicious bitesize pieces of cod, lightly battered</div></div><div class="menu-card-price">£6.50</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Scampi (8)</div><div class="menu-card-desc">Served with salad or chips and tartare sauce</div></div><div class="menu-card-price">£8.50</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Tinned Roe</div></div><div class="menu-card-price">£3.95</div></div></div>
+    </div>
+  </div>
+
+  <!-- CHIPS -->
+  <div class="menu-panel" id="tab-chips">
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-card-img"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500&q=80" alt="Chips" loading="lazy"></div><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Small Chips</div></div><div class="menu-card-price">£3.95</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Medium Chips</div></div><div class="menu-card-price">£4.95</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Large Chips</div><div class="menu-card-tags"><span class="special-tag tag-popular">Popular</span></div></div><div class="menu-card-price">£5.95</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Chip Batch</div></div><div class="menu-card-price">£4.50</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Small Chips &amp; Cheese</div></div><div class="menu-card-price">£4.95</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Large Chips &amp; Cheese</div></div><div class="menu-card-price">£5.95</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Potato Scollop</div></div><div class="menu-card-price">£1.75</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Scollop Batch</div></div><div class="menu-card-price">£2.99</div></div></div>
+    </div>
+  </div>
+
+  <!-- MEALS -->
+  <div class="menu-panel" id="tab-meals">
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:1.5rem;">All meal deals served with a choice of Peas, Beans, Curry or Gravy</p>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Mini Cod &amp; Chips</div></div><div class="menu-card-price">£8.95</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Pie &amp; Chips</div></div><div class="menu-card-price">£8.50</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Chicken Breast &amp; Chips</div></div><div class="menu-card-price">£9.50</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Doner Meat &amp; Chips</div></div><div class="menu-card-price">£9.50</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Chicken Tikka &amp; Chips</div></div><div class="menu-card-price">£9.50</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Any Jacket &amp; Salad</div></div><div class="menu-card-price">£8.95</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">¼ Pounder, Chips &amp; Can</div></div><div class="menu-card-price">£8.95</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">2 Faggots, Chips, Peas &amp; Gravy</div></div><div class="menu-card-price">£9.50</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Large Cod or Haddock Meal</div><div class="menu-card-desc">Special crispy batter, chips &amp; sauce in a box</div></div><div class="menu-card-price">£12.95</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">2× Samosa, Chips &amp; Curry Sauce</div></div><div class="menu-card-price">£8.95</div></div></div>
+    </div>
+  </div>
+
+  <!-- KEBABS -->
+  <div class="menu-panel" id="tab-kebabs">
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-card-img"><img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=500&q=80" alt="Doner kebab" loading="lazy"></div><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Lamb Doner Kebab</div></div><div class="menu-card-price">from £9.50</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Chicken Tikka Kebab</div></div><div class="menu-card-price">from £9.50</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Mixed Kebab</div></div><div class="menu-card-price">from £9.50</div></div></div>
+    </div>
+  </div>
+
+  <!-- PIES -->
+  <div class="menu-panel" id="tab-pies">
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Steak &amp; Kidney Pie</div></div><div class="menu-card-price">£4.95</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Chicken &amp; Mushroom Pie</div></div><div class="menu-card-price">£4.95</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Beef &amp; Onion Pie</div></div><div class="menu-card-price">£4.95</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">All Steak Pie</div></div><div class="menu-card-price">£4.95</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Beef &amp; Onion Pasty</div></div><div class="menu-card-price">£4.95</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Cheese &amp; Onion Pasty</div><div class="menu-card-tags"><span class="special-tag tag-v">Vegetarian</span></div></div><div class="menu-card-price">£4.95</div></div></div>
+    </div>
+  </div>
+
+  <!-- CHICKEN -->
+  <div class="menu-panel" id="tab-chicken">
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-card-img"><img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500&q=80" alt="Chicken" loading="lazy"></div><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Chicken Breast</div><div class="menu-card-desc">May contain small traces of bones</div></div><div class="menu-card-price">£7.50</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Chicken Nuggets (4)</div></div><div class="menu-card-price">£4.99</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Small Poppin Chicken</div><div class="menu-card-desc">Popcorn chicken</div></div><div class="menu-card-price">£5.95</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Large Poppin Chicken</div><div class="menu-card-desc">Popcorn chicken</div></div><div class="menu-card-price">£6.95</div></div></div>
+    </div>
+  </div>
+
+  <!-- BURGERS -->
+  <div class="menu-panel" id="tab-burgers">
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:1.5rem;">All burgers served with salad and selected sauce</p>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-card-img"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&q=80" alt="Burger" loading="lazy"></div><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">¼ Pounder</div></div><div class="menu-card-price">£6.95</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">½ Pounder</div></div><div class="menu-card-price">£7.95</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">¾ Pounder</div></div><div class="menu-card-price">£8.99</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">100% Chicken Fillet Burger</div></div><div class="menu-card-price">£7.99</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">All Vege Burger</div><div class="menu-card-tags"><span class="special-tag tag-v">Vegetarian</span></div></div><div class="menu-card-price">£6.99</div></div></div>
+    </div>
+  </div>
+
+  <!-- PIZZA -->
+  <div class="menu-panel" id="tab-pizza">
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:1.5rem;">All pizzas on our crispy stone baked base with Neapolitan sauce &amp; 80/20 mozzarella blend</p>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-card-img"><img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&q=80" alt="Pizza" loading="lazy"></div><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Margherita</div><div class="menu-card-tags"><span class="special-tag tag-v">Vegetarian</span></div></div><div class="menu-card-price">from £9.99</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Hawaiian</div><div class="menu-card-desc">Ham &amp; pineapple</div></div><div class="menu-card-price">from £9.99</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Ham &amp; Mushrooms</div></div><div class="menu-card-price">from £9.99</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Pepperoni Plus</div><div class="menu-card-desc">Pepperoni, onions &amp; mixed peppers</div></div><div class="menu-card-price">from £9.99</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Farmhouse</div><div class="menu-card-desc">Peppers, onions, tomatoes, sweetcorn &amp; mushrooms</div><div class="menu-card-tags"><span class="special-tag tag-v">Vegetarian</span></div></div><div class="menu-card-price">from £9.99</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">BBQ Chicken</div></div><div class="menu-card-price">from £9.99</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Flame Thrower</div><div class="menu-card-desc">Pepperoni, spicy beef, onions &amp; jalapeños</div></div><div class="menu-card-price">from £9.99</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Meat Supreme</div><div class="menu-card-desc">Pepperoni, spicy beef, chicken &amp; ham</div></div><div class="menu-card-price">from £9.99</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Peri Peri Chicken</div></div><div class="menu-card-price">from £9.99</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Italian Meatball</div><div class="menu-card-desc">Meatballs, ham &amp; onions</div></div><div class="menu-card-price">from £9.99</div></div></div>
+    </div>
+  </div>
+
+  <!-- KIDS -->
+  <div class="menu-panel" id="tab-kids">
+    <p style="font-size:0.85rem;color:var(--muted);margin-bottom:1.5rem;">All kids meals come with chips, a juice drink and sauce (ketchup or mayo)</p>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Kids Cod Bites Meal</div><div class="menu-card-desc">4 bitesize cod pieces, lightly battered — with chips &amp; juice</div></div><div class="menu-card-price">£7.95</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Kids 4 Chicken Nugget Meal</div><div class="menu-card-desc">With chips &amp; juice drink</div></div><div class="menu-card-price">£7.50</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Kids Jumbo Sausage Meal</div><div class="menu-card-desc">With chips &amp; juice drink</div></div><div class="menu-card-price">£7.50</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Kids Jumbo Battered Sausage Meal</div><div class="menu-card-desc">With chips &amp; juice drink</div></div><div class="menu-card-price">£7.50</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Kids Fish Cake Meal</div><div class="menu-card-desc">With chips &amp; juice drink</div></div><div class="menu-card-price">£7.50</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Kids Small Poppin Chicken Meal</div><div class="menu-card-desc">With chips &amp; juice drink</div></div><div class="menu-card-price">£7.50</div></div></div>
+    </div>
+  </div>
+
+  <!-- JACKETS -->
+  <div class="menu-panel" id="tab-jackets">
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-card-img"><img src="https://images.unsplash.com/photo-1585703900468-13b6a5a3cd4c?w=500&q=80" alt="Jacket potato" loading="lazy"></div><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Plain Jacket</div></div><div class="menu-card-price">£4.99</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Jacket with Cheese</div></div><div class="menu-card-price">£6.99</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Jacket Cheese &amp; Beans</div></div><div class="menu-card-price">£7.50</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Jacket Chilli Con Carne (Beef)</div></div><div class="menu-card-price">£8.50</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Jacket Beef Chilli &amp; Cheese</div></div><div class="menu-card-price">£8.50</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Jacket Chicken Curry</div></div><div class="menu-card-price">£8.50</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Jacket Tuna Mayo</div></div><div class="menu-card-price">£8.50</div></div></div>
+    </div>
+  </div>
+
+  <!-- EXTRAS -->
+  <div class="menu-panel" id="tab-extras">
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Jumbo Sausage</div></div><div class="menu-card-price">£2.80</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Jumbo Battered Sausage</div></div><div class="menu-card-price">£3.50</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Jumbo Saveloy</div></div><div class="menu-card-price">£2.80</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Potato Scollop</div></div><div class="menu-card-price">£1.50</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Cheese &amp; Onion Fryit</div><div class="menu-card-tags"><span class="special-tag tag-v">Vegetarian</span></div></div><div class="menu-card-price">£2.99</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Pineapple Fritter</div><div class="menu-card-tags"><span class="special-tag tag-v">Vegetarian</span></div></div><div class="menu-card-price">£2.50</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Indian Vegetable Samosa</div><div class="menu-card-tags"><span class="special-tag tag-v">Vegetarian</span></div></div><div class="menu-card-price">£2.25</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Lamb Keema Samosa</div></div><div class="menu-card-price">£2.95</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Battered Halloumi Bites (5)</div><div class="menu-card-tags"><span class="special-tag tag-v">Vegetarian</span></div></div><div class="menu-card-price">£5.99</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Battered Mushrooms (4)</div><div class="menu-card-tags"><span class="special-tag tag-v">Vegetarian</span></div></div><div class="menu-card-price">£4.50</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Chicken Spring Roll</div></div><div class="menu-card-price">£4.50</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Buttered Batch</div></div><div class="menu-card-price">£0.80</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Peas / Curry / Beans / Gravy</div></div><div class="menu-card-price">from £1.70</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Pickled Onion / Egg / Gherkin</div></div><div class="menu-card-price">£1.00</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Heinz Squeeze Me</div></div><div class="menu-card-price">£0.65</div></div></div>
+    </div>
+  </div>
+
+  <!-- DRINKS -->
+  <div class="menu-panel" id="tab-drinks">
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Coca-Cola 330ml</div></div><div class="menu-card-price">£1.90</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Diet Coke 330ml</div></div><div class="menu-card-price">£1.90</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Pepsi 330ml</div></div><div class="menu-card-price">£1.90</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Dr Pepper 330ml</div></div><div class="menu-card-price">£1.90</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Tango Orange 330ml</div></div><div class="menu-card-price">£1.90</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Coca-Cola 500ml</div></div><div class="menu-card-price">£2.99</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Diet Coke 500ml</div></div><div class="menu-card-price">£2.99</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Tango Orange 500ml</div></div><div class="menu-card-price">£2.99</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Dr Pepper 500ml</div></div><div class="menu-card-price">£2.99</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Pepsi 1.5L</div></div><div class="menu-card-price">£4.50</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Coca-Cola 1.25L</div></div><div class="menu-card-price">£4.50</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Diet Coke 1.25L</div></div><div class="menu-card-price">£4.50</div></div></div>
+      <div class="menu-card"><div class="menu-card-body"><div class="menu-card-info"><div class="menu-card-name">Fanta Orange 1.5L</div></div><div class="menu-card-price">£4.50</div></div></div>
+    </div>
+  </div>
+
+  <!-- GF BANNER -->
+  <div class="gf-banner">
+    <div class="gf-banner-img">
+      <img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=400&q=80" alt="Gluten free food" loading="lazy">
+    </div>
+    <div class="gf-banner-text">
+      <h3>🌾 Gluten Free Tuesdays</h3>
+      <p>Every Tuesday from 5 PM – 9 PM we use a specially dedicated pan for coeliacs, frying wheat free, dairy free and soya free batter with everything cooked to order. Please inform us of any dietary requirements when ordering.</p>
+    </div>
+  </div>
+
+  <div class="allergen">
+    <p><strong>⚠️ Allergen &amp; Dietary Notice:</strong> Please let us know if you have any dietary restrictions or special considerations, and we will do our best to accommodate you. We make every effort to accommodate dietary restrictions; however, there is no guarantee that we will be able to accommodate all food intolerances or special diets.</p>
+    <p style="margin-top:0.6rem;">It is your responsibility to make us aware of any food allergies or restrictions when purchasing or ordering. We will not be held responsible for you not informing us of food allergies or dietary restrictions.</p>
+  </div>
+</section>
+
+<!-- HOURS & MAP -->
+<section class="hours-section" id="hours">
+  <div>
+    <div class="section-eyebrow">When We're Open</div>
+    <h2 class="section-title">Opening Hours</h2>
+    <table class="hours-table">
+      <tr><td>Monday</td><td><span class="hours-session">12–2 PM</span><span class="hours-session">5–9 PM</span></td></tr>
+      <tr><td>Tuesday</td><td><span class="hours-session">12–2 PM</span><span class="hours-session">5–9 PM</span> <span style="font-size:0.72rem;color:#1565c0;font-weight:600;">🌾 GF Night</span></td></tr>
+      <tr><td>Wednesday</td><td><span class="hours-session">12–2 PM</span><span class="hours-session">5–9 PM</span></td></tr>
+      <tr><td>Thursday</td><td><span class="hours-session">12–2 PM</span><span class="hours-session">5–9 PM</span></td></tr>
+      <tr><td>Friday</td><td><span class="hours-session">12–2 PM</span><span class="hours-session">5–9 PM</span></td></tr>
+      <tr><td>Saturday</td><td><span class="hours-session">12–2 PM</span><span class="hours-session">5–9 PM</span></td></tr>
+      <tr><td>Sunday</td><td class="hours-closed">Closed</td></tr>
+    </table>
+    <div style="margin-top:2rem;padding:1.5rem;background:var(--cream);border-radius:4px;">
+      <div class="section-eyebrow" style="margin-bottom:0.5rem;">Find Us</div>
+      <p style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:0.5rem;">27–29 Rugby Rd, Bulkington<br>Warwickshire, CV12 9JF</p>
+      <p style="font-size:0.9rem;color:var(--muted);margin-bottom:0.4rem;">📞 <a href="tel:+442476731300" style="color:var(--navy);font-weight:600;">024 7673 1300</a></p>
+      <p style="font-size:0.82rem;color:var(--muted);">♿ Wheelchair accessible · 🅿️ Free parking · 👶 Good for kids</p>
+    </div>
+  </div>
+  <div class="map-embed">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2418.5!2d-1.457!3d52.468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870b5c3e48c47b5%3A0x1!2s27-29+Rugby+Rd%2C+Bulkington%2C+Bedworth+CV12+9JF!5e0!3m2!1sen!2suk!4v1" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="The Fishnet location"></iframe>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section" id="reviews">
+  <div class="reviews-header">
+    <div class="section-eyebrow">What Our Customers Say</div>
+    <h2 class="section-title" style="text-align:center;">Customer Reviews</h2>
+    <div class="reviews-score">
+      <div class="score-big">3.9</div>
+      <div>
+        <div style="font-size:1.4rem;margin-bottom:0.3rem;">⭐⭐⭐⭐</div>
+        <div style="font-family:'Oswald',sans-serif;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--navy);font-weight:600;">Google Reviews</div>
+        <div style="font-size:0.85rem;color:var(--muted);">345 reviews</div>
+      </div>
+    </div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">⭐⭐⭐⭐⭐</div>
+      <div class="review-text">"Just had a delicious cod and chips takeaway from here. Good size portion, well cooked and sensibly priced. We'll be back."</div>
+      <div class="review-author">David Waller · Local Guide · 2 months ago</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">⭐⭐⭐⭐⭐</div>
+      <div class="review-text">"Friendly staff and lovely food — highly recommended! Always freshly cooked and the service is great."</div>
+      <div class="review-author">Shelleyjames Crumpler · 3 months ago</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">⭐⭐⭐⭐⭐</div>
+      <div class="review-text">"Lovely freshly cooked food and great service. Huge choice of sauces — BBQ, chilli, mayo, ketchup, mint and mint yogurt."</div>
+      <div class="review-author">Happy Customer · Google Review</div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER CTA -->
+<section class="order-cta" id="order">
+  <div class="order-cta-bg"></div>
+  <div class="section-eyebrow">Ready to Order?</div>
+  <h2 class="section-title">Order Online for Collection or Delivery</h2>
+  <p>Order in advance — your food will be cooked fresh and ready for you, or delivered straight to your door. Easy ordering, secure payments.</p>
+  <div class="hero-btns">
+    <button class="glf-button btn-primary" data-glf-cuid="b7bb6114-549f-4612-8432-8b7664c8e650" data-glf-ruid="f2bc6a64-e900-4ff4-83dc-77207fe0cb51">Order Now Online</button>
+    <a href="tel:+442476731300" class="btn-outline">📞 Call to Order</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">The <span>Fishnet</span></div>
+    <p style="margin-top:0.4rem;">27–29 Rugby Rd, Bulkington CV12 9JF<br>© 2025 The Fishnet Bulkington. All rights reserved.</p>
+  </div>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#menu">Menu</a>
+    <a href="#hours">Hours</a>
+    <a href="#reviews">Reviews</a>
+    <a href="tel:+442476731300">Call Us</a>
+  </div>
+</footer>
+
+<!-- GLF ordering widget styles -->
+<style>
+  button.glf-button {
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    line-height: 1;
+  }
+  button.glf-button.btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0.9rem 2.2rem;
+    border-radius: 2px;
+    display: inline-block;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  button.glf-button.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212,166,42,0.4);
+  }
+  button.glf-button.nav-cta {
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.45rem 1.2rem;
+    border-radius: 2px;
+    letter-spacing: 0.08em;
+  }
+  button.glf-button.nav-cta:hover { opacity: 0.88; }
+</style>
+
+<script src="https://www.ujustcook-login.com/widget/js/ewm2.js"></script>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>

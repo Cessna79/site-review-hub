@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tony's Burgers — Brampton, ON</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF7F2;
+    --charcoal: #1C1C1A;
+    --red: #C0392B;
+    --red-light: #F9ECEA;
+    --gold: #D4A017;
+    --muted: #6B6860;
+    --border: #E8E3DC;
+    --logo: url('data:image/png;base64,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');
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    line-height: 1.6;
+  }
+
+  /* BRAND LOGO (embedded, restored from original artwork) */
+  .brand-mark {
+    display: inline-block;
+    background: var(--logo) center / contain no-repeat;
+    aspect-ratio: 431 / 486;
+  }
+
+  .nav-brand {
+    display: inline-flex;
+    align-items: center;
+    background: var(--cream);
+    border-radius: 8px;
+    padding: 3px 12px;
+    line-height: 0;
+  }
+
+  .nav-brand .brand-mark { height: 48px; }
+
+  .footer-brand {
+    display: inline-flex;
+    align-items: center;
+    background: var(--cream);
+    border-radius: 8px;
+    padding: 4px 10px;
+    line-height: 0;
+  }
+
+  .footer-brand .brand-mark { height: 46px; }
+
+  .hero-brand .brand-mark { height: 150px; margin-bottom: 20px; }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--charcoal);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 48px;
+    height: 64px;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.3px;
+  }
+
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: #fff; }
+
+  .nav-cta {
+    background: var(--red);
+    color: #fff !important;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-weight: 600 !important;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 92vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 64px 80px 80px;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 24px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 2px;
+    background: var(--red);
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 900;
+    line-height: 1.0;
+    letter-spacing: -2px;
+    color: var(--charcoal);
+    margin-bottom: 24px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--red);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 380px;
+    margin-bottom: 40px;
+    line-height: 1.7;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .btn-primary {
+    background: var(--charcoal);
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.2px;
+    transition: background 0.2s;
+  }
+
+  .btn-primary:hover { background: #333; }
+
+  .btn-ghost {
+    color: var(--charcoal);
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1.5px solid var(--charcoal);
+    padding-bottom: 1px;
+  }
+
+  .rating-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    border-radius: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 48px;
+    width: fit-content;
+  }
+
+  .stars { color: var(--gold); letter-spacing: 1px; }
+
+  .hero-visual {
+    background: var(--charcoal);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-bg-text {
+    position: absolute;
+    font-family: 'Playfair Display', serif;
+    font-size: 180px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.04);
+    letter-spacing: -8px;
+    line-height: 1;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  .burger-illustration {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .bun-top {
+    width: 160px;
+    height: 64px;
+    background: #C8882A;
+    border-radius: 80px 80px 8px 8px;
+    position: relative;
+    box-shadow: 0 -4px 0 #A86E1E inset;
+  }
+
+  .bun-top::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0; right: 0;
+    height: 12px;
+    background: #E09A35;
+    border-radius: 0 0 4px 4px;
+  }
+
+  .sesame {
+    position: absolute;
+    width: 8px;
+    height: 5px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    transform: rotate(-20deg);
+  }
+
+  .sesame:nth-child(1) { top: 16px; left: 40px; }
+  .sesame:nth-child(2) { top: 10px; left: 80px; }
+  .sesame:nth-child(3) { top: 18px; right: 38px; }
+
+  .layer-lettuce {
+    width: 170px;
+    height: 16px;
+    background: #3D8B3D;
+    clip-path: polygon(0% 50%, 5% 0%, 15% 60%, 25% 0%, 35% 70%, 45% 0%, 55% 65%, 65% 0%, 75% 60%, 85% 0%, 95% 55%, 100% 30%, 100% 100%, 0% 100%);
+  }
+
+  .layer-cheese {
+    width: 168px;
+    height: 10px;
+    background: #F5C842;
+    border-radius: 0 0 4px 4px;
+    margin-top: -2px;
+  }
+
+  .layer-patty {
+    width: 164px;
+    height: 22px;
+    background: #6B3320;
+    border-radius: 4px;
+    position: relative;
+  }
+
+  .layer-patty::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 12px; right: 12px;
+    height: 3px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 2px;
+  }
+
+  .layer-tomato {
+    width: 160px;
+    height: 10px;
+    background: #E03030;
+    border-radius: 2px;
+    margin: 1px 0;
+  }
+
+  .bun-bottom {
+    width: 172px;
+    height: 32px;
+    background: #C8882A;
+    border-radius: 4px 4px 24px 24px;
+    box-shadow: 0 4px 0 #A86E1E;
+  }
+
+  .bun-bottom::before {
+    content: '';
+    display: block;
+    height: 10px;
+    background: #E09A35;
+    border-radius: 4px 4px 0 0;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+  }
+
+  .tag {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.75);
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+
+  /* ADDRESS BANNER */
+  .address-bar {
+    background: var(--red);
+    color: #fff;
+    padding: 14px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .address-bar a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .address-bar a:hover { color: #fff; text-decoration: underline; }
+
+  .address-info {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .address-item {
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* HIGHLIGHTS */
+  .highlights {
+    padding: 96px 80px;
+    background: #fff;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin-bottom: 56px;
+    max-width: 480px;
+  }
+
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .highlight-card {
+    padding: 40px 36px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .highlight-card:hover {
+    border-color: #C8882A;
+    transform: translateY(-3px);
+  }
+
+  .highlight-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 900;
+    color: rgba(192,57,43,0.08);
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    line-height: 1;
+  }
+
+  .highlight-icon {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  .highlight-title {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--charcoal);
+  }
+
+  .highlight-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* MENU SECTION */
+  .menu-section {
+    padding: 96px 80px;
+    background: var(--cream);
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 56px;
+  }
+
+  .menu-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    transition: border-color 0.2s;
+  }
+
+  .menu-card:hover { border-color: var(--charcoal); }
+
+  .menu-icon-box {
+    width: 56px;
+    height: 56px;
+    border-radius: 10px;
+    background: var(--red-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .menu-item-name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--charcoal);
+  }
+
+  .menu-item-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.55;
+    margin-bottom: 12px;
+  }
+
+  .menu-item-price {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--red);
+  }
+
+  /* REVIEWS */
+  .reviews-section {
+    background: var(--charcoal);
+    padding: 96px 80px;
+    color: #fff;
+  }
+
+  .reviews-section .section-label { color: var(--gold); }
+  .reviews-section .section-title { color: #fff; max-width: 100%; }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 56px;
+  }
+
+  .review-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 32px;
+  }
+
+  .review-stars {
+    color: var(--gold);
+    font-size: 15px;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+
+  .review-text {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  .reviewer-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+
+  /* ORDER CTA */
+  .order-cta {
+    background: var(--red);
+    padding: 96px 80px;
+    text-align: center;
+    color: #fff;
+  }
+
+  .order-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .order-cta p {
+    font-size: 17px;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 40px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn-white {
+    display: inline-block;
+    background: #fff;
+    color: var(--red);
+    padding: 16px 48px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .btn-white:hover { opacity: 0.92; }
+
+  /* FOOTER */
+  footer {
+    background: var(--charcoal);
+    padding: 48px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .footer-logo span { color: var(--gold); }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: rgba(255,255,255,0.85); }
+
+  .footer-copy {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-visual { height: 320px; }
+    .hero-content { padding: 60px 32px; }
+    .hero-title { font-size: 52px; }
+    .highlights-grid, .menu-grid, .reviews-grid { grid-template-columns: 1fr; }
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .highlights, .menu-section, .reviews-section, .order-cta { padding: 64px 32px; }
+    .address-bar { padding: 14px 32px; }
+    footer { padding: 32px; flex-direction: column; text-align: center; }
+  }
+
+  /* BURGER EXPLODE / STACK ANIMATION */
+  @keyframes burger-float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-6px); }
+  }
+  @keyframes bun-top-anim {
+    0%   { transform: translateY(0) scaleX(1); }
+    20%  { transform: translateY(-60px) scaleX(1.06); }
+    55%  { transform: translateY(-60px) scaleX(1.06); }
+    80%  { transform: translateY(4px) scaleX(0.98); }
+    90%  { transform: translateY(-2px) scaleX(1.01); }
+    100% { transform: translateY(0) scaleX(1); }
+  }
+  @keyframes lettuce-anim {
+    0%   { transform: translateY(0) translateX(0) scaleX(1); }
+    20%  { transform: translateY(-38px) translateX(-18px) scaleX(1.08); }
+    55%  { transform: translateY(-38px) translateX(-18px) scaleX(1.08); }
+    80%  { transform: translateY(3px) translateX(0) scaleX(0.97); }
+    100% { transform: translateY(0) translateX(0) scaleX(1); }
+  }
+  @keyframes cheese-anim {
+    0%   { transform: translateY(0) translateX(0); }
+    20%  { transform: translateY(38px) translateX(20px); }
+    55%  { transform: translateY(38px) translateX(20px); }
+    80%  { transform: translateY(-3px) translateX(0); }
+    100% { transform: translateY(0) translateX(0); }
+  }
+  @keyframes patty1-anim {
+    0%   { transform: translateY(0) scaleX(1); }
+    20%  { transform: translateY(52px) scaleX(1.04); }
+    55%  { transform: translateY(52px) scaleX(1.04); }
+    80%  { transform: translateY(-4px) scaleX(0.98); }
+    90%  { transform: translateY(2px) scaleX(1.01); }
+    100% { transform: translateY(0) scaleX(1); }
+  }
+  @keyframes tomato-anim {
+    0%   { transform: translateY(0) translateX(0); }
+    20%  { transform: translateY(-44px) translateX(14px); }
+    55%  { transform: translateY(-44px) translateX(14px); }
+    80%  { transform: translateY(3px) translateX(0); }
+    100% { transform: translateY(0) translateX(0); }
+  }
+  @keyframes patty2-anim {
+    0%   { transform: translateY(0) scaleX(1); }
+    20%  { transform: translateY(66px) scaleX(1.05); }
+    55%  { transform: translateY(66px) scaleX(1.05); }
+    80%  { transform: translateY(-4px) scaleX(0.98); }
+    90%  { transform: translateY(2px) scaleX(1.01); }
+    100% { transform: translateY(0) scaleX(1); }
+  }
+  @keyframes bun-bottom-anim {
+    0%   { transform: translateY(0) scaleX(1); }
+    20%  { transform: translateY(78px) scaleX(1.07); }
+    55%  { transform: translateY(78px) scaleX(1.07); }
+    80%  { transform: translateY(-5px) scaleX(0.97); }
+    90%  { transform: translateY(2px) scaleX(1.01); }
+    100% { transform: translateY(0) scaleX(1); }
+  }
+  .burger-illustration { animation: burger-float 3s ease-in-out infinite; animation-delay: 4.2s; }
+  .burger-illustration.exploding { animation: none; }
+  .burger-illustration.exploding .bun-top { animation: bun-top-anim 2s cubic-bezier(.4,0,.2,1) forwards; }
+  .burger-illustration.exploding .layer-lettuce { animation: lettuce-anim 2s cubic-bezier(.4,0,.2,1) forwards; animation-delay: 0.04s; }
+  .burger-illustration.exploding .layer-cheese { animation: cheese-anim 2s cubic-bezier(.4,0,.2,1) forwards; animation-delay: 0.08s; }
+  .burger-illustration.exploding .layer-patty:first-of-type { animation: patty1-anim 2s cubic-bezier(.4,0,.2,1) forwards; animation-delay: 0.12s; }
+  .burger-illustration.exploding .layer-tomato { animation: tomato-anim 2s cubic-bezier(.4,0,.2,1) forwards; animation-delay: 0.06s; }
+  .burger-illustration.exploding .layer-patty:last-of-type { animation: patty2-anim 2s cubic-bezier(.4,0,.2,1) forwards; animation-delay: 0.16s; }
+  .burger-illustration.exploding .bun-bottom { animation: bun-bottom-anim 2s cubic-bezier(.4,0,.2,1) forwards; animation-delay: 0.18s; }
+
+  /* FULL MENU SECTION */
+  .full-menu-section { background: #fff; padding: 80px; }
+  .full-menu-section .section-label { color: var(--red); font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+  .full-menu-section .section-title { font-family: 'Playfair Display', serif; font-size: 38px; color: var(--charcoal); margin-bottom: 48px; font-weight: 700; }
+  .menu-tabs { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 40px; border-bottom: 2px solid #f0f0f0; padding-bottom: 0; }
+  .menu-tab { font-size: 12px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: #999; padding: 12px 18px; cursor: pointer; border: none; border-bottom: 3px solid transparent; margin-bottom: -2px; transition: color .2s, border-color .2s; background: none; font-family: inherit; }
+  .menu-tab:hover { color: var(--charcoal); }
+  .menu-tab.active { color: var(--red); border-bottom-color: var(--red); }
+  .menu-panel { display: none; }
+  .menu-panel.active { display: block; }
+  .menu-cat-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; margin-top: 40px; }
+  .menu-cat-header:first-child { margin-top: 0; }
+  .menu-cat-icon { width: 36px; height: 36px; background: var(--red); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .menu-cat-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--charcoal); }
+  .menu-category-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 1px; background: #efefef; border: 1px solid #efefef; border-radius: 4px; overflow: hidden; }
+  .menu-row { background: #fff; display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; gap: 16px; transition: background .15s; }
+  .menu-row:hover { background: #fafafa; }
+  .menu-row-left { flex: 1; min-width: 0; }
+  .menu-row-name { font-size: 15px; font-weight: 600; color: var(--charcoal); margin-bottom: 2px; }
+  .menu-row-desc { font-size: 12px; color: #999; line-height: 1.5; }
+  .menu-row-price { font-size: 15px; font-weight: 700; color: var(--red); white-space: nowrap; flex-shrink: 0; }
+  .menu-row-price-pair { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; flex-shrink: 0; }
+  .price-label { font-size: 10px; color: #bbb; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; }
+  .price-val { font-size: 14px; font-weight: 700; color: var(--red); }
+  .menu-note { font-size: 12px; color: #bbb; margin-top: 20px; font-style: italic; }
+  @media (max-width: 768px) {
+    .full-menu-section { padding: 56px 24px; }
+    .menu-category-grid { grid-template-columns: 1fr; }
+    .menu-tab { padding: 10px 12px; font-size: 11px; }
+  }
+
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="#" aria-label="Tony's — Burgers, Fries, Shakes"><span class="brand-mark" role="img"></span></a>
+  <ul class="nav-links">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="tel:+19054589166" class="nav-cta">📞 Order Now</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-brand"><span class="brand-mark" role="img" aria-label="Tony's — Burgers, Fries, Shakes"></span></div>
+    <div class="hero-eyebrow">Brampton's Favourite Burger Spot</div>
+    <h1 class="hero-title">Burgers<br>done <em>right.</em></h1>
+    <p class="hero-sub">Handcrafted smash burgers, curly fries, and banana bread pudding — made with care in the heart of Brampton since we opened our doors.</p>
+    <div class="hero-actions">
+      <a href="tel:+19054589166" class="btn-primary">Call to Order</a>
+      <a href="#menu" class="btn-ghost">See Menu ↓</a>
+    </div>
+    <div class="rating-pill">
+      <span class="stars">★★★★★</span>
+      <strong>4.6</strong>
+      <span style="color:var(--muted); font-size:13px;">· 321 Google reviews</span>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-bg-text">TB</div>
+    <div class="burger-illustration">
+      <div class="bun-top">
+        <div class="sesame"></div>
+        <div class="sesame"></div>
+        <div class="sesame"></div>
+      </div>
+      <div class="layer-lettuce"></div>
+      <div class="layer-cheese"></div>
+      <div class="layer-patty"></div>
+      <div class="layer-tomato"></div>
+      <div class="layer-patty" style="margin-top:2px;"></div>
+      <div class="bun-bottom"></div>
+    </div>
+    <div class="hero-tags">
+      <div class="tag">Dine-in</div>
+      <div class="tag">Takeout</div>
+      <div class="tag">Delivery</div>
+    </div>
+  </div>
+</section>
+
+<div class="address-bar">
+  <div class="address-info">
+    <div class="address-item">📍 31 Steeplebush Ave #9, Brampton ON</div>
+    <div class="address-item">🕐 Open until 1:00 a.m.</div>
+    <div class="address-item">💰 $10–20 per person</div>
+  </div>
+  <div>
+    <a href="tel:9054589166">(905) 458-9166</a>
+    &nbsp;·&nbsp;
+    <a href="https://tonysburgers.ca" target="_blank">tonysburgers.ca</a>
+  </div>
+</div>
+
+<section class="highlights" id="about">
+  <div class="section-label">Why Tony's</div>
+  <h2 class="section-title">More than a burger — it's an experience</h2>
+  <div class="highlights-grid">
+    <div class="highlight-card">
+      <div class="highlight-num">01</div>
+      <div class="highlight-icon">🫕</div>
+      <div class="highlight-title">Real ingredients, real flavour</div>
+      <p class="highlight-desc">Every patty is hand-pressed and cooked to order. No shortcuts, no frozen fillers — just great beef and fresh produce.</p>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-num">02</div>
+      <div class="highlight-icon">🏘️</div>
+      <div class="highlight-title">Community roots</div>
+      <p class="highlight-desc">Born and raised in the Sandalwood/Torbram area. We're your neighbourhood spot — walkable, welcoming, and worth the trip.</p>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-num">03</div>
+      <div class="highlight-icon">💛</div>
+      <div class="highlight-title">Friendly every time</div>
+      <p class="highlight-desc">Amazing workers who remember your order. The kind of place you tell your friends about after the first visit.</p>
+    </div>
+  </div>
+</section>
+
+<section class="full-menu-section" id="menu">
+  <div class="section-label">Full Menu</div>
+  <h2 class="section-title">Everything we make, made fresh.</h2>
+
+  <div class="menu-tabs">
+    <button class="menu-tab active" onclick="showMenuTab(event,'all')">All</button>
+    <button class="menu-tab" onclick="showMenuTab(event,'burgers')">Cheeseburgers</button>
+    <button class="menu-tab" onclick="showMenuTab(event,'chicken')">Crispy Chicken</button>
+    <button class="menu-tab" onclick="showMenuTab(event,'sides')">Sides &amp; Dips</button>
+    <button class="menu-tab" onclick="showMenuTab(event,'shakes')">Milkshakes</button>
+    <button class="menu-tab" onclick="showMenuTab(event,'drinks')">Drinks</button>
+    <button class="menu-tab" onclick="showMenuTab(event,'desserts')">Desserts</button>
+  </div>
+
+  <div class="menu-panel active" id="mtab-all">
+    <div class="menu-cat-header">
+      <div class="menu-cat-icon">🍔</div>
+      <div class="menu-cat-title">Cheeseburgers</div>
+    </div>
+    <div class="menu-category-grid">
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Original</div><div class="menu-row-desc">Smash patty, American cheese, pickles, ketchup, mustard, onion</div></div>
+        <div class="menu-row-price-pair">
+          <span class="price-label">Single</span><span class="price-val">$8</span>
+          <span class="price-label">Double</span><span class="price-val">$11</span>
+        </div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">American</div><div class="menu-row-desc">Smash patty, Tony's sauce, American cheese, lettuce, tomato, pickles, onion</div></div>
+        <div class="menu-row-price-pair">
+          <span class="price-label">Single</span><span class="price-val">$10</span>
+          <span class="price-label">Double</span><span class="price-val">$13</span>
+        </div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Tony's</div><div class="menu-row-desc">Double smash patty, Tony's secret sauce, caramelized onions, American cheese</div></div>
+        <div class="menu-row-price-pair">
+          <span class="price-label">Single</span><span class="price-val">$12</span>
+          <span class="price-label">Double</span><span class="price-val">$15</span>
+        </div>
+      </div>
+    </div>
+    <div class="menu-cat-header">
+      <div class="menu-cat-icon">🍗</div>
+      <div class="menu-cat-title">Crispy Chicken</div>
+    </div>
+    <div class="menu-category-grid">
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Classic Crispy Chicken</div><div class="menu-row-desc">Crispy fried chicken fillet, pickles, mayo on a toasted brioche bun</div></div>
+        <div class="menu-row-price">$13</div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Spicy Crispy Chicken</div><div class="menu-row-desc">Crispy chicken fillet, spicy sauce, slaw, pickles on a brioche bun</div></div>
+        <div class="menu-row-price">$14</div>
+      </div>
+    </div>
+    <div class="menu-cat-header">
+      <div class="menu-cat-icon">🍟</div>
+      <div class="menu-cat-title">Sides</div>
+    </div>
+    <div class="menu-category-grid">
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Curly Fries</div><div class="menu-row-desc">Perfectly seasoned crispy curly fries</div></div>
+        <div class="menu-row-price-pair">
+          <span class="price-label">Regular</span><span class="price-val">$5</span>
+          <span class="price-label">Large</span><span class="price-val">$7</span>
+        </div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Onion Rings</div><div class="menu-row-desc">Golden-battered crispy onion rings</div></div>
+        <div class="menu-row-price-pair">
+          <span class="price-label">Regular</span><span class="price-val">$6</span>
+          <span class="price-label">Large</span><span class="price-val">$8</span>
+        </div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Cheese Curly Fries</div><div class="menu-row-desc">Curly fries topped with melted cheese sauce</div></div>
+        <div class="menu-row-price">$7</div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Combo Basket</div><div class="menu-row-desc">Mix of curly fries and onion rings</div></div>
+        <div class="menu-row-price">$8</div>
+      </div>
+    </div>
+    <div class="menu-cat-header">
+      <div class="menu-cat-icon">🫙</div>
+      <div class="menu-cat-title">Dips</div>
+    </div>
+    <div class="menu-category-grid">
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Tony's Sauce</div></div>
+        <div class="menu-row-price">$1</div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Chipotle Mayo</div></div>
+        <div class="menu-row-price">$1</div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Honey Mustard</div></div>
+        <div class="menu-row-price">$1</div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Ranch</div></div>
+        <div class="menu-row-price">$1</div>
+      </div>
+    </div>
+    <div class="menu-cat-header">
+      <div class="menu-cat-icon">🥛</div>
+      <div class="menu-cat-title">Milkshakes</div>
+    </div>
+    <div class="menu-category-grid">
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Vanilla</div><div class="menu-row-desc">Classic thick and creamy vanilla milkshake</div></div>
+        <div class="menu-row-price">$8</div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Chocolate</div><div class="menu-row-desc">Rich blended chocolate milkshake</div></div>
+        <div class="menu-row-price">$8</div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Strawberry</div><div class="menu-row-desc">Fresh strawberry milkshake</div></div>
+        <div class="menu-row-price">$8</div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Biscoff</div><div class="menu-row-desc">Creamy Biscoff cookie butter shake — a fan favourite</div></div>
+        <div class="menu-row-price">$9</div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Oreo</div><div class="menu-row-desc">Blended with real Oreo cookies</div></div>
+        <div class="menu-row-price">$9</div>
+      </div>
+    </div>
+    <div class="menu-cat-header">
+      <div class="menu-cat-icon">🥤</div>
+      <div class="menu-cat-title">Drinks</div>
+    </div>
+    <div class="menu-category-grid">
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Pop / Soda</div><div class="menu-row-desc">Coke, Diet Coke, Sprite, Root Beer</div></div>
+        <div class="menu-row-price">$3</div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Bottled Water</div></div>
+        <div class="menu-row-price">$2</div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Juice</div><div class="menu-row-desc">Apple, Orange</div></div>
+        <div class="menu-row-price">$3</div>
+      </div>
+    </div>
+    <div class="menu-cat-header">
+      <div class="menu-cat-icon">🍮</div>
+      <div class="menu-cat-title">Desserts</div>
+    </div>
+    <div class="menu-category-grid">
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Banana Bread Pudding</div><div class="menu-row-desc">Tony's signature warm banana bread pudding — mentioned in every review</div></div>
+        <div class="menu-row-price-pair">
+          <span class="price-label">Half Pint</span><span class="price-val">$6</span>
+          <span class="price-label">Full Pint</span><span class="price-val">$10</span>
+        </div>
+      </div>
+    </div>
+    <p class="menu-note">* Prices may vary. Please confirm at time of order. Tax not included.</p>
+  </div>
+
+  <div class="menu-panel" id="mtab-burgers">
+    <div class="menu-cat-header">
+      <div class="menu-cat-icon">🍔</div>
+      <div class="menu-cat-title">Cheeseburgers</div>
+    </div>
+    <div class="menu-category-grid">
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Original</div><div class="menu-row-desc">Smash patty, American cheese, pickles, ketchup, mustard, onion</div></div>
+        <div class="menu-row-price-pair">
+          <span class="price-label">Single</span><span class="price-val">$8</span>
+          <span class="price-label">Double</span><span class="price-val">$11</span>
+        </div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">American</div><div class="menu-row-desc">Smash patty, Tony's sauce, American cheese, lettuce, tomato, pickles, onion</div></div>
+        <div class="menu-row-price-pair">
+          <span class="price-label">Single</span><span class="price-val">$10</span>
+          <span class="price-label">Double</span><span class="price-val">$13</span>
+        </div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Tony's</div><div class="menu-row-desc">Double smash patty, Tony's secret sauce, caramelized onions, American cheese</div></div>
+        <div class="menu-row-price-pair">
+          <span class="price-label">Single</span><span class="price-val">$12</span>
+          <span class="price-label">Double</span><span class="price-val">$15</span>
+        </div>
+      </div>
+    </div>
+    <p class="menu-note">* Prices may vary. Please confirm at time of order. Tax not included.</p>
+  </div>
+
+  <div class="menu-panel" id="mtab-chicken">
+    <div class="menu-cat-header">
+      <div class="menu-cat-icon">🍗</div>
+      <div class="menu-cat-title">Crispy Chicken</div>
+    </div>
+    <div class="menu-category-grid">
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Classic Crispy Chicken</div><div class="menu-row-desc">Crispy fried chicken fillet, pickles, mayo on a toasted brioche bun</div></div>
+        <div class="menu-row-price">$13</div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Spicy Crispy Chicken</div><div class="menu-row-desc">Crispy chicken fillet, spicy sauce, slaw, pickles on a brioche bun</div></div>
+        <div class="menu-row-price">$14</div>
+      </div>
+    </div>
+    <p class="menu-note">* Prices may vary. Please confirm at time of order. Tax not included.</p>
+  </div>
+
+  <div class="menu-panel" id="mtab-sides">
+    <div class="menu-cat-header">
+      <div class="menu-cat-icon">🍟</div>
+      <div class="menu-cat-title">Sides</div>
+    </div>
+    <div class="menu-category-grid">
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Curly Fries</div><div class="menu-row-desc">Perfectly seasoned crispy curly fries</div></div>
+        <div class="menu-row-price-pair">
+          <span class="price-label">Regular</span><span class="price-val">$5</span>
+          <span class="price-label">Large</span><span class="price-val">$7</span>
+        </div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Onion Rings</div><div class="menu-row-desc">Golden-battered crispy onion rings</div></div>
+        <div class="menu-row-price-pair">
+          <span class="price-label">Regular</span><span class="price-val">$6</span>
+          <span class="price-label">Large</span><span class="price-val">$8</span>
+        </div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Cheese Curly Fries</div><div class="menu-row-desc">Curly fries topped with melted cheese sauce</div></div>
+        <div class="menu-row-price">$7</div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Combo Basket</div><div class="menu-row-desc">Mix of curly fries and onion rings</div></div>
+        <div class="menu-row-price">$8</div>
+      </div>
+    </div>
+    <div class="menu-cat-header">
+      <div class="menu-cat-icon">🫙</div>
+      <div class="menu-cat-title">Dips</div>
+    </div>
+    <div class="menu-category-grid">
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Tony's Sauce</div></div>
+        <div class="menu-row-price">$1</div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Chipotle Mayo</div></div>
+        <div class="menu-row-price">$1</div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Honey Mustard</div></div>
+        <div class="menu-row-price">$1</div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Ranch</div></div>
+        <div class="menu-row-price">$1</div>
+      </div>
+    </div>
+    <p class="menu-note">* Prices may vary. Please confirm at time of order. Tax not included.</p>
+  </div>
+
+  <div class="menu-panel" id="mtab-shakes">
+    <div class="menu-cat-header">
+      <div class="menu-cat-icon">🥛</div>
+      <div class="menu-cat-title">Milkshakes</div>
+    </div>
+    <div class="menu-category-grid">
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Vanilla</div><div class="menu-row-desc">Classic thick and creamy vanilla milkshake</div></div>
+        <div class="menu-row-price">$8</div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Chocolate</div><div class="menu-row-desc">Rich blended chocolate milkshake</div></div>
+        <div class="menu-row-price">$8</div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Strawberry</div><div class="menu-row-desc">Fresh strawberry milkshake</div></div>
+        <div class="menu-row-price">$8</div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Biscoff</div><div class="menu-row-desc">Creamy Biscoff cookie butter shake — a fan favourite</div></div>
+        <div class="menu-row-price">$9</div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Oreo</div><div class="menu-row-desc">Blended with real Oreo cookies</div></div>
+        <div class="menu-row-price">$9</div>
+      </div>
+    </div>
+    <p class="menu-note">* Prices may vary. Please confirm at time of order. Tax not included.</p>
+  </div>
+
+  <div class="menu-panel" id="mtab-drinks">
+    <div class="menu-cat-header">
+      <div class="menu-cat-icon">🥤</div>
+      <div class="menu-cat-title">Drinks</div>
+    </div>
+    <div class="menu-category-grid">
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Pop / Soda</div><div class="menu-row-desc">Coke, Diet Coke, Sprite, Root Beer</div></div>
+        <div class="menu-row-price">$3</div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Bottled Water</div></div>
+        <div class="menu-row-price">$2</div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Juice</div><div class="menu-row-desc">Apple, Orange</div></div>
+        <div class="menu-row-price">$3</div>
+      </div>
+    </div>
+    <p class="menu-note">* Prices may vary. Please confirm at time of order. Tax not included.</p>
+  </div>
+
+  <div class="menu-panel" id="mtab-desserts">
+    <div class="menu-cat-header">
+      <div class="menu-cat-icon">🍮</div>
+      <div class="menu-cat-title">Desserts</div>
+    </div>
+    <div class="menu-category-grid">
+      <div class="menu-row">
+        <div class="menu-row-left"><div class="menu-row-name">Banana Bread Pudding</div><div class="menu-row-desc">Tony's signature warm banana bread pudding — mentioned in every review</div></div>
+        <div class="menu-row-price-pair">
+          <span class="price-label">Half Pint</span><span class="price-val">$6</span>
+          <span class="price-label">Full Pint</span><span class="price-val">$10</span>
+        </div>
+      </div>
+    </div>
+    <p class="menu-note">* Prices may vary. Please confirm at time of order. Tax not included.</p>
+  </div>
+
+</section>
+
+<script>
+function showMenuTab(e, id) {
+  document.querySelectorAll('.menu-panel').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.menu-tab').forEach(function(t){ t.classList.remove('active'); });
+  document.getElementById('mtab-' + id).classList.add('active');
+  e.target.classList.add('active');
+}
+</script>
+
+
+<section class="reviews-section" id="reviews">
+  <div class="section-label">What People Say</div>
+  <h2 class="section-title">4.6 stars — 321 reviews and counting</h2>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Amazing workers! Best burger and curly fries I've had in a while. Reasonable prices for the quality — I'll definitely be coming back."</p>
+      <div class="reviewer-name">Kourtney-Chelsea W. · 4 weeks ago</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"We got the American and Tony's cheeseburger — both were super flavourful. The fries and onion rings were super crunchy. And the banana pudding is a must."</p>
+      <div class="reviewer-name">Jasmine · 2 months ago</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"The chicken burger was delicious, juicy, and well-seasoned. The crispy onion rings were a highlight — fresh, crunchy, and packed with flavour."</p>
+      <div class="reviewer-name">Akashdeep S. · 3 weeks ago</div>
+    </div>
+  </div>
+</section>
+
+<section class="order-cta" id="order">
+  <h2>Ready to order?</h2>
+  <p>Available for dine-in, takeout, and no-contact delivery. We're open late — until 1:00 a.m.</p>
+  <a href="tel:+19054589166" class="btn-white">📞 Call to Order: (905) 458-9166</a>
+</section>
+
+<footer>
+  <div class="footer-brand"><span class="brand-mark" role="img" aria-label="Tony's — Burgers, Fries, Shakes"></span></div>
+  <ul class="footer-links">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="tel:+19054589166">Call to Order</a></li>
+    <li><a href="tel:9054589166">(905) 458-9166</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Tony's Burgers · Brampton, ON</div>
+</footer>
+
+<script>
+(function() {
+  var burger = document.querySelector('.burger-illustration');
+  if (!burger) return;
+  function explode() {
+    burger.classList.add('exploding');
+    setTimeout(function() {
+      burger.classList.remove('exploding');
+      setTimeout(explode, 3200);
+    }, 2200);
+  }
+  setTimeout(explode, 800);
+})();
+</script>
+
+<!-- FLOATING MAP WIDGET -->
+<div id="map-widget" style="
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.22));
+">
+  <!-- Collapsed pill button -->
+  <button id="map-toggle" onclick="toggleMap()" style="
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #CC1F1F;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 20px 12px 14px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(204,31,31,0.45);
+    transition: background 0.2s, transform 0.15s;
+  " onmouseover="this.style.background='#aa1818'" onmouseout="this.style.background='#CC1F1F'">
+    <span style="font-size:18px; line-height:1;">📍</span>
+    <span>Find Us</span>
+  </button>
+
+  <!-- Expanded map card -->
+  <div id="map-card" style="
+    display: none;
+    position: absolute;
+    bottom: 56px;
+    right: 0;
+    width: 300px;
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+    animation: mapPopIn 0.22s cubic-bezier(.34,1.56,.64,1) forwards;
+  ">
+    <style>
+      @keyframes mapPopIn {
+        from { opacity: 0; transform: scale(0.88) translateY(12px); }
+        to   { opacity: 1; transform: scale(1) translateY(0); }
+      }
+    </style>
+
+    <!-- Card header -->
+    <div style="
+      background: #CC1F1F;
+      padding: 14px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    ">
+      <div>
+        <div style="font-weight: 700; font-size: 14px; color: #fff;">Tony's Burgers</div>
+        <div style="font-size: 11px; color: rgba(255,255,255,0.75); margin-top:2px;">31 Steeplebush Ave #9, Brampton ON</div>
+      </div>
+      <button onclick="toggleMap()" style="
+        background: rgba(255,255,255,0.2);
+        border: none;
+        color: #fff;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      ">&#x2715;</button>
+    </div>
+
+    <!-- Map iframe -->
+    <iframe
+      src="https://maps.google.com/maps?q=31+Steeplebush+Ave,+Brampton,+ON&output=embed&z=15"
+      width="300"
+      height="200"
+      style="display:block; border:0;"
+      allowfullscreen
+      loading="lazy"
+      title="Tony's Burgers location">
+    </iframe>
+
+    <!-- Card footer -->
+    <div style="padding: 12px 16px; display: flex; gap: 8px; border-top: 1px solid #f0f0f0;">
+      <a href="https://maps.google.com/?q=31+Steeplebush+Ave,+Brampton,+ON" target="_blank" style="
+        flex: 1;
+        background: #CC1F1F;
+        color: #fff;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 9px 0;
+        border-radius: 8px;
+        text-align: center;
+        letter-spacing: 0.3px;
+      ">Get Directions</a>
+      <a href="tel:+1" style="
+        flex: 1;
+        background: #f5f5f5;
+        color: #333;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 9px 0;
+        border-radius: 8px;
+        text-align: center;
+        letter-spacing: 0.3px;
+      ">📞 Call Us</a>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleMap() {
+  var card = document.getElementById('map-card');
+  var btn  = document.getElementById('map-toggle');
+  if (card.style.display === 'none') {
+    card.style.display = 'block';
+    btn.style.borderRadius = '50px 50px 50px 50px';
+  } else {
+    card.style.display = 'none';
+  }
+}
+// Close if clicking outside
+document.addEventListener('click', function(e) {
+  var widget = document.getElementById('map-widget');
+  if (widget && !widget.contains(e.target)) {
+    var card = document.getElementById('map-card');
+    if (card) card.style.display = 'none';
+  }
+});
+</script>
+
+</body>
+</html>

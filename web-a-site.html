@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web A Site — Freelance Web &amp; Brand Design</title>
+<meta name="description" content="Freelance web and brand designer building bold, memorable sites for small businesses and startups.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500;1,9..144,600&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF6F0;
+    --paper-warm:#F3ECDF;
+    --ink:#241726;
+    --ink-soft:#4A3A4C;
+    --coral:#FF6551;
+    --lime:#D6FF4B;
+    --mauve:#7A5C74;
+    --teal:#1F6F63;
+    --radius:16px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:'Work Sans',sans-serif;font-size:16px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;line-height:1.05;margin:0;letter-spacing:-.01em;}
+  em{font-family:'Fraunces',serif;font-style:italic;font-weight:500;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 32px;}
+  ::selection{background:var(--ink);color:var(--lime);}
+  :focus-visible{outline:2px solid var(--coral);outline-offset:3px;}
+
+  .label{
+    font-family:'Work Sans',sans-serif;font-size:12.5px;font-weight:600;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--coral);
+    display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;
+  }
+  .label::before{content:"✦";font-size:11px;}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:'Work Sans',sans-serif;font-weight:600;font-size:15px;
+    padding:15px 26px;border-radius:100px;border:2px solid var(--ink);
+    cursor:pointer;background:transparent;color:var(--ink);
+    transition:transform .2s ease, background .2s ease, color .2s ease, box-shadow .2s ease;
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:4px 5px 0 var(--ink);}
+  .btn-primary{background:var(--ink);color:var(--paper);}
+  .btn-primary:hover{background:var(--coral);border-color:var(--coral);color:#fff;box-shadow:4px 5px 0 var(--ink);}
+  .btn-lime{background:var(--lime);border-color:var(--ink);color:var(--ink);}
+  .btn-lime:hover{box-shadow:4px 5px 0 var(--ink);}
+
+  [data-reveal] .reveal-item{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease;}
+  [data-reveal].in-view .reveal-item{opacity:1;transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){
+    [data-reveal] .reveal-item{opacity:1;transform:none;transition:none;}
+    *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;}
+  }
+
+  /* header */
+  header{position:sticky;top:0;z-index:100;background:rgba(250,246,240,.88);backdrop-filter:blur(10px);border-bottom:2px solid var(--ink);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:1200px;margin:0 auto;}
+  .logo-wrap{position:relative;display:flex;align-items:center;}
+  .logo{font-family:'Fraunces',serif;font-weight:600;font-size:21px;font-style:italic;position:relative;display:flex;align-items:center;gap:8px;}
+  .web-mark{width:24px;height:24px;flex-shrink:0;position:relative;}
+  .web-mark svg{width:100%;height:100%;display:block;}
+  .web-mark .strand{fill:none;stroke:var(--ink);stroke-width:1.3;stroke-linecap:round;}
+  .web-mark .core{fill:var(--coral);}
+  .thread-wrap{
+    position:absolute;top:100%;left:50%;transform:translateX(-50%);
+    width:1px;height:0;overflow:visible;pointer-events:none;
+    transition:height .4s cubic-bezier(.2,.8,.2,1);
+  }
+  .thread-wrap::before{content:"";position:absolute;top:0;left:0;width:1px;height:100%;background:var(--ink);opacity:.5;}
+  .spider{
+    position:absolute;top:100%;left:50%;transform-origin:top center;
+    transform:translateX(-50%) rotate(0deg);opacity:0;transition:opacity .2s ease;
+  }
+  .spider svg{width:17px;height:17px;display:block;}
+  .spider .body{fill:var(--coral);}
+  .spider .leg{stroke:var(--ink);stroke-width:1.2;stroke-linecap:round;fill:none;}
+  .logo:hover .thread-wrap{height:38px;}
+  .logo:hover .spider{opacity:1;animation:sway 1.6s ease-in-out infinite .25s;}
+  @keyframes sway{0%,100%{transform:translateX(-50%) rotate(-10deg);}50%{transform:translateX(-50%) rotate(10deg);}}
+
+  .pun-callout{
+    position:absolute;left:calc(100% + 16px);top:50%;
+    transform:translateY(-60%) rotate(-2deg);
+    display:flex;align-items:center;gap:6px;
+    font-family:'Fraunces',serif;font-style:italic;font-size:13px;color:var(--coral);
+    background:var(--paper-warm);border:1.5px dashed var(--coral);
+    padding:5px 12px 6px 8px;border-radius:14px 4px 14px 4px;white-space:nowrap;
+  }
+  .pun-callout svg{width:20px;height:12px;flex-shrink:0;}
+  .pun-callout svg path{stroke:var(--coral);stroke-width:1.4;fill:none;}
+  @media (max-width:1180px){.pun-callout{display:none;}}
+
+  /* roaming spider — wanders the page on its own */
+  #roamSpider{
+    position:fixed;top:0;left:0;width:34px;height:34px;
+    z-index:9999;pointer-events:none;opacity:0;
+    transition:transform 1.4s cubic-bezier(.45,0,.3,1), opacity .4s ease;
+    filter:drop-shadow(0 3px 4px rgba(36,23,38,.28));
+  }
+  #roamSpider.ready{opacity:1;}
+  #roamSpider svg{width:100%;height:100%;overflow:visible;}
+  #roamSpider .rs-body{fill:var(--coral);}
+  #roamSpider .rs-eye{fill:var(--paper);}
+  #roamSpider .rs-leg{stroke:var(--ink);stroke-width:1.8;fill:none;stroke-linecap:round;}
+  #roamSpider .legs-left{transform-box:fill-box;transform-origin:center;animation:legL .42s ease-in-out infinite;}
+  #roamSpider .legs-right{transform-box:fill-box;transform-origin:center;animation:legR .42s ease-in-out infinite;}
+  @keyframes legL{0%,100%{transform:rotate(-9deg);}50%{transform:rotate(9deg);}}
+  @keyframes legR{0%,100%{transform:rotate(9deg);}50%{transform:rotate(-9deg);}}
+  @media (prefers-reduced-motion: reduce){#roamSpider{display:none;}}
+
+  /* web-shooting effect */
+  .web-shot-line{
+    position:fixed;top:0;left:0;width:2px;
+    transform-origin:top center;
+    background:linear-gradient(to bottom, var(--coral), transparent);
+    opacity:0;transition:transform .22s ease-out, opacity .3s ease;
+    pointer-events:none;z-index:9998;
+  }
+  .web-splat{
+    position:fixed;top:0;left:0;width:36px;height:36px;
+    transform:translate(-50%,-50%) scale(.15);opacity:0;
+    transition:transform .35s cubic-bezier(.34,1.56,.64,1), opacity .35s ease;
+    pointer-events:none;z-index:9997;
+  }
+  .web-splat svg{width:100%;height:100%;}
+  .web-splat .ws-web-ring{fill:none;stroke:var(--coral);stroke-width:1.2;stroke-linecap:round;}
+  .web-splat .ws-spoke{stroke:var(--coral);stroke-width:1.2;stroke-linecap:round;}
+  .web-splat.show{transform:translate(-50%,-50%) scale(1);opacity:.82;}
+  .web-splat.fade{opacity:0;transform:translate(-50%,-50%) scale(.82);}
+  .nav-links{display:flex;gap:32px;align-items:center;}
+  .nav-links a:not(.btn){font-weight:600;font-size:14.5px;position:relative;}
+  .nav-links a:not(.btn)::after{content:"";position:absolute;left:0;bottom:-3px;height:2px;width:0;background:var(--coral);transition:width .2s ease;}
+  .nav-links a:not(.btn):hover::after{width:100%;}
+  .nav-cta{display:flex;align-items:center;gap:22px;}
+  .menu-btn{display:none;background:none;border:none;cursor:pointer;}
+  .menu-btn span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;border-radius:2px;}
+
+  /* hero */
+  .hero{padding:80px 0 0;overflow:hidden;}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;}
+  .hero h1{font-size:clamp(38px,5.4vw,68px);max-width:12ch;}
+  .sticker{
+    position:relative;display:inline-block;padding:2px 16px 8px;
+    background:var(--coral);color:#fff;border-radius:10px 40px 10px 40px;
+    transform:rotate(-3deg);
+  }
+  .hero-sub{margin-top:24px;font-size:18px;color:var(--ink-soft);max-width:46ch;}
+  .hero-cta{display:flex;gap:16px;margin-top:34px;flex-wrap:wrap;}
+
+  .polaroid-stack{position:relative;height:420px;}
+  .polaroid{
+    position:absolute;background:#fff;border:1px solid rgba(36,23,38,.08);
+    border-radius:8px;box-shadow:0 18px 30px -12px rgba(36,23,38,.28);
+    padding:10px 10px 34px;width:250px;transition:transform .35s ease,box-shadow .35s ease;
+  }
+  .polaroid .shot{border-radius:3px;height:180px;}
+  .polaroid figcaption{font-family:'Fraunces',serif;font-style:italic;font-size:14px;margin-top:10px;color:var(--ink-soft);text-align:center;}
+  .pol-1{top:0;left:10%;transform:rotate(-7deg);background:linear-gradient(150deg,#fff,#fff);z-index:1;}
+  .pol-1 .shot{background:linear-gradient(135deg,var(--lime),#eaffb0);}
+  .pol-2{top:60px;left:38%;transform:rotate(5deg);z-index:2;}
+  .pol-2 .shot{background:linear-gradient(135deg,var(--coral),#ffb3a3);}
+  .pol-3{top:150px;left:8%;transform:rotate(3deg);z-index:3;}
+  .pol-3 .shot{background:linear-gradient(135deg,var(--teal),#8fd9c9);}
+  .polaroid-stack:hover .pol-1{transform:rotate(-13deg) translate(-14px,4px);}
+  .polaroid-stack:hover .pol-2{transform:rotate(10deg) translate(10px,-10px);}
+  .polaroid-stack:hover .pol-3{transform:rotate(7deg) translate(-4px,14px);}
+
+  /* marquee */
+  .marquee-band{background:var(--lime);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);padding:16px 0;margin-top:70px;overflow:hidden;transform:rotate(-1deg) scale(1.02);}
+  .marquee-track{display:flex;width:max-content;animation:marquee 26s linear infinite;}
+  .marquee-track span{
+    font-family:'Fraunces',serif;font-weight:700;font-size:22px;color:var(--ink);
+    padding:0 26px;white-space:nowrap;display:flex;align-items:center;gap:26px;
+  }
+  .marquee-track span::after{content:"✦";font-size:14px;color:var(--coral);}
+  @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* intro / pull quote */
+  .intro{padding:100px 0 40px;}
+  .intro-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:50px;}
+  .intro-grid p.big{font-family:'Fraunces',serif;font-size:clamp(24px,2.6vw,32px);font-weight:500;line-height:1.35;color:var(--ink);}
+  .intro-grid p.big em{color:var(--coral);}
+  .intro-side{font-size:14.5px;color:var(--ink-soft);border-left:2px solid var(--ink);padding-left:20px;}
+
+  .section{padding:90px 0;}
+  .section-head{margin-bottom:50px;max-width:60ch;}
+  .section-head h2{font-size:clamp(30px,3.6vw,44px);}
+  .section-head p{color:var(--ink-soft);font-size:15.5px;margin-top:14px;}
+
+  /* services as expanding list */
+  .services{background:var(--paper-warm);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);}
+  .svc-row{border-top:1px solid rgba(36,23,38,.18);padding:26px 0;display:grid;grid-template-columns:70px 1fr auto;gap:26px;align-items:center;cursor:default;transition:background .2s ease;}
+  .svc-row:last-child{border-bottom:1px solid rgba(36,23,38,.18);}
+  .svc-row:hover{background:rgba(255,101,81,.06);}
+  .svc-row .num{font-family:'Fraunces',serif;font-size:15px;color:var(--coral);font-weight:600;}
+  .svc-row h3{font-size:24px;transition:transform .2s ease;}
+  .svc-row:hover h3{transform:translateX(6px);}
+  .svc-row p{margin:6px 0 0;color:var(--ink-soft);font-size:14.5px;max-width:56ch;}
+  .svc-row .tags{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;max-width:220px;}
+  .svc-row .tags span{font-size:11.5px;font-weight:600;background:var(--ink);color:var(--paper);padding:4px 11px;border-radius:100px;}
+
+  /* work gallery */
+  .work-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;padding-top:10px;}
+  .gal-card{
+    display:block;background:#fff;border-radius:14px;border:1px solid rgba(36,23,38,.1);
+    box-shadow:0 14px 24px -14px rgba(36,23,38,.3);padding:14px 14px 22px;
+    transition:transform .3s ease,box-shadow .3s ease;
+  }
+  .gal-card:nth-child(odd){transform:rotate(-1.1deg);}
+  .gal-card:nth-child(even){transform:rotate(1.1deg);}
+  .gal-card:hover{transform:rotate(0) translateY(-6px);box-shadow:0 22px 34px -14px rgba(36,23,38,.42);}
+
+  /* live site preview — real page scaled into a thumbnail */
+  .shot-frame{
+    position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;
+    border-radius:8px;margin-bottom:14px;background:var(--paper-warm);
+    border:1px solid rgba(36,23,38,.12);
+  }
+  .shot-frame iframe{
+    position:absolute;top:0;left:0;width:400%;height:400%;border:0;
+    transform:scale(.25);transform-origin:top left;pointer-events:none;
+    background:#fff;
+  }
+  .shot-overlay{
+    position:absolute;inset:0;display:flex;align-items:flex-end;
+    padding:12px;font-family:'Work Sans',sans-serif;font-weight:600;font-size:12.5px;
+    color:#fff;background:linear-gradient(to top,rgba(36,23,38,.6),transparent 55%);
+    opacity:0;transition:opacity .25s ease;
+  }
+  .gal-card:hover .shot-overlay{opacity:1;}
+  .gal-card h3{font-size:18px;margin-bottom:4px;}
+  .gal-card .cat{font-size:12px;font-weight:600;color:var(--coral);text-transform:uppercase;letter-spacing:.05em;}
+  .gal-card p{font-size:13.5px;color:var(--ink-soft);margin:8px 0 0;}
+
+  /* process */
+  .process{background:var(--ink);color:var(--paper);position:relative;}
+  .process .section-head p{color:rgba(250,246,240,.65);}
+  .process .section-head h2{color:var(--paper);}
+  .proc-wrap{position:relative;}
+  .proc-line{position:absolute;left:29px;top:10px;bottom:10px;width:2px;background:repeating-linear-gradient(0deg,var(--lime) 0 6px,transparent 6px 12px);}
+  .proc-step{display:grid;grid-template-columns:60px 1fr;gap:24px;padding:26px 0;position:relative;}
+  .proc-circle{
+    width:60px;height:60px;border-radius:50%;background:var(--lime);color:var(--ink);
+    display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;font-size:18px;
+    z-index:1;
+  }
+  .proc-step h3{font-size:22px;color:var(--paper);margin-bottom:6px;}
+  .proc-step p{margin:0;color:rgba(250,246,240,.65);font-size:14.5px;max-width:54ch;}
+
+  /* testimonial carousel */
+  .testi{background:var(--paper);}
+  .testi-card{max-width:760px;margin:0 auto;text-align:center;position:relative;min-height:220px;}
+  .testi-slide{position:absolute;inset:0;opacity:0;transition:opacity .5s ease;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+  .testi-slide.active{opacity:1;position:relative;}
+  .testi-slide p{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(20px,2.6vw,28px);font-weight:500;line-height:1.4;max-width:34ch;}
+  .testi-who{margin-top:20px;font-weight:600;font-size:14px;color:var(--ink-soft);}
+  .testi-dots{display:flex;gap:10px;justify-content:center;margin-top:28px;}
+  .testi-dots button{width:9px;height:9px;border-radius:50%;border:none;background:rgba(36,23,38,.2);cursor:pointer;padding:0;}
+  .testi-dots button.active{background:var(--coral);}
+
+  /* cta banner */
+  .cta-banner{background:var(--coral);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);padding:80px 0;text-align:center;position:relative;overflow:hidden;}
+  .cta-banner h2{color:#fff;font-size:clamp(30px,5vw,54px);max-width:16ch;margin:0 auto 28px;}
+  .cta-banner .blob{position:absolute;border-radius:50%;background:rgba(255,255,255,.12);}
+  .cta-banner .blob-1{width:280px;height:280px;top:-120px;left:-80px;}
+  .cta-banner .blob-2{width:200px;height:200px;bottom:-100px;right:-40px;}
+
+  /* contact */
+  .contact{padding:90px 0;}
+  .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;}
+  .contact h2{font-size:clamp(28px,3.6vw,40px);max-width:13ch;margin-bottom:16px;}
+  .contact-intro{color:var(--ink-soft);font-size:15px;max-width:40ch;margin-bottom:30px;}
+  .contact-detail{display:flex;flex-direction:column;gap:14px;}
+  .contact-detail .lab{display:block;font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--mauve);margin-bottom:2px;}
+  .contact-detail a{font-weight:600;}
+  .contact-detail a:hover{color:var(--coral);}
+
+  form{background:var(--paper-warm);border:2px solid var(--ink);border-radius:var(--radius);padding:32px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .field{margin-bottom:18px;display:flex;flex-direction:column;gap:7px;}
+  .field label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--mauve);}
+  .field input,.field select,.field textarea{
+    background:#fff;border:1.5px solid rgba(36,23,38,.25);border-radius:10px;
+    color:var(--ink);font-family:'Work Sans',sans-serif;font-size:14.5px;padding:11px 13px;
+    transition:border-color .2s ease;
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--coral);outline:none;}
+  .field textarea{resize:vertical;min-height:80px;}
+  form .btn{width:100%;justify-content:center;margin-top:6px;}
+  .form-msg{font-weight:600;color:var(--teal);margin-top:14px;display:none;font-size:14px;}
+  .form-msg.show{display:block;}
+
+  footer{background:var(--ink);color:rgba(250,246,240,.55);padding:26px 0;}
+  .foot-wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:13.5px;}
+  .foot-wrap a:hover{color:var(--lime);}
+
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr;}
+    .polaroid-stack{height:340px;margin-top:20px;}
+    .intro-grid{grid-template-columns:1fr;}
+    .work-gallery{grid-template-columns:repeat(2,1fr);}
+    .contact-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:720px){
+    .nav-links{position:fixed;top:65px;left:0;right:0;bottom:0;background:var(--paper);flex-direction:column;justify-content:flex-start;padding:36px 32px;gap:22px;transform:translateX(100%);transition:transform .3s ease;}
+    .nav-links.open{transform:translateX(0);}
+    .menu-btn{display:block;}
+    .nav-cta .btn:not(.menu-btn){display:none;}
+    .work-gallery{grid-template-columns:1fr;}
+    .svc-row{grid-template-columns:1fr;text-align:left;}
+    .svc-row .tags{justify-content:flex-start;margin-top:10px;}
+    .form-row{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <div class="logo-wrap">
+      <a href="#top" class="logo">
+        <span class="web-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path class="strand" d="M12 2 L12 22 M2 7 L22 17 M2 17 L22 7"/>
+            <path class="strand" d="M5 10 L19 10"/>
+            <path class="strand" d="M4 14 L20 14"/>
+            <circle class="core" cx="12" cy="12" r="1.7"/>
+          </svg>
+          <span class="thread-wrap">
+            <span class="spider">
+              <svg viewBox="0 0 17 17">
+                <line class="leg" x1="5.5" y1="6.5" x2="1" y2="3"/>
+                <line class="leg" x1="5.5" y1="8.5" x2="0.5" y2="8.5"/>
+                <line class="leg" x1="5.5" y1="10.5" x2="1" y2="14"/>
+                <line class="leg" x1="11.5" y1="6.5" x2="16" y2="3"/>
+                <line class="leg" x1="11.5" y1="8.5" x2="16.5" y2="8.5"/>
+                <line class="leg" x1="11.5" y1="10.5" x2="16" y2="14"/>
+                <ellipse class="body" cx="8.5" cy="9.5" rx="3.6" ry="4.2"/>
+                <circle class="body" cx="8.5" cy="4.8" r="2.1"/>
+              </svg>
+            </span>
+          </span>
+        </span>
+        Web A Site
+      </a>
+      <span class="pun-callout">
+        <svg viewBox="0 0 20 12"><path d="M18 6 C10 6 6 6 1 2 M1 2 L1 6 M1 2 L5 3"/></svg>
+        yes, like a spider's
+      </span>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#contact" class="btn btn-primary" style="display:inline-flex;">Let's talk</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-primary">Let's talk</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="label">Freelance web &amp; brand design</p>
+          <h1>Websites with a <span class="sticker">personality</span> behind them.</h1>
+          <p class="hero-sub">I design and build sites for small businesses and startups who don't want to look like everyone else's template — just clean, warm, unmistakably theirs.</p>
+          <div class="hero-cta">
+            <a href="#contact" class="btn btn-primary">Let's talk →</a>
+            <a href="#work" class="btn">View the work</a>
+          </div>
+        </div>
+
+        <div class="polaroid-stack">
+          <figure class="polaroid pol-1"><div class="shot"></div><figcaption>Red Buck Carriers</figcaption></figure>
+          <figure class="polaroid pol-2"><div class="shot"></div><figcaption>Tony's Burgers</figcaption></figure>
+          <figure class="polaroid pol-3"><div class="shot"></div><figcaption>Tiwana Law</figcaption></figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="marquee-band">
+      <div class="marquee-track">
+        <span><span>Web Design</span><span>Brand Identity</span><span>E-Commerce</span><span>Landing Pages</span><span>SEO Basics</span><span>Shopify</span><span>Webflow</span></span>
+        <span><span>Web Design</span><span>Brand Identity</span><span>E-Commerce</span><span>Landing Pages</span><span>SEO Basics</span><span>Shopify</span><span>Webflow</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO / PULL QUOTE -->
+  <section class="intro" data-reveal>
+    <div class="wrap intro-grid reveal-item">
+      <div class="intro-side">
+        Based in Lisbon.<br>Working with clients worldwide.<br>Booking for Q3 2026.
+      </div>
+      <p class="big">I've spent eight years learning that a website's job isn't to look impressive — <em>it's to make the phone ring.</em> Every project starts with your customer, not a template.</p>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services" data-reveal>
+    <div class="wrap section reveal-item">
+      <div class="section-head">
+        <p class="label">What I do</p>
+        <h2>Four ways to work together.</h2>
+      </div>
+      <div>
+        <div class="svc-row">
+          <span class="num">01</span>
+          <div><h3>Brand &amp; web design</h3><p>Visual identity and site design in one pass, so everything feels like one decision instead of ten.</p></div>
+          <div class="tags"><span>Figma</span><span>Identity</span></div>
+        </div>
+        <div class="svc-row">
+          <span class="num">02</span>
+          <div><h3>Website development</h3><p>Hand-built, fast-loading sites that hold up on any screen — no drag-and-drop bloat.</p></div>
+          <div class="tags"><span>React</span><span>Webflow</span></div>
+        </div>
+        <div class="svc-row">
+          <span class="num">03</span>
+          <div><h3>Online storefronts</h3><p>Product pages and checkout that make buying simple, from browsing to "order confirmed."</p></div>
+          <div class="tags"><span>Shopify</span><span>Stripe</span></div>
+        </div>
+        <div class="svc-row">
+          <span class="num">04</span>
+          <div><h3>Ongoing partnership</h3><p>Monthly hours for edits, campaigns and the small updates that keep a site feeling current.</p></div>
+          <div class="tags"><span>Retainer</span><span>Support</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="section" id="work" data-reveal>
+    <div class="wrap">
+      <div class="section-head reveal-item">
+        <p class="label">Selected work</p>
+        <h2>Recent sites, live and shipping.</h2>
+        <p>Real client projects across trucking &amp; logistics, hospitality, legal and real estate. Every thumbnail below is the live site — click any card to open the full thing in a new tab.</p>
+      </div>
+      <div class="work-gallery reveal-item">
+
+        <a class="gal-card" href="https://websites-smoky-theta.vercel.app/Redbuck.html" target="_blank" rel="noopener">
+          <div class="shot-frame">
+            <iframe data-src="https://websites-smoky-theta.vercel.app/Redbuck.html" loading="lazy" scrolling="no" tabindex="-1" title="Live preview of Red Buck Carriers"></iframe>
+            <span class="shot-overlay">Open live site ↗</span>
+          </div>
+          <span class="cat">Trucking &amp; Logistics</span>
+          <h3>Red Buck Carriers</h3>
+          <p>Cross-border full-truckload carrier out of Toronto, with a lane board and a door-to-door quote request flow.</p>
+        </a>
+
+        <a class="gal-card" href="https://websites-smoky-theta.vercel.app/tonys-burgers-ordering.html" target="_blank" rel="noopener">
+          <div class="shot-frame">
+            <iframe data-src="https://websites-smoky-theta.vercel.app/tonys-burgers-ordering.html" loading="lazy" scrolling="no" tabindex="-1" title="Live preview of Tony's Burgers"></iframe>
+            <span class="shot-overlay">Open live site ↗</span>
+          </div>
+          <span class="cat">Hospitality</span>
+          <h3>Tony's Burgers</h3>
+          <p>Brampton smash-burger spot with a working online-ordering cart and a live kitchen order screen.</p>
+        </a>
+
+        <a class="gal-card" href="https://websites-smoky-theta.vercel.app/tiwana-law-chambers.html" target="_blank" rel="noopener">
+          <div class="shot-frame">
+            <iframe data-src="https://websites-smoky-theta.vercel.app/tiwana-law-chambers.html" loading="lazy" scrolling="no" tabindex="-1" title="Live preview of Tiwana Law Chambers"></iframe>
+            <span class="shot-overlay">Open live site ↗</span>
+          </div>
+          <span class="cat">Law Firm</span>
+          <h3>Tiwana Law Chambers</h3>
+          <p>Boutique Brampton firm covering real estate, immigration, wills and same-day notary work.</p>
+        </a>
+
+        <a class="gal-card" href="https://websites-smoky-theta.vercel.app/Manpreet.html" target="_blank" rel="noopener">
+          <div class="shot-frame">
+            <iframe data-src="https://websites-smoky-theta.vercel.app/Manpreet.html" loading="lazy" scrolling="no" tabindex="-1" title="Live preview of Manpreet Tiwana"></iframe>
+            <span class="shot-overlay">Open live site ↗</span>
+          </div>
+          <span class="cat">Real Estate</span>
+          <h3>Manpreet Tiwana</h3>
+          <p>RE/MAX realtor site with MLS search, featured GTA communities and a free home-evaluation flow.</p>
+        </a>
+
+        <a class="gal-card" href="https://websites-smoky-theta.vercel.app/fishnet-bulkington-final.html" target="_blank" rel="noopener">
+          <div class="shot-frame">
+            <iframe data-src="https://websites-smoky-theta.vercel.app/fishnet-bulkington-final.html" loading="lazy" scrolling="no" tabindex="-1" title="Live preview of The Fishnet"></iframe>
+            <span class="shot-overlay">Open live site ↗</span>
+          </div>
+          <span class="cat">Hospitality</span>
+          <h3>The Fishnet</h3>
+          <p>Traditional UK fish-&amp;-chips shop with a full online-ordering menu for collection and delivery.</p>
+        </a>
+
+        <a class="gal-card" href="https://websites-smoky-theta.vercel.app/rigid-performance.html" target="_blank" rel="noopener">
+          <div class="shot-frame">
+            <iframe data-src="https://websites-smoky-theta.vercel.app/rigid-performance.html" loading="lazy" scrolling="no" tabindex="-1" title="Live preview of Rigid Performance & Powdercoating"></iframe>
+            <span class="shot-overlay">Open live site ↗</span>
+          </div>
+          <span class="cat">Motorsports</span>
+          <h3>Rigid Performance</h3>
+          <p>Motorcycle, ATV and snowmobile shop in Keeseville, NY, with a powder-coating gallery and service enquiry form.</p>
+        </a>
+
+        <a class="gal-card" href="https://websites-smoky-theta.vercel.app/skr-transport.html" target="_blank" rel="noopener">
+          <div class="shot-frame">
+            <iframe data-src="https://websites-smoky-theta.vercel.app/skr-transport.html" loading="lazy" scrolling="no" tabindex="-1" title="Live preview of SKR Transport"></iframe>
+            <span class="shot-overlay">Open live site ↗</span>
+          </div>
+          <span class="cat">Trucking &amp; Logistics</span>
+          <h3>SKR Transport</h3>
+          <p>Canada-wide freight carrier with an animated route network spanning eleven provinces and territories.</p>
+        </a>
+
+        <a class="gal-card" href="https://websites-smoky-theta.vercel.app/bigrig-carriers-redesign.html" target="_blank" rel="noopener">
+          <div class="shot-frame">
+            <iframe data-src="https://websites-smoky-theta.vercel.app/bigrig-carriers-redesign.html" loading="lazy" scrolling="no" tabindex="-1" title="Live preview of Big Rig Carriers"></iframe>
+            <span class="shot-overlay">Open live site ↗</span>
+          </div>
+          <span class="cat">Trucking &amp; Logistics</span>
+          <h3>Big Rig Carriers</h3>
+          <p>Asset-based carrier with an instant-quote widget, dedicated-lane map and a driver recruiting form.</p>
+        </a>
+
+        <a class="gal-card" href="https://websites-smoky-theta.vercel.app/rolling-freight.html" target="_blank" rel="noopener">
+          <div class="shot-frame">
+            <iframe data-src="https://websites-smoky-theta.vercel.app/rolling-freight.html" loading="lazy" scrolling="no" tabindex="-1" title="Live preview of Rolling Freight"></iframe>
+            <span class="shot-overlay">Open live site ↗</span>
+          </div>
+          <span class="cat">Trucking &amp; Logistics</span>
+          <h3>Rolling Freight</h3>
+          <p>Owner-operated interstate carrier site built around a public FMCSA safety record and a US lane map.</p>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process" data-reveal>
+    <div class="wrap section reveal-item">
+      <div class="section-head">
+        <p class="label" style="color:var(--lime);">How it works</p>
+        <h2>Five steps, one point of contact.</h2>
+      </div>
+      <div class="proc-wrap">
+        <div class="proc-line"></div>
+        <div class="proc-step"><div class="proc-circle">01</div><div><h3>Discover</h3><p>A call to understand your customers and what the site needs to actually do for them.</p></div></div>
+        <div class="proc-step"><div class="proc-circle">02</div><div><h3>Design</h3><p>Concepts in Figma, reviewed together — nothing gets built until you love the direction.</p></div></div>
+        <div class="proc-step"><div class="proc-circle">03</div><div><h3>Build</h3><p>The design becomes a real, working site, with a preview link so you can follow along.</p></div></div>
+        <div class="proc-step"><div class="proc-circle">04</div><div><h3>Launch</h3><p>Domain, hosting and testing, handled end to end. You get the keys, not a ticket queue.</p></div></div>
+        <div class="proc-step"><div class="proc-circle">05</div><div><h3>Support</h3><p>Two weeks of free fixes, then optional monthly hours if you'd like to keep working together.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section testi" data-reveal>
+    <div class="wrap reveal-item">
+      <div class="section-head" style="text-align:center;margin-left:auto;margin-right:auto;">
+        <p class="label" style="justify-content:center;">Client notes</p>
+        <h2>Kind words, mostly unprompted.</h2>
+      </div>
+      <div class="testi-card" id="testiCard">
+        <div class="testi-slide active">
+          <p>"Wren asked better questions about my business than my last three hires combined. The site actually sells."</p>
+          <span class="testi-who">Priya Anand — Marlowe &amp; Finch</span>
+        </div>
+        <div class="testi-slide">
+          <p>"Fixed price, fixed timeline, zero scope creep. I always knew exactly where we stood."</p>
+          <span class="testi-who">Daniel Halden — Halden Legal</span>
+        </div>
+        <div class="testi-slide">
+          <p>"Our booking requests tripled in six weeks. Best money I've spent on the business this year."</p>
+          <span class="testi-who">Iris Comeau — Green Bench Studio</span>
+        </div>
+      </div>
+      <div class="testi-dots" id="testiDots"></div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <div class="blob blob-1"></div><div class="blob blob-2"></div>
+    <div class="wrap">
+      <h2>Have a project in mind? Let's make it look like nothing else out there.</h2>
+      <a href="#contact" class="btn btn-lime">Start the conversation →</a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact" data-reveal>
+    <div class="wrap contact-grid reveal-item">
+      <div>
+        <p class="label">Start a project</p>
+        <h2>Tell me what you're building.</h2>
+        <p class="contact-intro">I reply within one working day — usually sooner. Prefer email? Go straight there.</p>
+        <div class="contact-detail">
+          <div><span class="lab">Email</span><a href="mailto:hello@webasite.studio">hello@webasite.studio</a></div>
+          <div><span class="lab">Based in</span><div>Lisbon — working across EU &amp; US hours</div></div>
+          <div><span class="lab">Elsewhere</span><a href="#">Instagram</a> &nbsp;·&nbsp; <a href="#">LinkedIn</a></div>
+        </div>
+      </div>
+      <form id="contactForm">
+        <div class="form-row">
+          <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" required placeholder="Jordan Lee"></div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required placeholder="jordan@business.com"></div>
+        </div>
+        <div class="field">
+          <label for="type">Project type</label>
+          <select id="type" name="type">
+            <option>New website</option>
+            <option>Redesign</option>
+            <option>Brand identity</option>
+            <option>Online store</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="msg">Tell me a bit more</label>
+          <textarea id="msg" name="msg" placeholder="What are you building, and by when?"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send it over →</button>
+        <p class="form-msg" id="formMsg">Thanks — that's landed in my inbox. Talk soon!</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-wrap">
+    <span>© <span id="year"></span> Web A Site</span>
+    <span>Designed &amp; built by Web A Site</span>
+    <a href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<div id="roamSpider" aria-hidden="true">
+  <svg viewBox="0 0 40 40">
+    <g class="legs-left">
+      <path class="rs-leg" d="M16 15 L4 7"/>
+      <path class="rs-leg" d="M16 18 L2 18"/>
+      <path class="rs-leg" d="M16 21 L3 27"/>
+      <path class="rs-leg" d="M16 24 L6 33"/>
+    </g>
+    <g class="legs-right">
+      <path class="rs-leg" d="M24 15 L36 7"/>
+      <path class="rs-leg" d="M24 18 L38 18"/>
+      <path class="rs-leg" d="M24 21 L37 27"/>
+      <path class="rs-leg" d="M24 24 L34 33"/>
+    </g>
+    <ellipse class="rs-body" cx="20" cy="21" rx="6.5" ry="7.5"/>
+    <circle class="rs-body" cx="20" cy="11" r="4.2"/>
+    <circle class="rs-eye" cx="18.4" cy="10.5" r="0.9"/>
+    <circle class="rs-eye" cx="21.6" cy="10.5" r="0.9"/>
+  </svg>
+</div>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open'); menuBtn.setAttribute('aria-expanded', false);
+  }));
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('in-view'));
+  }
+
+  // testimonial carousel
+  const slides = document.querySelectorAll('.testi-slide');
+  const dotsWrap = document.getElementById('testiDots');
+  slides.forEach((_, i) => {
+    const b = document.createElement('button');
+    if (i === 0) b.classList.add('active');
+    b.addEventListener('click', () => showSlide(i));
+    dotsWrap.appendChild(b);
+  });
+  const dots = dotsWrap.querySelectorAll('button');
+  let current = 0;
+  function showSlide(i) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = i;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+  if (!reduceMotion) {
+    setInterval(() => showSlide((current + 1) % slides.length), 5000);
+  }
+
+  const form = document.getElementById('contactForm');
+  const formMsg = document.getElementById('formMsg');
+  form.addEventListener('submit', e => { e.preventDefault(); formMsg.classList.add('show'); form.reset(); });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // lazy-load the live portfolio previews only as they approach the viewport
+  const previewFrames = document.querySelectorAll('.shot-frame iframe[data-src]');
+  const loadFrame = f => { if (f.dataset.src) { f.src = f.dataset.src; delete f.dataset.src; } };
+  if ('IntersectionObserver' in window) {
+    const frameIO = new IntersectionObserver((entries, obs) => {
+      entries.forEach(e => { if (e.isIntersecting) { loadFrame(e.target); obs.unobserve(e.target); } });
+    }, { rootMargin: '300px 0px' });
+    previewFrames.forEach(f => frameIO.observe(f));
+  } else {
+    previewFrames.forEach(loadFrame);
+  }
+
+  // roaming spider — wanders to random spots around the visible page
+  if (!reduceMotion) {
+    const roam = document.getElementById('roamSpider');
+    const SIZE = 34, MARGIN = 16, TOP_CLEARANCE = 84;
+
+    function randomPoint() {
+      const maxX = Math.max(window.innerWidth - SIZE - MARGIN, MARGIN);
+      const maxY = Math.max(window.innerHeight - SIZE - MARGIN, TOP_CLEARANCE);
+      const x = MARGIN + Math.random() * (maxX - MARGIN);
+      const y = TOP_CLEARANCE + Math.random() * (maxY - TOP_CLEARANCE);
+      return { x, y };
+    }
+
+    let pos = randomPoint();
+    roam.style.transform = `translate(${pos.x}px, ${pos.y}px) rotate(0deg)`;
+
+    function buildWebSVG() {
+      const cx = 20, cy = 20;
+      const numSpokes = 7 + Math.floor(Math.random() * 2);
+      const angles = [];
+      for (let i = 0; i < numSpokes; i++) {
+        angles.push((i / numSpokes) * Math.PI * 2 + (Math.random() - 0.5) * 0.4);
+      }
+      angles.sort((a, b) => a - b);
+      const lens = angles.map(() => 13 + Math.random() * 6);
+
+      let spokesSVG = '';
+      angles.forEach((a, i) => {
+        const len = lens[i];
+        const x2 = (cx + Math.cos(a) * len).toFixed(1);
+        const y2 = (cy + Math.sin(a) * len).toFixed(1);
+        spokesSVG += `<line class="ws-spoke" x1="${cx}" y1="${cy}" x2="${x2}" y2="${y2}"/>`;
+      });
+
+      let ringsSVG = '';
+      [0.32, 0.58, 0.82].forEach(frac => {
+        let d = '';
+        for (let i = 0; i < numSpokes; i++) {
+          const a1 = angles[i], a2raw = angles[(i + 1) % numSpokes];
+          const a2 = a2raw < a1 ? a2raw + Math.PI * 2 : a2raw;
+          const r1 = lens[i] * frac, r2 = lens[(i + 1) % numSpokes] * frac;
+          const p1x = (cx + Math.cos(a1) * r1).toFixed(1), p1y = (cy + Math.sin(a1) * r1).toFixed(1);
+          const p2x = (cx + Math.cos(a2) * r2).toFixed(1), p2y = (cy + Math.sin(a2) * r2).toFixed(1);
+          const midA = (a1 + a2) / 2;
+          const rMid = (r1 + r2) / 2 * 0.68;
+          const cxp = (cx + Math.cos(midA) * rMid).toFixed(1), cyp = (cy + Math.sin(midA) * rMid).toFixed(1);
+          if (i === 0) d += `M ${p1x} ${p1y} `;
+          d += `Q ${cxp} ${cyp} ${p2x} ${p2y} `;
+        }
+        ringsSVG += `<path class="ws-web-ring" d="${d}"/>`;
+      });
+
+      return `<svg viewBox="0 0 40 40">${ringsSVG}${spokesSVG}</svg>`;
+    }
+
+    function shootWeb() {
+      const cx = pos.x + SIZE / 2, cy = pos.y + SIZE / 2;
+      const angle = Math.random() * Math.PI * 2;
+      const dist = 55 + Math.random() * 95;
+      const tx = cx + Math.cos(angle) * dist;
+      const ty = cy + Math.sin(angle) * dist;
+      const lineAngle = (angle * 180 / Math.PI) - 90;
+
+      const line = document.createElement('div');
+      line.className = 'web-shot-line';
+      line.style.left = cx + 'px';
+      line.style.top = cy + 'px';
+      line.style.height = dist + 'px';
+      line.style.transform = `rotate(${lineAngle}deg) scaleY(0)`;
+      document.body.appendChild(line);
+      requestAnimationFrame(() => {
+        line.style.opacity = '1';
+        line.style.transform = `rotate(${lineAngle}deg) scaleY(1)`;
+      });
+      setTimeout(() => {
+        line.style.opacity = '0';
+        setTimeout(() => line.remove(), 300);
+      }, 200);
+
+      const splat = document.createElement('div');
+      splat.className = 'web-splat';
+      splat.style.left = tx + 'px';
+      splat.style.top = ty + 'px';
+      splat.innerHTML = buildWebSVG();
+      document.body.appendChild(splat);
+      requestAnimationFrame(() => splat.classList.add('show'));
+      setTimeout(() => {
+        splat.classList.add('fade');
+        setTimeout(() => splat.remove(), 450);
+      }, 2600); // splat is visible ~3s total before it's gone
+    }
+
+    function walkTo(next) {
+      const dx = next.x - pos.x, dy = next.y - pos.y;
+      const dist = Math.hypot(dx, dy);
+      const angle = (Math.atan2(dy, dx) * 180 / Math.PI) + 90;
+      const duration = Math.min(Math.max(dist / 90, .8), 3.2);
+      roam.style.transitionDuration = duration + 's, .4s';
+      roam.style.transform = `translate(${next.x}px, ${next.y}px) rotate(${angle}deg)`;
+      pos = next;
+      setTimeout(() => {
+        if (Math.random() < 0.7) shootWeb();
+        const pause = 900 + Math.random() * 2600;
+        setTimeout(() => walkTo(randomPoint()), pause);
+      }, duration * 1000);
+    }
+
+    setTimeout(() => {
+      roam.classList.add('ready');
+      setTimeout(() => walkTo(randomPoint()), 1400);
+    }, 800);
+
+    window.addEventListener('resize', () => {
+      const clamped = {
+        x: Math.min(pos.x, window.innerWidth - SIZE - MARGIN),
+        y: Math.min(pos.y, window.innerHeight - SIZE - MARGIN)
+      };
+      pos = clamped;
+      roam.style.transitionDuration = '.4s';
+      roam.style.transform = `translate(${pos.x}px, ${pos.y}px)`;
+    });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Immigraze — Licensed Canadian Immigration Consulting</title>
+<meta name="description" content="Immigraze is a licensed Canadian immigration consultancy guiding individuals, families and employers through every IRCC application. Call 647 564 0805 or start a free assessment.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   IMMIGRAZE — palette sampled directly from the brand logo
+   navy #0B1029 · gold #C1AF79 (scale derived from both)
+   ============================================================ */
+:root{
+  --navy-950:#0B1029;
+  --navy-900:#101636;
+  --navy-800:#182048;
+  --navy-glass:rgba(11,16,41,.72);
+  --gold:#C6AE74;
+  --gold-bright:#E2CD9B;
+  --gold-deep:#A18A52;
+  --gold-8:rgba(198,174,116,.08);
+  --gold-18:rgba(198,174,116,.18);
+  --gold-35:rgba(198,174,116,.35);
+  --ivory:#FAF7F0;
+  --ivory-2:#F3EEE1;
+  --paper:#FFFFFF;
+  --ink-900:#171A26;
+  --ink-600:#4E5468;
+  --ink-400:#8B90A3;
+  --line:#E6E0D2;
+  --line-dark:rgba(198,174,116,.22);
+  --radius-card:18px;
+  --radius-ui:10px;
+  --radius-media:22px;
+  --shadow-soft:0 1px 2px rgb(11 16 41 / .05), 0 10px 30px rgb(11 16 41 / .08);
+  --shadow-lift:0 4px 8px rgb(11 16 41 / .06), 0 22px 48px rgb(11 16 41 / .14);
+  --font-display:'Marcellus',serif;
+  --font-text:'Inter',sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:var(--font-text);font-size:17px;line-height:1.65;color:var(--ink-900);background:var(--paper);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:1.12;letter-spacing:.005em}
+h2{font-size:clamp(30px,3.6vw,44px)}
+h3{font-size:22px;line-height:1.3}
+p{max-width:68ch}
+a{color:inherit}
+img,svg{display:block;max-width:100%}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.section{padding:130px 0;position:relative}
+.section--ivory{background:var(--ivory)}
+.section--navy{background:var(--navy-950);color:var(--ivory)}
+.section--navy p{color:rgba(250,247,240,.72)}
+.eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-deep)}
+.section--navy .eyebrow{color:var(--gold)}
+.eyebrow::before{content:"";width:36px;height:1px;background:currentColor;opacity:.7}
+.section-head{max-width:660px;margin-bottom:60px}
+.section-head h2{margin-top:16px}
+.section-head p{color:var(--ink-600);margin-top:16px}
+.gold-i{font-style:italic;color:var(--gold-deep)}
+.section--navy .gold-i,.hero .gold-i{color:var(--gold-bright)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- Buttons ---------- */
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:var(--font-text);font-size:15.5px;font-weight:600;letter-spacing:.02em;padding:15px 30px;border-radius:var(--radius-ui);text-decoration:none;cursor:pointer;border:1.5px solid transparent;min-height:48px;transition:background-color .2s var(--ease),color .2s var(--ease),border-color .2s var(--ease),box-shadow .2s var(--ease)}
+.btn .arrow{transition:transform .2s var(--ease)}
+.btn:hover .arrow{transform:translateX(4px)}
+.btn--gold{background:linear-gradient(120deg,var(--gold-deep),var(--gold) 45%,var(--gold-bright) 100%);color:var(--navy-950);box-shadow:0 6px 20px rgba(161,138,82,.35)}
+.btn--gold::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.5) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s var(--ease)}
+.btn--gold:hover::after{transform:translateX(120%)}
+.btn--gold:hover{box-shadow:0 10px 28px rgba(161,138,82,.5)}
+.btn--ghost{border-color:var(--gold-35);color:var(--ivory);background:rgba(250,247,240,.04);backdrop-filter:blur(4px)}
+.btn--ghost:hover{border-color:var(--gold);background:var(--gold-8)}
+.btn--navy{background:var(--navy-950);color:var(--ivory)}
+.btn--navy:hover{background:var(--navy-800)}
+.btn--outline-dark{border-color:var(--line);color:var(--ink-900)}
+.btn--outline-dark:hover{border-color:var(--navy-950)}
+:is(a,button,summary):focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+@media (prefers-reduced-motion:reduce){.btn--gold::after{display:none}}
+
+/* ---------- Header ---------- */
+.header{position:fixed;inset:0 0 auto 0;z-index:100;transition:background-color .3s var(--ease),box-shadow .3s var(--ease)}
+.header.is-scrolled{background:var(--navy-glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:inset 0 -1px 0 var(--line-dark)}
+.header-inner{display:flex;align-items:center;gap:36px;height:84px}
+.logo-img{height:46px;width:auto;border-radius:6px}
+.nav{display:flex;gap:30px;margin-left:8px}
+.nav a{font-size:15px;font-weight:500;text-decoration:none;color:rgba(250,247,240,.78);transition:color .2s;position:relative;padding:4px 0}
+.nav a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1.5px;background:var(--gold);transition:right .25s var(--ease)}
+.nav a:hover{color:var(--ivory)}
+.nav a:hover::after{right:0}
+.header-cta{margin-left:auto;display:flex;gap:12px;align-items:center}
+.header .btn{padding:11px 22px;font-size:14.5px;min-height:42px}
+.header .tel{font-size:14.5px;font-weight:600;color:var(--gold);text-decoration:none;letter-spacing:.03em}
+.header .tel:hover{color:var(--gold-bright)}
+.menu-btn{display:none;margin-left:auto;background:transparent;border:1.5px solid var(--gold-35);color:var(--ivory);border-radius:var(--radius-ui);padding:10px 16px;font:inherit;font-size:14.5px;font-weight:600;cursor:pointer}
+/* Mobile menu overlay */
+.mobile-menu{position:fixed;inset:0;z-index:200;background:var(--navy-950);display:none;flex-direction:column;padding:28px 24px;color:var(--ivory)}
+.mobile-menu.open{display:flex}
+.mobile-menu .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px}
+.mobile-menu nav{display:grid;gap:6px}
+.mobile-menu nav a{font-family:var(--font-display);font-size:30px;color:var(--ivory);text-decoration:none;padding:10px 0;border-bottom:1px solid var(--line-dark)}
+.mobile-menu .mm-cta{margin-top:auto;display:grid;gap:12px}
+.close-btn{background:none;border:1.5px solid var(--gold-35);color:var(--ivory);border-radius:10px;padding:10px 16px;font:inherit;font-weight:600;cursor:pointer}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;background:var(--navy-950);color:var(--ivory);overflow:hidden;padding:150px 0 110px}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.62;transform:scale(1.08)}
+@keyframes kenburns{from{transform:scale(1.08) translateY(0)}to{transform:scale(1.16) translateY(-1.5%)}}
+.hero-bg img{animation:kenburns 22s var(--ease) forwards}
+.hero-bg::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(100deg, rgba(11,16,41,.94) 0%, rgba(11,16,41,.74) 42%, rgba(11,16,41,.3) 100%),
+  linear-gradient(0deg, var(--navy-950) 0%, transparent 32%)}
+.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;width:100%}
+.hero h1{font-size:clamp(42px,5.6vw,74px);line-height:1.06;margin:22px 0 24px}
+.hero-sub{font-size:19px;color:rgba(250,247,240,.78);margin-bottom:38px;max-width:52ch}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
+.journey-wrap{margin-top:58px;height:36px}
+.journey-wrap svg{width:min(480px,100%);height:36px;overflow:visible}
+.journey-path{stroke:var(--gold);stroke-width:2;fill:none;stroke-linecap:round;filter:drop-shadow(0 0 6px rgba(198,174,116,.45))}
+.leaf-node{fill:var(--gold-bright)}
+/* hero right: framed portrait card */
+.hero-card{position:relative;justify-self:end;width:min(430px,100%)}
+.hero-card .frame{position:absolute;inset:-16px 16px 16px -16px;border:1px solid var(--gold-35);border-radius:var(--radius-media);pointer-events:none}
+.hero-photo{border-radius:var(--radius-media);overflow:hidden;aspect-ratio:4/5;box-shadow:0 30px 70px rgba(0,0,0,.5);position:relative}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+.hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(11,16,41,.55) 0%,transparent 45%)}
+.maple-badge{position:absolute;top:16px;right:16px;z-index:2;width:58px;height:58px;border-radius:50%;background:rgba(11,16,41,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--gold-35);color:var(--gold-bright);display:grid;place-items:center;filter:drop-shadow(0 4px 14px rgba(0,0,0,.35))}
+.maple-badge svg{width:34px;height:34px}
+.maple-caption{position:absolute;left:18px;bottom:16px;z-index:2;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-bright);background:rgba(11,16,41,.5);backdrop-filter:blur(8px);border:1px solid var(--line-dark);border-radius:99px;padding:7px 14px}
+/* hero stats row */
+.hero-stats{position:relative;z-index:1;display:flex;gap:0;margin-top:74px;border-top:1px solid var(--line-dark)}
+.hero-stat{padding:26px 44px 0 0;margin-right:44px}
+.hero-stat b{font-family:var(--font-display);font-weight:400;font-size:34px;color:var(--gold-bright);display:block;line-height:1.1}
+.hero-stat span{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:rgba(250,247,240,.55)}
+.scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;color:var(--gold);opacity:.8}
+@keyframes drift{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+.scroll-hint{animation:drift 2.4s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.hero-bg img,.scroll-hint{animation:none}}
+
+/* ---------- Trust strip ---------- */
+.trust{background:var(--ivory);border-bottom:1px solid var(--line)}
+.trust-inner{display:flex;flex-wrap:wrap;gap:10px 48px;justify-content:center;padding:24px 0;font-size:14.5px;color:var(--ink-600)}
+.trust b{color:var(--ink-900);font-weight:600}
+.trust a{color:var(--gold-deep);font-weight:600;text-decoration:none}
+.trust a:hover{text-decoration:underline}
+.trust-item{display:flex;align-items:center;gap:10px}
+.trust-item .tick{color:var(--gold-deep);flex:none}
+
+/* ---------- Get in touch ---------- */
+.connect-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:64px;align-items:start}
+.connect-list{list-style:none;display:grid;gap:22px;margin-top:36px}
+.connect-list li{display:flex;gap:16px;align-items:flex-start}
+.c-ic{flex:none;width:46px;height:46px;border-radius:50%;border:1px solid var(--gold-35);background:var(--paper);color:var(--gold-deep);display:grid;place-items:center;box-shadow:var(--shadow-soft)}
+.c-ic svg{width:21px;height:21px}
+.connect-list strong{display:block;font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-400);margin-bottom:2px}
+.connect-list a,.connect-list li span:not(.c-ic){font-size:16.5px;color:var(--ink-900);text-decoration:none}
+.connect-list a:hover{color:var(--gold-deep)}
+.c-fine{font-size:13px;color:var(--ink-400);margin-top:26px}
+.connect-form form{background:var(--navy-950);border:1px solid var(--line-dark);border-radius:var(--radius-card);padding:38px 36px;box-shadow:var(--shadow-lift);color:var(--ivory)}
+.connect-form h3{font-size:26px;color:var(--ivory)}
+.cf-sub{font-size:14.5px;color:rgba(250,247,240,.65);margin:8px 0 26px}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.f-field{display:flex;flex-direction:column;gap:7px;margin-bottom:16px}
+.f-field label{font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.f-field input,.f-field select,.f-field textarea{width:100%;font:inherit;font-size:15.5px;color:var(--ivory);background:rgba(250,247,240,.06);border:1px solid var(--line-dark);border-radius:var(--radius-ui);padding:13px 15px;transition:border-color .2s,background-color .2s;-webkit-appearance:none;appearance:none}
+.f-field textarea{resize:vertical;min-height:110px}
+.f-field :is(input,select,textarea):focus{outline:none;border-color:var(--gold);background:rgba(250,247,240,.09)}
+.f-field :is(input,select,textarea):focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.f-field select:invalid{color:rgba(250,247,240,.5)}
+.f-field option{color:var(--ink-900);background:#fff}
+.select-wrap{position:relative}
+.select-wrap .sel-chev{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--gold);pointer-events:none}
+.f-field input::placeholder,.f-field textarea::placeholder{color:rgba(250,247,240,.4)}
+.cf-note{font-size:12.5px;color:rgba(250,247,240,.55);text-align:center;margin-top:14px}
+.f-field input.err,.f-field select.err,.f-field textarea.err{border-color:#D46A6A}
+
+/* ---------- Service cards (photo cards) ---------- */
+.cards-4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.pcard{position:relative;border-radius:var(--radius-card);overflow:hidden;text-decoration:none;background:var(--navy-900);aspect-ratio:3/4.1;display:flex;box-shadow:var(--shadow-soft);transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.pcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease);opacity:.9}
+.pcard::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(11,16,41,.94) 8%,rgba(11,16,41,.45) 48%,rgba(11,16,41,.12) 100%)}
+.pcard:hover{transform:translateY(-6px);box-shadow:var(--shadow-lift)}
+.pcard:hover img{transform:scale(1.06)}
+.pcard-body{position:relative;z-index:1;margin-top:auto;padding:26px 24px;color:var(--ivory)}
+.pcard-num{font-family:var(--font-display);font-size:13px;letter-spacing:.24em;color:var(--gold);display:block;margin-bottom:8px}
+.pcard h3{font-size:25px;margin-bottom:8px}
+.pcard p{font-size:14.5px;color:rgba(250,247,240,.75);margin-bottom:14px}
+.pcard .link{font-size:14px;font-weight:600;color:var(--gold-bright);display:inline-flex;gap:7px;align-items:center;letter-spacing:.04em}
+.pcard .link .arrow{transition:transform .25s var(--ease)}
+.pcard:hover .link .arrow{transform:translateX(5px)}
+.pcard .topline{position:absolute;top:0;left:24px;right:24px;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease);z-index:2}
+.pcard:hover .topline{transform:scaleX(1)}
+
+/* ---------- Process (navy) ---------- */
+.process-track{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:36px;margin-top:20px}
+.process-line{position:absolute;top:30px;left:6.5%;right:6.5%;height:2px}
+.process-line svg{width:100%;height:30px;overflow:visible}
+.step-num{width:60px;height:60px;border-radius:50%;background:var(--navy-900);border:1px solid var(--gold-35);color:var(--gold-bright);font-family:var(--font-display);font-size:21px;display:grid;place-items:center;margin-bottom:22px;position:relative;z-index:1;box-shadow:0 0 0 8px var(--navy-950)}
+.step h3{font-size:20px;margin-bottom:10px;color:var(--ivory)}
+.step p{font-size:15px;color:rgba(250,247,240,.68)}
+.step p b{color:var(--gold);font-weight:600}
+
+/* ---------- Why (split with framed photo) ---------- */
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.proof{list-style:none;display:grid;gap:28px;margin-top:38px}
+.proof li{display:flex;gap:18px;align-items:flex-start}
+.proof .leaf{flex:none;width:26px;height:26px;color:var(--gold-deep);margin-top:2px}
+.proof strong{display:block;font-family:var(--font-display);font-weight:400;font-size:19px;margin-bottom:4px}
+.proof p{font-size:15.5px;color:var(--ink-600)}
+.why-photo{position:relative}
+.why-photo .frame{position:absolute;inset:18px -18px -18px 18px;border:1px solid var(--gold);opacity:.5;border-radius:var(--radius-media);pointer-events:none}
+.why-photo .ph{border-radius:var(--radius-media);overflow:hidden;aspect-ratio:4/4.7;box-shadow:var(--shadow-lift);position:relative}
+.why-photo img{width:100%;height:100%;object-fit:cover}
+.stat-chips{position:absolute;left:-26px;bottom:34px;display:grid;gap:12px;z-index:2}
+.stat-chip{background:var(--navy-950);color:var(--ivory);border:1px solid var(--line-dark);border-radius:14px;padding:14px 20px;box-shadow:var(--shadow-lift)}
+.stat-chip b{font-family:var(--font-display);font-weight:400;font-size:27px;color:var(--gold-bright);display:block;line-height:1.1}
+.stat-chip span{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:rgba(250,247,240,.6)}
+
+/* ---------- Parallax quote band ---------- */
+.band{position:relative;min-height:64vh;display:grid;place-items:center;text-align:center;color:var(--ivory);overflow:hidden;background:var(--navy-950)}
+.band .band-bg{position:absolute;inset:0}
+.band .band-bg img{width:100%;height:120%;object-fit:cover;opacity:.5}
+.band::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center, rgba(11,16,41,.55) 0%, rgba(11,16,41,.9) 100%)}
+.band-content{position:relative;z-index:1;max-width:820px;padding:110px 24px}
+.band-content h2{font-size:clamp(30px,4vw,50px);line-height:1.2}
+.band-content .eyebrow{color:var(--gold);justify-content:center}
+.band-content .eyebrow::before{display:none}
+
+/* ---------- Testimonials ---------- */
+.t-row{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(330px,400px);gap:22px;overflow-x:auto;padding:6px 6px 22px;scroll-snap-type:x mandatory}
+.t-row::-webkit-scrollbar{height:6px}
+.t-row::-webkit-scrollbar-thumb{background:var(--line);border-radius:99px}
+.t-card{scroll-snap-align:start;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-card);padding:32px;display:flex;flex-direction:column;gap:18px;box-shadow:var(--shadow-soft)}
+.t-card .qmark{font-family:var(--font-display);font-size:52px;line-height:.6;color:var(--gold);height:26px}
+.t-tag{align-self:flex-start;font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);border:1px solid var(--line);padding:6px 12px;border-radius:99px;background:var(--ivory)}
+.t-card blockquote{font-size:15.5px;color:var(--ink-600);flex:1}
+.t-meta{display:flex;align-items:center;gap:13px;border-top:1px solid var(--line);padding-top:16px}
+.t-meta .avatar{width:42px;height:42px;border-radius:50%;background:var(--navy-950);color:var(--gold-bright);display:grid;place-items:center;font-family:var(--font-display);font-size:15px}
+.t-meta strong{display:block;font-size:14.5px}
+.t-meta span{font-size:13px;color:var(--ink-400)}
+.demo-note{font-size:13px;color:var(--ink-400);margin-top:8px}
+
+/* ---------- FAQ ---------- */
+.faq{max-width:780px;margin:0 auto}
+.faq details{border:1px solid var(--line);border-radius:var(--radius-card);background:var(--paper);margin-bottom:13px;overflow:hidden;transition:border-color .2s}
+.faq details[open]{border-color:var(--gold-35)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 26px;font-family:var(--font-display);font-size:18.5px}
+.faq summary::-webkit-details-marker{display:none}
+.faq .chev{flex:none;transition:transform .25s var(--ease);color:var(--gold-deep)}
+.faq details[open] .chev{transform:rotate(180deg)}
+.faq .faq-body{padding:0 26px 24px;font-size:15.5px;color:var(--ink-600)}
+
+/* ---------- CTA band ---------- */
+.cta-final{position:relative;background:var(--navy-950);color:var(--ivory);text-align:center;padding:170px 0;overflow:hidden}
+.cta-final .glow{position:absolute;left:50%;top:-40%;width:900px;height:900px;transform:translateX(-50%);background:radial-gradient(circle, var(--gold-18) 0%, transparent 60%);pointer-events:none}
+.cta-final h2{font-size:clamp(32px,4.4vw,54px);max-width:720px;margin:18px auto 18px}
+.cta-final p{margin:0 auto 40px;color:rgba(250,247,240,.72)}
+.cta-final .eyebrow{justify-content:center}
+.cta-fineprint{font-size:13px;color:rgba(250,247,240,.5);margin-top:20px}
+.cta-contacts{margin-top:34px;display:flex;gap:14px 40px;justify-content:center;flex-wrap:wrap;font-size:15.5px}
+.cta-contacts a{color:var(--gold-bright);text-decoration:none;font-weight:600}
+.cta-contacts a:hover{text-decoration:underline}
+
+/* ---------- Footer ---------- */
+.footer{background:var(--navy-950);color:rgba(250,247,240,.75);border-top:1px solid var(--line-dark)}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.3fr;gap:48px;padding:78px 0 60px}
+.footer h4{font-family:var(--font-text);font-size:12.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.footer ul{list-style:none;display:grid;gap:11px}
+.footer a{font-size:15px;color:rgba(250,247,240,.72);text-decoration:none}
+.footer a:hover{color:var(--gold-bright)}
+.footer-brand p{font-size:14.5px;margin-top:18px;max-width:36ch;color:rgba(250,247,240,.6)}
+.contact-list{font-size:15px;display:grid;gap:12px;font-style:normal}
+.contact-list b{color:var(--ivory);font-weight:600}
+.footer-bottom{border-top:1px solid var(--line-dark);padding:28px 0;font-size:13px;color:rgba(250,247,240,.55)}
+.footer-bottom .container{display:flex;flex-wrap:wrap;gap:10px 32px;justify-content:space-between}
+.footer-bottom a{color:var(--gold);text-decoration:none}
+.footer-bottom a:hover{text-decoration:underline}
+
+/* ---------- Floating WhatsApp + mobile CTA ---------- */
+.wa-fab{display:none;position:fixed;left:16px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:98;width:52px;height:52px;border-radius:50%;background:#1EBE57;color:#fff;place-items:center;box-shadow:0 10px 26px rgba(0,0,0,.3);text-decoration:none}
+.sticky-cta{display:none}
+
+/* ---------- Reveal ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1020px){
+  .hero-inner{grid-template-columns:1fr;gap:52px}
+  .hero-card{justify-self:start}
+  .cards-4{grid-template-columns:repeat(2,1fr)}
+  .process-track{grid-template-columns:repeat(2,1fr);gap:44px 32px}
+  .process-line{display:none}
+  .why-grid{grid-template-columns:1fr;gap:64px}
+  .connect-grid{grid-template-columns:1fr;gap:52px}
+  .stat-chips{left:14px}
+  .why-photo .frame{inset:14px -10px -10px 14px}
+}
+@media (max-width:760px){
+  .section{padding:88px 0}
+  .nav,.header-cta{display:none}
+  .menu-btn{display:block}
+  .hero{padding:130px 0 90px;min-height:0}
+  .hero-ctas .btn{width:100%}
+  .hero-stats{flex-wrap:wrap}
+  .hero-stat{padding:22px 28px 0 0;margin-right:18px}
+  .cards-4{grid-template-columns:1fr}
+  .pcard{aspect-ratio:16/10.5}
+  .f-row{grid-template-columns:1fr}
+  .connect-form form{padding:28px 22px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:36px}
+  .band .band-bg img{height:100%}
+  .wa-fab{display:grid}
+  .sticky-cta{display:flex;position:fixed;inset:auto 0 0 0;z-index:99;background:rgba(11,16,41,.9);backdrop-filter:blur(14px);border-top:1px solid var(--line-dark);padding:12px 16px calc(12px + env(safe-area-inset-bottom))}
+  .sticky-cta .btn{flex:1}
+  body{padding-bottom:80px}
+}
+@media (max-width:480px){
+  .footer-grid{grid-template-columns:1fr}
+  .trust-inner{gap:10px 22px;font-size:13.5px}
+  .hero h1{font-size:40px}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header is-scrolled" id="header">
+  <div class="container header-inner">
+    <a href="#" aria-label="Immigraze home">
+      <img class="logo-img" src="data:image/webp;base64,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" alt="Immigraze — Canadian Immigration Consulting" width="366" height="126">
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#services">Immigrate</a>
+      <a href="#services">Work</a>
+      <a href="#services">Study</a>
+      <a href="#services">Visit</a>
+      <a href="#why">About</a>
+      <a href="#connect">Contact</a>
+    </nav>
+    <div class="header-cta">
+      <a class="tel" href="tel:+16475640805">647&nbsp;564&nbsp;0805</a>
+      <a class="btn btn--ghost" href="#connect">Book a call</a>
+      <a class="btn btn--gold" href="#assessment">Free assessment</a>
+    </div>
+    <button class="menu-btn" id="menuOpen" aria-label="Open menu" aria-expanded="false">Menu</button>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="top">
+    <img class="logo-img" src="data:image/webp;base64,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" alt="Immigraze" width="366" height="126">
+    <button class="close-btn" id="menuClose" aria-label="Close menu">Close</button>
+  </div>
+  <nav>
+    <a href="#services">Immigrate</a>
+    <a href="#services">Work</a>
+    <a href="#services">Study</a>
+    <a href="#services">Visit</a>
+    <a href="#why">About</a>
+    <a href="#connect">Contact</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <div class="mm-cta">
+    <a class="btn btn--gold" href="#assessment">Start your free assessment</a>
+    <a class="btn btn--ghost" href="tel:+16475640805">Call 647 564 0805</a>
+  </div>
+</div>
+
+<main>
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1517935706615-2717063c2225?auto=format&fit=crop&w=2000&q=80" alt="" loading="eager" fetchpriority="high" onerror="this.style.display='none'">
+  </div>
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <p class="eyebrow reveal">Licensed Canadian immigration consulting</p>
+        <h1 class="reveal">Your path to Canada,<br><span class="gold-i">handled properly.</span></h1>
+        <p class="hero-sub reveal">Immigraze guides individuals, families and employers through every IRCC application — with honest advice about your real chances, from a consultant you can verify.</p>
+        <div class="hero-ctas reveal">
+          <a class="btn btn--gold" href="#assessment">Start your free assessment <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn--ghost" href="tel:+16475640805">Call 647 564 0805</a>
+        </div>
+        <div class="journey-wrap" aria-hidden="true">
+          <svg viewBox="0 0 480 36" fill="none">
+            <path class="journey-path" id="heroPath" d="M2 28 C 100 28, 135 8, 225 13 S 395 32, 452 17"/>
+            <path class="leaf-node" id="heroLeaf" opacity="0" transform="translate(452,17) scale(1.2)" d="M0-9l1.6 3.3 3.4-.9-1.1 3.3 2.9 1.8-2.9 1.8 1.1 3.3-3.4-.9L0 9l-1.6-3.3-3.4.9 1.1-3.3L-6.8 1.5l2.9-1.8-1.1-3.3 3.4.9L0-9z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="hero-card reveal">
+        <div class="frame" aria-hidden="true"></div>
+        <div class="hero-photo">
+          <img src="https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=900&q=80" alt="The CN Tower rising over Toronto" loading="eager" onerror="this.src='https://images.unsplash.com/photo-1507992781348-310259076fe0?auto=format&fit=crop&w=900&q=80';this.onerror=function(){this.style.display='none'}">
+          <div class="maple-badge" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="currentColor"><path d="M32 4l3.4 8.9c.3.9 1 1.1 1.8.6l5.4-3.4-1.9 8.9c-.2 1.1.6 1.7 1.6 1.2l7.5-3.7-2.6 6.6c-.3.8 0 1.4.8 1.6l4 1-8.7 7.9c-.6.6-.8 1.2-.5 2l1.2 3.6-9.4-1.9c-1-.2-1.6.3-1.5 1.3l.7 8.4h-3.6l.7-8.4c.1-1-.5-1.5-1.5-1.3l-9.4 1.9 1.2-3.6c.3-.8.1-1.4-.5-2L12 25.7l4-1c.8-.2 1.1-.8.8-1.6l-2.6-6.6 7.5 3.7c1 .5 1.8-.1 1.6-1.2l-1.9-8.9 5.4 3.4c.8.5 1.5.3 1.8-.6L32 4z"/><rect x="30.6" y="46" width="2.8" height="14" rx="1.2"/></svg>
+          </div>
+          <div class="maple-caption">Toronto · Canada</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat reveal"><b><span data-count="10">0</span>+</b><span>Years in practice</span></div>
+      <div class="hero-stat reveal"><b><span data-count="500">0</span>+</b><span>Applications prepared</span></div>
+      <div class="hero-stat reveal"><b><span data-count="30">0</span>+</b><span>Countries served</span></div>
+      <div class="hero-stat reveal"><b>&lt;1 day</b><span>Response time</span></div>
+    </div>
+  </div>
+  <svg class="scroll-hint" width="22" height="30" viewBox="0 0 22 30" fill="none" aria-hidden="true"><rect x="1" y="1" width="20" height="28" rx="10" stroke="currentColor" stroke-width="1.5"/><circle cx="11" cy="9" r="2.5" fill="currentColor"/></svg>
+</section>
+
+<!-- ================= TRUST STRIP ================= -->
+<div class="trust">
+  <div class="container trust-inner">
+    <span class="trust-item"><svg class="tick" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8.5l3.5 3.5 7.5-8"/></svg><span>RCIC <b>#R——</b> · CICC member — <a href="https://register.college-ic.ca/" rel="noopener">verify on the public register ↗</a></span></span>
+    <span class="trust-item"><svg class="tick" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8.5l3.5 3.5 7.5-8"/></svg><span>Fixed fees, quoted in writing</span></span>
+    <span class="trust-item"><svg class="tick" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8.5l3.5 3.5 7.5-8"/></svg><span>Every page reviewed against current IRCC guidelines</span></span>
+  </div>
+</div>
+
+<!-- ================= GET IN TOUCH ================= -->
+<section class="section section--ivory" id="connect">
+  <div class="container connect-grid">
+    <div class="connect-info reveal">
+      <p class="eyebrow">Get in touch</p>
+      <h2 style="margin-top:16px">Let's talk about your <span class="gold-i">immigration journey.</span></h2>
+      <p style="color:var(--ink-600);margin-top:16px">We offer a free* initial consultation to understand your situation and identify the right path forward. Reach out today — our team is ready to help.</p>
+      <ul class="connect-list">
+        <li>
+          <span class="c-ic" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3.5h4l2 5-2.5 1.5a12 12 0 0 0 4.5 4.5L13.5 12l5 2v4a1.5 1.5 0 0 1-1.6 1.5C9.6 19 3 12.4 2.5 5.1A1.5 1.5 0 0 1 4 3.5z"/></svg></span>
+          <div><strong>Phone</strong><a href="tel:+16475640805">647 564 0805</a></div>
+        </li>
+        <li>
+          <span class="c-ic" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="17" height="13" rx="2"/><path d="M3 6l8 6 8-6"/></svg></span>
+          <div><strong>Email</strong><a href="mailto:immigraze@gmail.com">immigraze@gmail.com</a></div>
+        </li>
+        <li>
+          <span class="c-ic" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="11" cy="9" r="2.6"/></svg></span>
+          <div><strong>Office address</strong><span>7027 Fir Tree Dr Unit C,<br>Mississauga, ON L5S 1J7</span></div>
+        </li>
+        <li>
+          <span class="c-ic" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8.5"/><path d="M11 6.5V11l3 2"/></svg></span>
+          <div><strong>Office hours</strong><span>Monday – Saturday, 10 AM – 6 PM</span></div>
+        </li>
+        <li>
+          <span class="c-ic" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8.5"/><path d="M2.5 11h17M11 2.5c-4 4-4 13 0 17 4-4 4-13 0-17z"/></svg></span>
+          <div><strong>Worldwide</strong><span>Video &amp; WhatsApp consultations in your time zone</span></div>
+        </li>
+      </ul>
+      <p class="c-fine">*Free initial consultation — terms provided on booking.</p>
+    </div>
+    <div class="connect-form reveal">
+      <form id="contactForm" novalidate>
+        <h3>Get in Touch</h3>
+        <p class="cf-sub">Tell us a little about your situation — we reply within one business day.</p>
+        <div class="f-row">
+          <div class="f-field">
+            <label for="fName">First name</label>
+            <input type="text" id="fName" name="firstName" autocomplete="given-name" required>
+          </div>
+          <div class="f-field">
+            <label for="lName">Last name</label>
+            <input type="text" id="lName" name="lastName" autocomplete="family-name" required>
+          </div>
+        </div>
+        <div class="f-row">
+          <div class="f-field">
+            <label for="fEmail">Email address</label>
+            <input type="email" id="fEmail" name="email" autocomplete="email" required>
+          </div>
+          <div class="f-field">
+            <label for="fPhone">Phone number</label>
+            <input type="tel" id="fPhone" name="phone" autocomplete="tel" required>
+          </div>
+        </div>
+        <div class="f-field">
+          <label for="fService">Service needed</label>
+          <div class="select-wrap">
+            <select id="fService" name="service" required>
+              <option value="" selected disabled>Select a service…</option>
+              <option>Visitor Visa / Extension</option>
+              <option>Post-Graduation Work Permit</option>
+              <option>Permanent Residency</option>
+              <option>Family Sponsorship</option>
+              <option>Work Permit</option>
+              <option>General Consultation</option>
+            </select>
+            <svg class="sel-chev" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 8l5 5 5-5"/></svg>
+          </div>
+        </div>
+        <div class="f-field">
+          <label for="fMsg">Your message</label>
+          <textarea id="fMsg" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn--gold" style="width:100%">Send message <span class="arrow" aria-hidden="true">→</span></button>
+        <p class="cf-note" id="formNote" role="status">Confidential. Your information is never sold.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Services</p>
+      <h2>How can we help you <span class="gold-i">get to Canada?</span></h2>
+      <p>Start with your goal — we'll map the pathway. Programs, eligibility and timelines live one click deeper, in plain language.</p>
+    </div>
+    <div class="cards-4">
+      <a class="pcard reveal" href="#">
+        <span class="topline" aria-hidden="true"></span>
+        <img src="https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=900&q=80" alt="Mountain lake in the Canadian Rockies" loading="lazy" onerror="this.style.display='none'">
+        <div class="pcard-body">
+          <span class="pcard-num">I</span>
+          <h3>Immigrate</h3>
+          <p>Permanent residence through Express Entry, provincial nomination, family sponsorship and the Home Care Worker Pilots.</p>
+          <span class="link">Explore PR pathways <span class="arrow" aria-hidden="true">→</span></span>
+        </div>
+      </a>
+      <a class="pcard reveal" href="#">
+        <span class="topline" aria-hidden="true"></span>
+        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=900&q=80" alt="Professionals collaborating in a modern office" loading="lazy" onerror="this.style.display='none'">
+        <div class="pcard-body">
+          <span class="pcard-num">II</span>
+          <h3>Work</h3>
+          <p>Work permits for you — and LMIA support for employers hiring the people they can't find at home.</p>
+          <span class="link">Work in Canada <span class="arrow" aria-hidden="true">→</span></span>
+        </div>
+      </a>
+      <a class="pcard reveal" href="#">
+        <span class="topline" aria-hidden="true"></span>
+        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=80" alt="Students studying together on campus" loading="lazy" onerror="this.style.display='none'">
+        <div class="pcard-body">
+          <span class="pcard-num">III</span>
+          <h3>Study</h3>
+          <p>Study permits done right — and a plan for what comes after, from PGWP to permanent residence.</p>
+          <span class="link">Study in Canada <span class="arrow" aria-hidden="true">→</span></span>
+        </div>
+      </a>
+      <a class="pcard reveal" href="#">
+        <span class="topline" aria-hidden="true"></span>
+        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=900&q=80" alt="Airplane wing above the clouds" loading="lazy" onerror="this.style.display='none'">
+        <div class="pcard-body">
+          <span class="pcard-num">IV</span>
+          <h3>Visit</h3>
+          <p>Visitor visas, Super Visas for parents and grandparents, and eTAs — prepared so refusals don't happen twice.</p>
+          <span class="link">Visit Canada <span class="arrow" aria-hidden="true">→</span></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESS (navy) ================= -->
+<section class="section section--navy" id="process">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">How it works</p>
+      <h2>A clear process, <span class="gold-i">start to finish.</span></h2>
+      <p>You'll always know where your file stands, what we're doing, and what we need from you.</p>
+    </div>
+    <div class="process-track">
+      <div class="process-line" aria-hidden="true">
+        <svg viewBox="0 0 1000 30" preserveAspectRatio="none">
+          <path class="journey-path" id="processPath" d="M0 15 C 160 15, 200 4, 333 15 S 560 27, 666 15 S 900 4, 1000 15"/>
+        </svg>
+      </div>
+      <div class="step reveal"><div class="step-num">I</div><h3>Assess</h3><p><b>You</b> complete a free 2-minute profile. <b>We</b> review it — a licensed consultant, not a bot — and tell you honestly which pathways are realistic.</p></div>
+      <div class="step reveal"><div class="step-num">II</div><h3>Strategy</h3><p><b>You</b> choose how to proceed after a consultation. <b>We</b> map your strongest route, timelines and costs — including the risks other firms gloss over.</p></div>
+      <div class="step reveal"><div class="step-num">III</div><h3>Prepare</h3><p><b>You</b> gather documents from a personalized checklist. <b>We</b> review everything, draft your forms and build a submission that anticipates officer questions.</p></div>
+      <div class="step reveal"><div class="step-num">IV</div><h3>Submit &amp; follow through</h3><p><b>We</b> file with IRCC as your authorized representative, monitor your case, and respond to every request until a decision lands.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY ================= -->
+<section class="section section--ivory" id="why">
+  <div class="container why-grid">
+    <div>
+      <p class="eyebrow reveal">Why Immigraze</p>
+      <h2 class="reveal" style="margin-top:16px">Why families choose us with the <span class="gold-i">biggest decision</span> of their lives.</h2>
+      <ul class="proof">
+        <li class="reveal"><svg class="leaf" viewBox="0 0 26 26" fill="currentColor" aria-hidden="true"><path d="M13 2.5l2.2 4.6 4.8-1.2-1.6 4.6 4.1 2.5-4.1 2.5 1.6 4.6-4.8-1.2L13 23.5l-2.2-4.6-4.8 1.2 1.6-4.6L3.5 13l4.1-2.5-1.6-4.6 4.8 1.2L13 2.5z"/></svg><div><strong>Licensed and verifiable</strong><p>A Regulated Canadian Immigration Consultant in good standing — check the CICC public register yourself. We'd rather you did.</p></div></li>
+        <li class="reveal"><svg class="leaf" viewBox="0 0 26 26" fill="currentColor" aria-hidden="true"><path d="M13 2.5l2.2 4.6 4.8-1.2-1.6 4.6 4.1 2.5-4.1 2.5 1.6 4.6-4.8-1.2L13 23.5l-2.2-4.6-4.8 1.2 1.6-4.6L3.5 13l4.1-2.5-1.6-4.6 4.8 1.2L13 2.5z"/></svg><div><strong>Honest assessments</strong><p>If a pathway isn't realistic for your profile, we say so — before you spend money, not after.</p></div></li>
+        <li class="reveal"><svg class="leaf" viewBox="0 0 26 26" fill="currentColor" aria-hidden="true"><path d="M13 2.5l2.2 4.6 4.8-1.2-1.6 4.6 4.1 2.5-4.1 2.5 1.6 4.6-4.8-1.2L13 23.5l-2.2-4.6-4.8 1.2 1.6-4.6L3.5 13l4.1-2.5-1.6-4.6 4.8 1.2L13 2.5z"/></svg><div><strong>One point of contact</strong><p>Your case isn't passed around a call centre. You work with the consultant who signs your file.</p></div></li>
+        <li class="reveal"><svg class="leaf" viewBox="0 0 26 26" fill="currentColor" aria-hidden="true"><path d="M13 2.5l2.2 4.6 4.8-1.2-1.6 4.6 4.1 2.5-4.1 2.5 1.6 4.6-4.8-1.2L13 23.5l-2.2-4.6-4.8 1.2 1.6-4.6L3.5 13l4.1-2.5-1.6-4.6 4.8 1.2L13 2.5z"/></svg><div><strong>Current with IRCC — provably</strong><p>Immigration rules change monthly. Every page on this site carries a "last reviewed" date, and our news feed shows we keep up.</p></div></li>
+      </ul>
+    </div>
+    <div class="why-photo reveal">
+      <div class="frame" aria-hidden="true"></div>
+      <div class="ph">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1000&q=80" alt="Consultant meeting with a client" loading="lazy" onerror="this.style.display='none'">
+      </div>
+      <div class="stat-chips">
+        <div class="stat-chip"><b>Fixed fees</b><span>quoted in writing</span></div>
+        <div class="stat-chip"><b>Worldwide</b><span>calls in your time zone</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PARALLAX BAND ================= -->
+<section class="band" aria-label="Canada awaits">
+  <div class="band-bg" aria-hidden="true">
+    <img id="bandImg" src="https://images.unsplash.com/photo-1519832979-6fa011b87667?auto=format&fit=crop&w=2000&q=80" alt="" loading="lazy" onerror="this.style.display='none'">
+  </div>
+  <div class="band-content reveal">
+    <p class="eyebrow">The destination is worth the paperwork</p>
+    <h2>Canada doesn't just change your address.<br>It changes <span class="gold-i">what's possible.</span></h2>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="section" id="stories">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Success stories</p>
+      <h2>Real <span class="gold-i">journeys.</span></h2>
+      <p>Dated, program-specific, shared with permission. That's the only kind of proof worth showing.</p>
+    </div>
+    <div class="t-row reveal">
+      <article class="t-card">
+        <div class="qmark" aria-hidden="true">“</div>
+        <span class="t-tag">Spousal sponsorship</span>
+        <blockquote>After a refusal with another representative, Immigraze rebuilt our file from zero and told us exactly what had gone wrong. My husband landed in Toronto eleven months later.</blockquote>
+        <div class="t-meta"><div class="avatar">SA</div><div><strong>Sample client · Philippines → Ontario</strong><span>Approved · example entry</span></div></div>
+      </article>
+      <article class="t-card">
+        <div class="qmark" aria-hidden="true">“</div>
+        <span class="t-tag">Express Entry — CEC</span>
+        <blockquote>They were the first people who didn't promise me anything. They showed me my real CRS position and a plan to improve it. That honesty is why I trusted them with the application.</blockquote>
+        <div class="t-meta"><div class="avatar">RK</div><div><strong>Sample client · India → British Columbia</strong><span>PR confirmed · example entry</span></div></div>
+      </article>
+      <article class="t-card">
+        <div class="qmark" aria-hidden="true">“</div>
+        <span class="t-tag">LMIA — employer</span>
+        <blockquote>As a small business we had no idea where to start with an LMIA. Immigraze handled the compliance end to end and kept us updated weekly.</blockquote>
+        <div class="t-meta"><div class="avatar">MB</div><div><strong>Sample employer · Ontario</strong><span>Positive LMIA · example entry</span></div></div>
+      </article>
+      <article class="t-card">
+        <div class="qmark" aria-hidden="true">“</div>
+        <span class="t-tag">Study → PR pathway</span>
+        <blockquote>They planned my route from study permit to PGWP to permanent residence before I ever left home. Every step happened the way they said it would.</blockquote>
+        <div class="t-meta"><div class="avatar">AO</div><div><strong>Sample client · Nigeria → Nova Scotia</strong><span>PR in progress · example entry</span></div></div>
+      </article>
+    </div>
+    <p class="demo-note">Prototype note: cards above are illustrative placeholders — replace with real, consented, dated client stories.</p>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="section section--ivory" id="faq">
+  <div class="container">
+    <div class="section-head reveal" style="margin-inline:auto;text-align:center;max-width:580px">
+      <p class="eyebrow" style="justify-content:center">FAQ</p>
+      <h2>Questions people ask us <span class="gold-i">every week.</span></h2>
+    </div>
+    <div class="faq reveal">
+      <details><summary>How much does it cost to work with Immigraze? <svg class="chev" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 8l5 5 5-5"/></svg></summary><div class="faq-body">Fees depend on the program and how much representation you want. We quote a fixed fee in writing before you commit — no hourly surprises, and government fees are always listed separately so you can see exactly where your money goes.</div></details>
+      <details><summary>Can you guarantee my application will be approved? <svg class="chev" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 8l5 5 5-5"/></svg></summary><div class="faq-body">No — and you should walk away from anyone who says yes. Decisions belong to IRCC alone. What we can do is make sure your application is complete, accurate, well-argued and submitted under the right program, which is where most preventable refusals happen.</div></details>
+      <details><summary>I don't live in Canada. Can you still represent me? <svg class="chev" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 8l5 5 5-5"/></svg></summary><div class="faq-body">Yes. Almost every IRCC application is filed online, and we work with clients worldwide by video call, WhatsApp and secure document sharing — in your time zone. Call us at 647 564 0805 or email immigraze@gmail.com to set up a time.</div></details>
+      <details><summary>My application was refused before. Is it hopeless? <svg class="chev" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 8l5 5 5-5"/></svg></summary><div class="faq-body">Usually not. A refusal is information: we obtain the officer's notes, find out exactly why it happened, and decide whether to reapply, respond or pursue another pathway. Many of our strongest approvals started as someone else's refusal.</div></details>
+      <details><summary>How do I know you're not a "ghost consultant"? <svg class="chev" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 8l5 5 5-5"/></svg></summary><div class="faq-body">Check — don't take our word for it. Every Regulated Canadian Immigration Consultant is listed on the CICC's public register with their licence number and standing. Ours is in the footer of every page, linked directly to the register.</div></details>
+      <details><summary>What happens after I submit the free assessment? <svg class="chev" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 8l5 5 5-5"/></svg></summary><div class="faq-body">A licensed consultant reviews your profile personally and replies within one business day with an honest read on your options — including, when it's the truth, "not yet, and here's what would change that."</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section class="cta-final" id="assessment">
+  <div class="glow" aria-hidden="true"></div>
+  <div class="container reveal">
+    <p class="eyebrow">Free assessment</p>
+    <h2>Find out where you stand — <span class="gold-i">free, in 2 minutes.</span></h2>
+    <p>Answer a few questions about your goals, education and experience. A licensed consultant — not a bot — reviews every profile.</p>
+    <a class="btn btn--gold" href="#">Start your free assessment <span class="arrow" aria-hidden="true">→</span></a>
+    <div class="cta-contacts">
+      <a href="tel:+16475640805">📞 647 564 0805</a>
+      <a href="mailto:immigraze@gmail.com">✉ immigraze@gmail.com</a>
+    </div>
+    <p class="cta-fineprint">Confidential. No obligation. Your information is never sold.</p>
+  </div>
+</section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer" id="contact">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <img class="logo-img" src="data:image/webp;base64,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" alt="Immigraze" width="366" height="126" loading="lazy">
+      <p>Licensed Canadian immigration consulting for individuals, families and employers — worldwide.</p>
+    </div>
+    <div>
+      <h4>Pathways</h4>
+      <ul>
+        <li><a href="#">Express Entry</a></li>
+        <li><a href="#">Provincial Nominee Programs</a></li>
+        <li><a href="#">Family Sponsorship</a></li>
+        <li><a href="#">Home Care Worker Pilots</a></li>
+        <li><a href="#">Work Permits &amp; LMIA</a></li>
+        <li><a href="#">Study &amp; Visitor Visas</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#why">About &amp; credentials</a></li>
+        <li><a href="#stories">Success stories</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#assessment">Free assessment</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <address class="contact-list">
+        <span><b>Phone:</b> <a href="tel:+16475640805">647 564 0805</a></span>
+        <span><b>Email:</b> <a href="mailto:immigraze@gmail.com">immigraze@gmail.com</a></span>
+        <span><b>WhatsApp:</b> <a href="https://wa.me/16475640805" rel="noopener">message us</a></span>
+        <span><b>Office:</b> 7027 Fir Tree Dr Unit C,<br>Mississauga, ON L5S 1J7</span>
+        <span><b>Hours:</b> Mon – Sat, 10 AM – 6 PM</span>
+        <span>Serving clients worldwide — calls in your time zone.</span>
+      </address>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <span>© 2026 Immigraze. [Existing regulatory / licensing statement reproduced verbatim here.] RCIC #R—— · <a href="https://register.college-ic.ca/" rel="noopener">Verify on the CICC register ↗</a></span>
+      <span><a href="#">Privacy</a> · <a href="#">Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp (mobile) -->
+<a class="wa-fab" href="https://wa.me/16475640805" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 01-3.3-2.9c-.3-.4.2-.4.6-1.3.1-.2 0-.4 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.1 2.2-.2 3.9a12 12 0 004.6 4.3c1.7.8 2.4.9 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.2-.3-.2-.5-.3z"/></svg>
+</a>
+
+<!-- Mobile sticky CTA -->
+<div class="sticky-cta">
+  <a class="btn btn--gold" href="#assessment">Start your free assessment</a>
+</div>
+
+<script>
+(function(){
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Header: transparent over hero, glass after scroll */
+  var header = document.getElementById('header');
+  function onScroll(){
+    header.classList.toggle('is-scrolled', window.scrollY > 40);
+    /* gentle parallax on band image */
+    if (!reduceMotion && bandImg){
+      var r = bandImg.parentElement.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < innerHeight){
+        var p = (r.top / innerHeight) * 40;
+        bandImg.style.transform = 'translateY(' + p + 'px)';
+      }
+    }
+  }
+  var bandImg = document.getElementById('bandImg');
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* Mobile menu */
+  var mm = document.getElementById('mobileMenu');
+  var open = document.getElementById('menuOpen');
+  var close = document.getElementById('menuClose');
+  function setMenu(v){
+    mm.classList.toggle('open', v);
+    open.setAttribute('aria-expanded', v);
+    document.body.style.overflow = v ? 'hidden' : '';
+    (v ? close : open).focus();
+  }
+  open.addEventListener('click', function(){ setMenu(true); });
+  close.addEventListener('click', function(){ setMenu(false); });
+  mm.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setMenu(false); }); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && mm.classList.contains('open')) setMenu(false); });
+
+  /* Hero Journey Line draw */
+  var heroPath = document.getElementById('heroPath');
+  var heroLeaf = document.getElementById('heroLeaf');
+  if (heroPath){
+    var len = heroPath.getTotalLength();
+    if (reduceMotion){
+      heroLeaf.setAttribute('opacity','1');
+    } else {
+      heroPath.style.strokeDasharray = len;
+      heroPath.style.strokeDashoffset = len;
+      heroPath.style.transition = 'stroke-dashoffset 1.3s cubic-bezier(.22,.61,.36,1) .5s';
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){
+        heroPath.style.strokeDashoffset = '0';
+      });});
+      setTimeout(function(){
+        heroLeaf.style.transition = 'opacity .4s ease';
+        heroLeaf.setAttribute('opacity','1');
+      }, 1750);
+    }
+  }
+
+  /* Scroll reveals */
+  var reveals = document.querySelectorAll('.reveal');
+  if (reduceMotion || !('IntersectionObserver' in window)){
+    reveals.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:.15, rootMargin:'0px 0px -40px 0px'});
+    reveals.forEach(function(el, i){
+      el.style.transitionDelay = (i % 4) * 80 + 'ms';
+      io.observe(el);
+    });
+  }
+
+  /* Process line draw */
+  var pPath = document.getElementById('processPath');
+  if (pPath && !reduceMotion && 'IntersectionObserver' in window){
+    var plen = pPath.getTotalLength();
+    pPath.style.strokeDasharray = plen;
+    pPath.style.strokeDashoffset = plen;
+    var pio = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){
+          pPath.style.transition = 'stroke-dashoffset 1.8s cubic-bezier(.22,.61,.36,1)';
+          pPath.style.strokeDashoffset = '0';
+          pio.disconnect();
+        }
+      });
+    }, {threshold:.4});
+    pio.observe(pPath.closest('.process-track'));
+  }
+
+  /* Contact form: validate, then open a pre-filled email to immigraze@gmail.com.
+     (In production, point this at your form handler / CRM instead.) */
+  var form = document.getElementById('contactForm');
+  if (form){
+    form.addEventListener('submit', function(ev){
+      ev.preventDefault();
+      var note = document.getElementById('formNote');
+      var fields = form.querySelectorAll('input, select, textarea');
+      var ok = true;
+      fields.forEach(function(f){
+        var valid = f.checkValidity() && f.value.trim() !== '';
+        f.classList.toggle('err', !valid);
+        if (!valid) ok = false;
+      });
+      if (!ok){
+        note.textContent = 'Please complete the highlighted fields.';
+        note.style.color = '#D46A6A';
+        return;
+      }
+      var v = function(id){ return document.getElementById(id).value.trim(); };
+      var subject = 'Website enquiry — ' + v('fService') + ' — ' + v('fName') + ' ' + v('lName');
+      var body = 'Name: ' + v('fName') + ' ' + v('lName') +
+        '\nEmail: ' + v('fEmail') +
+        '\nPhone: ' + v('fPhone') +
+        '\nService needed: ' + v('fService') +
+        '\n\nMessage:\n' + v('fMsg');
+      window.location.href = 'mailto:immigraze@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      note.textContent = 'Opening your email app to send — we reply within one business day.';
+      note.style.color = '';
+    });
+  }
+
+  /* Count-up stats */
+  var counters = document.querySelectorAll('[data-count]');
+  function animateCount(el){
+    var target = parseInt(el.getAttribute('data-count'), 10);
+    var t0 = null;
+    function tick(t){
+      if (!t0) t0 = t;
+      var p = Math.min((t - t0) / 1100, 1);
+      el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  if (!reduceMotion && 'IntersectionObserver' in window){
+    var cio = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ animateCount(e.target); cio.unobserve(e.target); }
+      });
+    }, {threshold:.6});
+    counters.forEach(function(el){ cio.observe(el); });
+  } else {
+    counters.forEach(function(el){ el.textContent = el.getAttribute('data-count'); });
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rolling Freight — Interstate Trucking | Brampton, ON | Canada–US Cross-Border Carrier</title>
+<meta name="description" content="Rolling Freight is an owner-operated interstate freight carrier based in Brampton, Ontario. Fully authorized (USDOT 3048437 · MC 048542), $1M insured, zero-accident record. Call (647) 548-6601 for a quote.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;700;800;900&family=Overpass+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sign-green:#0B5137;
+    --sign-green-deep:#083D2A;
+    --asphalt:#17191B;
+    --paper:#F7F6F1;
+    --white:#FFFFFF;
+    --ink:#1C2420;
+    --ink-soft:#4B5550;
+    --caution:#F2B705;
+    --line:#DDDCD2;
+    --radius-sign:18px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none!important;transition:none!important}
+  }
+  body{
+    font-family:'Overpass',system-ui,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+    font-size:17px;
+  }
+  .mono{font-family:'Overpass Mono',monospace}
+  img{max-width:100%}
+  a{color:inherit}
+  .skip-link{
+    position:absolute;left:-9999px;top:0;background:var(--caution);color:var(--ink);
+    padding:.75rem 1.25rem;font-weight:700;z-index:100;border-radius:0 0 8px 0;
+  }
+  .skip-link:focus{left:0}
+  :focus-visible{outline:3px solid var(--caution);outline-offset:3px}
+
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+  /* ============ HEADER ============ */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:var(--sign-green);
+    border-bottom:4px solid var(--caution);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 24px;max-width:1120px;margin:0 auto;gap:16px;
+  }
+  .brand{
+    display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--white);
+  }
+  .shield{
+    width:44px;height:48px;flex:none;
+  }
+  .brand-name{
+    font-weight:900;font-size:1.25rem;letter-spacing:.02em;line-height:1.05;text-transform:uppercase;
+  }
+  .brand-sub{
+    display:block;font-family:'Overpass Mono',monospace;font-weight:400;font-size:.62rem;
+    letter-spacing:.22em;opacity:.85;text-transform:uppercase;margin-top:2px;
+  }
+  nav ul{display:flex;gap:4px;list-style:none;align-items:center;flex-wrap:wrap}
+  nav a.navlink{
+    color:var(--white);text-decoration:none;font-weight:600;font-size:.92rem;
+    padding:.5rem .8rem;border-radius:8px;
+  }
+  nav a.navlink:hover{background:rgba(255,255,255,.14)}
+  .nav-phone{
+    background:var(--caution);color:var(--ink);text-decoration:none;font-weight:800;
+    padding:.55rem 1rem;border-radius:8px;font-size:.95rem;white-space:nowrap;
+  }
+  .nav-phone:hover{background:#ffd23f}
+  @media(max-width:760px){
+    nav ul li.hide-m{display:none}
+    .brand-name{font-size:1.05rem}
+  }
+
+  /* ============ HERO: highway guide sign ============ */
+  .hero{
+    background:
+      linear-gradient(180deg, rgba(26,28,31,.65) 0%, rgba(23,25,27,.70) 100%),
+      url('https://images.unsplash.com/photo-1473445730015-841f29a9490b?q=80&w=1800&auto=format&fit=crop') center 60%/cover no-repeat;
+    position:relative;
+    padding:72px 24px 88px;
+    overflow:hidden;
+  }
+  /* lane dashes down the middle */
+  .hero::after{
+    content:"";position:absolute;left:50%;top:0;bottom:0;width:8px;transform:translateX(-50%);
+    background:repeating-linear-gradient(to bottom, rgba(242,183,5,.28) 0 46px, transparent 46px 92px);
+    pointer-events:none;
+  }
+  .hero-inner{max-width:1120px;margin:0 auto;position:relative;z-index:1;
+    display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+  @media(max-width:900px){.hero-inner{grid-template-columns:1fr}}
+  .hero h1{
+    color:var(--white);font-weight:900;font-size:clamp(2.1rem,5vw,3.4rem);
+    line-height:1.06;letter-spacing:-.01em;text-transform:uppercase;
+  }
+  .hero h1 em{font-style:normal;color:var(--caution)}
+  .hero p.lede{color:#C9CDC9;margin:20px 0 30px;max-width:34rem;font-size:1.08rem}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{
+    display:inline-block;text-decoration:none;font-weight:800;border-radius:10px;
+    padding:.9rem 1.5rem;font-size:1rem;letter-spacing:.01em;
+  }
+  .btn-primary{background:var(--caution);color:var(--ink)}
+  .btn-primary:hover{background:#ffd23f}
+  .btn-ghost{border:2px solid rgba(255,255,255,.45);color:var(--white)}
+  .btn-ghost:hover{border-color:var(--white);background:rgba(255,255,255,.08)}
+
+  /* the guide sign itself */
+  .guide-sign{
+    background:var(--sign-green);
+    border:5px solid var(--white);
+    border-radius:var(--radius-sign);
+    box-shadow:0 18px 50px rgba(0,0,0,.45), inset 0 0 0 2px var(--sign-green-deep);
+    padding:26px 28px;color:var(--white);
+    transform:rotate(.4deg);
+  }
+  .guide-sign .sign-top{
+    display:flex;justify-content:space-between;align-items:baseline;
+    border-bottom:2px solid rgba(255,255,255,.35);padding-bottom:12px;margin-bottom:14px;
+  }
+  .guide-sign .sign-top strong{font-size:1.3rem;font-weight:800;letter-spacing:.02em;text-transform:uppercase}
+  .guide-sign .sign-top span{font-family:'Overpass Mono',monospace;font-size:.78rem;letter-spacing:.14em;opacity:.85}
+  .sign-row{
+    display:flex;justify-content:space-between;align-items:center;gap:12px;
+    padding:9px 0;font-weight:700;font-size:1.06rem;
+  }
+  .sign-row + .sign-row{border-top:1px solid rgba(255,255,255,.16)}
+  .sign-row .arrow{color:var(--caution);font-weight:800}
+  .sign-row .dist{font-family:'Overpass Mono',monospace;font-weight:400;font-size:.85rem;opacity:.85;white-space:nowrap}
+  .sign-foot{
+    margin-top:14px;padding-top:12px;border-top:2px solid rgba(255,255,255,.35);
+    font-family:'Overpass Mono',monospace;font-size:.75rem;letter-spacing:.12em;opacity:.9;text-transform:uppercase;
+  }
+
+  /* ============ CREDENTIAL STRIP ============ */
+  .cred-strip{
+    background:var(--white);border-bottom:1px solid var(--line);
+  }
+  .cred-inner{
+    max-width:1120px;margin:0 auto;padding:18px 24px;
+    display:flex;flex-wrap:wrap;gap:10px 34px;justify-content:center;align-items:center;
+  }
+  .cred{
+    font-family:'Overpass Mono',monospace;font-size:.85rem;color:var(--ink-soft);letter-spacing:.05em;
+    display:flex;align-items:center;gap:8px;
+  }
+  .cred b{color:var(--ink);font-weight:700}
+  .cred .dot{width:8px;height:8px;border-radius:50%;background:var(--sign-green);flex:none}
+
+  /* ============ SECTIONS ============ */
+  section{padding:78px 0}
+  .eyebrow{
+    font-family:'Overpass Mono',monospace;font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--sign-green);font-weight:700;display:block;margin-bottom:12px;
+  }
+  h2{font-weight:900;font-size:clamp(1.7rem,3.4vw,2.4rem);line-height:1.12;text-transform:uppercase;letter-spacing:-.005em}
+  .section-intro{color:var(--ink-soft);max-width:44rem;margin-top:14px;font-size:1.05rem}
+
+  /* services */
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+  @media(max-width:860px){.svc-grid{grid-template-columns:1fr}}
+  .svc{
+    background:var(--white);border:1px solid var(--line);border-radius:14px;padding:28px;
+    border-top:5px solid var(--sign-green);
+    overflow:hidden;
+  }
+  .svc h3{font-weight:800;font-size:1.15rem;margin:14px 0 8px;text-transform:uppercase;letter-spacing:.01em}
+  .svc p{color:var(--ink-soft);font-size:.97rem}
+  .svc-photo{
+    display:block;width:calc(100% + 56px);height:180px;object-fit:cover;
+    margin:-28px -28px 0;border-radius:0;
+  }
+  @media(max-width:860px){.svc-photo{height:200px}}
+
+  /* safety record */
+  .safety{background:var(--sign-green);color:var(--white)}
+  .safety .eyebrow{color:var(--caution)}
+  .safety .section-intro{color:#CFE3D8}
+  .safety-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:44px}
+  @media(max-width:920px){.safety-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.safety-grid{grid-template-columns:1fr}}
+  /* mile-marker style stat */
+  .marker{
+    background:var(--sign-green-deep);
+    border:3px solid var(--white);border-radius:12px;
+    padding:22px 20px 18px;text-align:center;
+  }
+  .marker .num{
+    font-weight:900;font-size:2.5rem;line-height:1;letter-spacing:-.01em;color:var(--white);
+  }
+  .marker .num.gold{color:var(--caution)}
+  .marker .lbl{
+    font-family:'Overpass Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+    margin-top:10px;color:#BBD8C8;line-height:1.5;
+  }
+  .safety-note{
+    margin-top:26px;font-family:'Overpass Mono',monospace;font-size:.78rem;letter-spacing:.06em;color:#9FC5B1;
+  }
+
+  /* lanes as exit signs */
+  .lanes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+  @media(max-width:860px){.lanes-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:540px){.lanes-grid{grid-template-columns:1fr}}
+  .exit-sign{
+    background:var(--sign-green);color:var(--white);
+    border:4px solid var(--white);border-radius:12px;
+    box-shadow:0 6px 20px rgba(11,81,55,.22);
+    padding:16px 18px;
+    display:flex;justify-content:space-between;align-items:center;gap:10px;
+  }
+  .exit-sign .city{font-weight:800;font-size:1.05rem;text-transform:uppercase;letter-spacing:.01em}
+  .exit-sign .st{font-family:'Overpass Mono',monospace;font-size:.72rem;letter-spacing:.16em;opacity:.85;display:block;margin-top:2px}
+  .exit-sign .arr{color:var(--caution);font-weight:900;font-size:1.3rem}
+  .lanes-more{margin-top:26px;color:var(--ink-soft);font-size:.98rem}
+
+  /* about / owner-operated */
+  .about{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-top:8px}
+  @media(max-width:860px){.about-grid{grid-template-columns:1fr}}
+  .about-facts{list-style:none;margin-top:26px}
+  .about-facts li{
+    display:flex;gap:14px;padding:15px 0;border-bottom:1px dashed var(--line);align-items:flex-start;
+  }
+  .about-facts li:last-child{border-bottom:none}
+  .about-facts .check{
+    flex:none;width:26px;height:26px;border-radius:50%;background:var(--sign-green);
+    color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.85rem;margin-top:2px;
+  }
+  .about-facts b{display:block;font-weight:800}
+  .about-facts span{color:var(--ink-soft);font-size:.95rem}
+  .about-photo{
+    display:block;width:100%;height:220px;object-fit:cover;
+    border-radius:14px;border:1px solid var(--line);margin-bottom:18px;
+  }
+  /* logbook card */
+  .logbook{
+    background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:30px;
+  }
+  .logbook h3{
+    font-family:'Overpass Mono',monospace;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--sign-green);border-bottom:2px solid var(--sign-green);padding-bottom:10px;margin-bottom:6px;
+  }
+  .logbook dl{display:grid;grid-template-columns:auto 1fr;gap:0 20px}
+  .logbook dt{
+    font-family:'Overpass Mono',monospace;font-size:.78rem;letter-spacing:.08em;color:var(--ink-soft);
+    padding:12px 0;border-bottom:1px dashed var(--line);text-transform:uppercase;
+  }
+  .logbook dd{
+    font-weight:700;padding:12px 0;border-bottom:1px dashed var(--line);text-align:right;font-size:.95rem;
+  }
+  .logbook dt:last-of-type,.logbook dd:last-of-type{border-bottom:none}
+
+  /* contact */
+  .contact{background:var(--asphalt);color:var(--white);position:relative;overflow:hidden}
+  .contact::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:6px;
+    background:repeating-linear-gradient(90deg, var(--caution) 0 60px, transparent 60px 110px);
+  }
+  .contact .eyebrow{color:var(--caution)}
+  .contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+  @media(max-width:860px){.contact-grid{grid-template-columns:1fr}}
+  .big-phone{
+    display:inline-block;text-decoration:none;color:var(--white);
+    font-weight:900;font-size:clamp(2rem,5vw,3.2rem);letter-spacing:.01em;
+    border-bottom:4px solid var(--caution);padding-bottom:6px;margin:22px 0 10px;
+  }
+  .big-phone:hover{color:var(--caution)}
+  .contact p.hours{color:#A6ACA8;font-size:1rem;margin-top:10px}
+  .contact-card{
+    background:#1F2225;border:1px solid #33383B;border-radius:14px;padding:32px;
+  }
+  .contact-card h3{font-weight:800;text-transform:uppercase;font-size:1.05rem;letter-spacing:.03em;margin-bottom:18px}
+  .contact-card ul{list-style:none}
+  .contact-card li{
+    display:flex;gap:14px;padding:13px 0;border-bottom:1px solid #2B2F32;align-items:flex-start;color:#C9CDC9;font-size:.97rem;
+  }
+  .contact-card li:last-child{border-bottom:none}
+  .contact-card li svg{width:20px;height:20px;stroke:var(--caution);flex:none;margin-top:3px}
+  .contact-card a{color:var(--white);text-decoration:none;font-weight:700}
+  .contact-card a:hover{color:var(--caution)}
+
+  /* footer */
+  footer{background:#101214;color:#8A9089;padding:34px 0}
+  .foot-inner{
+    max-width:1120px;margin:0 auto;padding:0 24px;
+    display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center;
+  }
+  .foot-inner .mono{font-size:.75rem;letter-spacing:.08em}
+  footer a{color:#C9CDC9;text-decoration:none}
+  footer a:hover{color:var(--caution)}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header>
+  <div class="nav">
+    <a class="brand" href="#top" aria-label="Rolling Freight home">
+      <svg class="shield" viewBox="0 0 44 48" aria-hidden="true">
+        <path d="M22 1 L42 8 V26 C42 37 33 44.5 22 47 C11 44.5 2 37 2 26 V8 Z" fill="#F7F6F1" stroke="#083D2A" stroke-width="2"/>
+        <path d="M22 6 L37.5 11.5 V25.5 C37.5 34 30.5 40 22 42.3 C13.5 40 6.5 34 6.5 25.5 V11.5 Z" fill="#0B5137"/>
+        <text x="22" y="30" text-anchor="middle" font-family="Overpass, sans-serif" font-weight="900" font-size="15" fill="#FFFFFF">RF</text>
+      </svg>
+      <span>
+        <span class="brand-name">Rolling Freight</span>
+        <span class="brand-sub">Brampton · ON · Interstate</span>
+      </span>
+    </a>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li class="hide-m"><a class="navlink" href="#services">Services</a></li>
+        <li class="hide-m"><a class="navlink" href="#safety">Safety</a></li>
+        <li class="hide-m"><a class="navlink" href="#lanes">Lanes</a></li>
+        <li class="hide-m"><a class="navlink" href="#about">About</a></li>
+        <li><a class="nav-phone" href="tel:+16475486601">(647) 548-6601</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- HERO -->
+<div class="hero" id="top">
+  <div class="hero-inner">
+    <div>
+      <h1>Your freight, <em>rolling</em> across the border.</h1>
+      <p class="lede">Rolling Freight is a fully authorized interstate carrier based in Brampton, Ontario — hauling general freight and paper products between Canada and the United States since 2017. Owner-operated. Zero-accident record. Every load handled like it's our own.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="tel:+16475486601">Call for a quote</a>
+        <a class="btn btn-ghost" href="#safety">See our safety record</a>
+      </div>
+    </div>
+    <div class="guide-sign" role="img" aria-label="Highway guide sign showing lanes served from Brampton, Ontario to US destinations">
+      <div class="sign-top">
+        <strong>Brampton ON</strong>
+        <span>SOUTHBOUND</span>
+      </div>
+      <div class="sign-row"><span>Columbus <span class="st"></span></span><span class="dist">OH · 435 mi</span><span class="arrow">→</span></div>
+      <div class="sign-row"><span>Philadelphia</span><span class="dist">PA · 476 mi</span><span class="arrow">→</span></div>
+      <div class="sign-row"><span>Memphis</span><span class="dist">TN · 900 mi</span><span class="arrow">→</span></div>
+      <div class="sign-row"><span>Jacksonville</span><span class="dist">FL · 1,180 mi</span><span class="arrow">→</span></div>
+      <div class="sign-row"><span>Los Angeles</span><span class="dist">CA · 2,520 mi</span><span class="arrow">→</span></div>
+      <div class="sign-foot">All 48 states · Cross-border authorized</div>
+    </div>
+  </div>
+</div>
+
+<!-- CREDENTIALS -->
+<div class="cred-strip" aria-label="Credentials">
+  <div class="cred-inner">
+    <span class="cred"><span class="dot"></span><b>USDOT</b> 3048437</span>
+    <span class="cred"><span class="dot"></span><b>MC</b> 048542</span>
+    <span class="cred"><span class="dot"></span><b>AUTHORITY</b> Common · Active since 2017</span>
+    <span class="cred"><span class="dot"></span><b>INSURED</b> $1,000,000 BIPD</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <span class="eyebrow">What we haul</span>
+    <h2>Straightforward freight, done right</h2>
+    <p class="section-intro">We keep our lane simple: dry freight moved on time, communicated clearly, and delivered damage-free. No dispatch maze — you talk directly to the person driving your load.</p>
+    <div class="svc-grid">
+      <article class="svc">
+        <img class="svc-photo" src="https://images.unsplash.com/photo-1684695749267-233af13276d0?q=80&w=900&auto=format&fit=crop" alt="Palletized boxes stacked inside a freight warehouse" loading="lazy">
+        <h3>General freight</h3>
+        <p>Palletized and dry goods across all 48 states and Ontario. Full truckload service with careful load securement and clean delivery paperwork every time.</p>
+      </article>
+      <article class="svc">
+        <img class="svc-photo" src="https://images.unsplash.com/photo-1545287072-e39ac363b3c8?q=80&w=900&auto=format&fit=crop" alt="Packaged paper goods in labeled boxes ready for shipment" loading="lazy">
+        <h3>Paper products</h3>
+        <p>A specialty of ours — rolls, sheets, and packaged paper goods hauled with the moisture care and gentle handling this freight demands.</p>
+      </article>
+      <article class="svc">
+        <img class="svc-photo" src="https://images.unsplash.com/photo-1631744591853-998c4308bbb0?q=80&w=900&auto=format&fit=crop" alt="Semi truck on a long-haul mountain highway" loading="lazy">
+        <h3>Cross-border runs</h3>
+        <p>Interstate authority plus Canada–US border experience. We handle the crossing paperwork routine so your shipment doesn't sit at the line.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SAFETY -->
+<section class="safety" id="safety">
+  <div class="wrap">
+    <span class="eyebrow">FMCSA public record</span>
+    <h2>A safety record we don't have to explain</h2>
+    <p class="section-intro">Our compliance history is public — and we're glad it is. Verify every number yourself on the FMCSA SAFER system under USDOT 3048437.</p>
+    <div class="safety-grid">
+      <div class="marker">
+        <div class="num gold">0</div>
+        <div class="lbl">Crashes, injuries &amp; tow-aways<br>(24-month record)</div>
+      </div>
+      <div class="marker">
+        <div class="num gold">0</div>
+        <div class="lbl">Unsafe driving &amp; hours-of-service violations</div>
+      </div>
+      <div class="marker">
+        <div class="num">8+</div>
+        <div class="lbl">Years of continuous active authority (since Nov 2017)</div>
+      </div>
+      <div class="marker">
+        <div class="num">100K</div>
+        <div class="lbl">Miles logged in 2024 (MCS-150 filing)</div>
+      </div>
+    </div>
+    <p class="safety-note">DRIVER INSPECTIONS: 0% OUT-OF-SERVICE RATE vs 6.67% NATIONAL AVERAGE · INSURED BY NATIONAL INTERSTATE INSURANCE CO.</p>
+  </div>
+</section>
+
+<!-- LANES -->
+<section id="lanes">
+  <div class="wrap">
+    <span class="eyebrow">Where we run</span>
+    <h2>Popular lanes out of the GTA</h2>
+    <p class="section-intro">Based minutes from Highways 410 and 407 in Brampton, we regularly serve high-demand lanes into the US Midwest, East Coast, South, and West.</p>
+    <div class="lanes-grid">
+      <div class="exit-sign"><div><span class="city">Philadelphia</span><span class="st">Pennsylvania</span></div><span class="arr">→</span></div>
+      <div class="exit-sign"><div><span class="city">Columbus</span><span class="st">Ohio</span></div><span class="arr">→</span></div>
+      <div class="exit-sign"><div><span class="city">Memphis</span><span class="st">Tennessee</span></div><span class="arr">→</span></div>
+      <div class="exit-sign"><div><span class="city">Jacksonville</span><span class="st">Florida</span></div><span class="arr">→</span></div>
+      <div class="exit-sign"><div><span class="city">Raleigh</span><span class="st">North Carolina</span></div><span class="arr">→</span></div>
+      <div class="exit-sign"><div><span class="city">Des Moines</span><span class="st">Iowa</span></div><span class="arr">→</span></div>
+      <div class="exit-sign"><div><span class="city">Salt Lake City</span><span class="st">Utah</span></div><span class="arr">→</span></div>
+      <div class="exit-sign"><div><span class="city">Portland</span><span class="st">Oregon</span></div><span class="arr">→</span></div>
+      <div class="exit-sign"><div><span class="city">Los Angeles</span><span class="st">California</span></div><span class="arr">→</span></div>
+    </div>
+    <p class="lanes-more">Don't see your lane? We're authorized for all 48 contiguous states — <a href="tel:+16475486601"><strong>call (647) 548-6601</strong></a> and we'll talk it through.</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap">
+    <span class="eyebrow">Owner-operated</span>
+    <div class="about-grid">
+      <div>
+        <h2>Small fleet. Full accountability.</h2>
+        <p class="section-intro">Rolling Freight is an owner-operated carrier — and that's the point. The person who quotes your load is the person who secures it, drives it, and hands over the paperwork at delivery. No hand-offs, no lost details, no excuses.</p>
+        <ul class="about-facts">
+          <li><span class="check">✓</span><div><b>Direct line to your driver</b><span>One phone number reaches the decision-maker. Updates come from the road, not a call center.</span></div></li>
+          <li><span class="check">✓</span><div><b>Well-maintained equipment</b><span>Company-owned tractor and trailer, maintained on a strict schedule — because when it's yours, you take care of it.</span></div></li>
+          <li><span class="check">✓</span><div><b>Fully insured &amp; compliant</b><span>$1M primary liability coverage through National Interstate Insurance Company, active since 2021.</span></div></li>
+        </ul>
+      </div>
+      <div>
+      <img class="about-photo" src="https://images.unsplash.com/photo-1492168732976-2676c584c675?q=80&w=1100&auto=format&fit=crop" alt="Aerial view of freight trucks lined up at a terminal" loading="lazy">
+      <div class="logbook" aria-label="Company record">
+        <h3>Company Logbook</h3>
+        <dl>
+          <dt>Legal name</dt><dd>Rolling Freight</dd>
+          <dt>Home base</dt><dd>Brampton, Ontario, Canada</dd>
+          <dt>USDOT number</dt><dd>3048437</dd>
+          <dt>MC docket</dt><dd>MC048542</dd>
+          <dt>Authority</dt><dd>Common carrier — active</dd>
+          <dt>Authorized since</dt><dd>November 7, 2017</dd>
+          <dt>Operation</dt><dd>Interstate · Property</dd>
+          <dt>Cargo types</dt><dd>General freight · Paper</dd>
+          <dt>Insurance</dt><dd>$1,000,000 BIPD</dd>
+          <dt>Insurer</dt><dd>National Interstate Ins. Co.</dd>
+        </dl>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <span class="eyebrow">Get a quote</span>
+      <h2>Have a load? Let's talk.</h2>
+      <a class="big-phone" href="tel:+16475486601">(647) 548-6601</a>
+      <p class="hours">Call or text — quotes are fast and straightforward. Brokers welcome; setup packets available on request.</p>
+    </div>
+    <div class="contact-card">
+      <h3>Reach us</h3>
+      <ul>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c1 .3 1.9.5 2.9.7a2 2 0 0 1 1.6 2z"/></svg>
+          <div>Phone<br><a href="tel:+16475486601">(647) 548-6601</a></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div>Home base<br><strong>61 Abitibi Lake Dr, Brampton, ON L6R 0Y5</strong></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          <div>Verify our authority<br><strong>FMCSA SAFER · USDOT 3048437</strong></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <div>
+      <strong style="color:#fff;text-transform:uppercase;letter-spacing:.03em">Rolling Freight</strong>
+      <div class="mono">USDOT 3048437 · MC 048542 · Brampton, ON</div>
+    </div>
+    <div class="mono">© 2026 Rolling Freight · <a href="tel:+16475486601">(647) 548-6601</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
