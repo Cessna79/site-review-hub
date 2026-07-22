@@ -16,6 +16,26 @@
       "url": "/cake.html"
     },
     {
+      "title": "Get Fit With Runa",
+      "subtitle": "Take Control Of Your Health",
+      "url": "/runa.html"
+    },
+    {
+      "title": "Inta Dental Care",
+      "subtitle": "Smile With Confidence",
+      "url": "/intadental.html"
+    },
+    {
+      "title": "Rose Skin Studio",
+      "subtitle": "Elevate Your Skin",
+      "url": "/skinstudio.html"
+    },
+    {
+      "title": "6AM",
+      "subtitle": "Pump Your Ride",
+      "url": "/6ixam.html"
+    },
+    {
       "title": "Red Moon Bakery",
       "subtitle": "Bake The Cake",
       "url": "/redmoon.html"
@@ -23,6 +43,11 @@
   ],
 
   "client": [
+    {
+      "title": "Build Website",
+      "subtitle": "I web Your Site",
+      "url": "/web-a-site.html"
+    },
     {
       "title": "Around The Globe Immigration",
       "subtitle": "Pathway To Canada",
@@ -34,6 +59,16 @@
       "url": "/immigraze.html"
     },
     {
+      "title": "Red Buck",
+      "subtitle": "Your Freight My Wheels",
+      "url": "/Redbuck.html"
+    },
+    {
+      "title": "Manpreet Tiwana",
+      "subtitle": "Your Trusted Advisor",
+      "url": "/Manpreet.html"
+    },
+    {
       "title": "Rolling Freight",
       "subtitle": "Get Your Freight Rolling",
       "url": "/rolling-freight.html"
@@ -42,6 +77,21 @@
       "title": "SKR Transport",
       "subtitle": "SHIP Worry Free",
       "url": "/skr/skr.html"
+    },
+    {
+      "title": "Big Rig Carriers",
+      "subtitle": "Big Rig Carriers",
+      "url": "/bigrig-carriers-redesign.html"
+    },
+    {
+      "title": "Rigid Performance & Powdercoating",
+      "subtitle": "Keeseville, NY",
+      "url": "/rigid-performance.html"
+    },
+    {
+      "title": "Tiwana Law Chambers",
+      "subtitle": "Law firm — Brampton, ON",
+      "url": "/tiwana-law-chambers.html"
     }
   ]
 }
