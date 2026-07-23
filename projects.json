@@ -1,6 +1,6 @@
 {
   "own": [
-     {
+    {
       "title": "Build Website",
       "subtitle": "I Web Your Site",
       "url": "/web-a-site.html",
@@ -10,53 +10,6 @@
       "title": "The Fishnet",
       "subtitle": "Traditional Fish & Chips — Bulkington",
       "url": "/fishnet-bulkington-final.html",
-      "status": "Ready"
-    },
-    
-    {
-      "title": "Crumble Cakes",
-      "subtitle": "Cake For Every Occasion",
-      "url": "/cake.html",
-      "status": "Ready"
-    },
-    {
-      "title": "Get Fit With Runa",
-      "subtitle": "Take Control Of Your Health",
-      "url": "/runa.html",
-      "status": "Ready"
-    },
-    {
-      "title": "Inta Dental Care",
-      "subtitle": "Smile With Confidence",
-      "url": "/intadental.html",
-      "status": "Ready"
-    },
-    {
-      "title": "Rose Skin Studio",
-      "subtitle": "Elevate Your Skin",
-      "url": "/skinstudio.html",
-      "status": "Ready"
-    },
-    {
-      "title": "6AM",
-      "subtitle": "Pump Your Ride",
-      "url": "/6ixam.html",
-      "status": "Ready"
-    },
-    {
-      "title": "Red Moon Bakery",
-      "subtitle": "Bake The Cake",
-      "url": "/redmoon.html",
-      "status": "Ready"
-    }
-  ],
-
-  "client": [
-   
-    {
-      "title": "Tony's Burgers",
-      "subtitle": "Best In Town",
-      "url": "/tonys-burgers.html",
       "status": "Ready"
     },
     {
@@ -102,15 +55,53 @@
       "status": "Ready"
     },
     {
-      "title": "Rigid Performance & Powdercoating",
-      "subtitle": "Keeseville, NY",
-      "url": "/rigid-performance.html",
-      "status": "Ready"
-    },
-    {
       "title": "Tiwana Law Chambers",
       "subtitle": "Law Firm — Brampton, ON",
       "url": "/tiwana-law-chambers.html",
+      "status": "Ready"
+    }
+  ],
+  "client": [
+    {
+      "title": "Get Fit With Runa",
+      "subtitle": "Take Control Of Your Health",
+      "url": "/runa.html",
+      "status": "Ready"
+    },
+    {
+      "title": "Inta Dental Care",
+      "subtitle": "Smile With Confidence",
+      "url": "/intadental.html",
+      "status": "Ready"
+    },
+    {
+      "title": "Rose Skin Studio",
+      "subtitle": "Elevate Your Skin",
+      "url": "/skinstudio.html",
+      "status": "Ready"
+    },
+    {
+      "title": "6AM",
+      "subtitle": "Pump Your Ride",
+      "url": "/6ixam.html",
+      "status": "Ready"
+    },
+    {
+      "title": "Red Moon Bakery",
+      "subtitle": "Bake The Cake",
+      "url": "/redmoon.html",
+      "status": "Ready"
+    },
+    {
+      "title": "Crumble Cakes",
+      "subtitle": "Cake For Every Occasion",
+      "url": "/cake.html",
+      "status": "Ready"
+    },
+    {
+      "title": "Rigid Performance & Powdercoating",
+      "subtitle": "Keeseville, NY",
+      "url": "/rigid-performance.html",
       "status": "Ready"
     }
   ]
